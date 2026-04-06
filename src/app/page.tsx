@@ -103,7 +103,7 @@ export default function HomePage() {
           </motion.section>
         </section>
 
-        <section className="relative z-10 mx-auto -mt-6 max-w-5xl">
+        <section className="relative z-10 mx-auto -mt-20 max-w-6xl">
           <CloudWisp className="mx-auto max-w-6xl" />
 
           <motion.div
@@ -113,7 +113,7 @@ export default function HomePage() {
               y: isLit ? 0 : 16,
             }}
             transition={{ duration: 1.6, delay: isLit ? 0.45 : 0, ease: "easeOut" }}
-            className="mx-auto -mt-10 max-w-2xl text-center"
+            className="mx-auto -mt-16 max-w-2xl text-center"
           >
             <p className="text-[0.72rem] uppercase tracking-[0.32em] text-parchment/48">
               before the self-introduction
