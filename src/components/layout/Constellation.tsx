@@ -52,9 +52,9 @@ function AccentStar({ cx, cy }: { cx: number; cy: number }) {
   return (
     <path
       d={`M ${cx} ${cy - 6} L ${cx + 1.8} ${cy - 1.8} L ${cx + 6} ${cy} L ${cx + 1.8} ${cy + 1.8} L ${cx} ${cy + 6} L ${cx - 1.8} ${cy + 1.8} L ${cx - 6} ${cy} L ${cx - 1.8} ${cy - 1.8} Z`}
-      fill="rgba(255,232,190,0.9)"
-      stroke="rgba(244,181,95,0.55)"
-      strokeWidth="0.8"
+      fill="rgba(255,232,190,1)"
+      stroke="rgba(244,181,95,0.72)"
+      strokeWidth="1"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
@@ -65,7 +65,10 @@ export function Constellation({ className = "", tone }: ConstellationProps) {
   const data = constellationMap[tone];
 
   return (
-    <div className={`pointer-events-none absolute drop-shadow-[0_0_15px_rgba(255,245,220,0.1)] ${className}`}>
+    <div
+      className={`pointer-events-none absolute drop-shadow-[0_0_15px_rgba(255,245,220,0.1)] ${className}`}
+      style={{ filter: "drop-shadow(0 0 4px rgba(245, 197, 108, 0.4))" }}
+    >
       <svg viewBox="0 0 260 180" className="h-full w-full overflow-visible">
         {data.lines.map((line, index) => (
           <path
@@ -73,7 +76,7 @@ export function Constellation({ className = "", tone }: ConstellationProps) {
             d={line}
             fill="none"
             stroke="rgba(244,181,95,0.44)"
-            strokeWidth="1.3"
+            strokeWidth="1.6"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
@@ -86,8 +89,8 @@ export function Constellation({ className = "", tone }: ConstellationProps) {
               key={`${tone}-point-${index}`}
               cx={point.cx}
               cy={point.cy}
-              r={point.r ?? 2.8}
-              fill="rgba(255,232,190,0.9)"
+              r={(point.r ?? 2.8) + 0.7}
+              fill="rgba(255,232,190,1)"
             />
           ),
         )}

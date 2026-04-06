@@ -9,6 +9,7 @@ type StoryLanternSectionProps = {
   title: string;
   body: ReactNode;
   align?: "left" | "center" | "right";
+  className?: string;
 };
 
 export function StoryLanternSection({
@@ -16,6 +17,7 @@ export function StoryLanternSection({
   title,
   body,
   align = "center",
+  className = "",
 }: StoryLanternSectionProps) {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -34,7 +36,7 @@ export function StoryLanternSection({
     <motion.section
       ref={ref}
       style={{ opacity, filter: brightnessFilter }}
-      className={`relative my-28 ${xClass}`}
+      className={`relative my-28 ${xClass} ${className}`}
     >
       <motion.div
         style={{ opacity: glowOpacity }}

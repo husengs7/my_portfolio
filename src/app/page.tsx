@@ -52,7 +52,7 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,197,108,0.08),transparent_36%)]" />
 
         <section className="relative flex min-h-screen items-center justify-center">
-          <CloudWisp mode="front" placement="section" className="opacity-95" />
+          <CloudWisp mode="front" placement="section" className="opacity-75" />
           <motion.section
             initial={false}
             animate={{
@@ -107,18 +107,24 @@ export default function HomePage() {
         </section>
 
         <section className="relative z-10 mx-auto mt-4 max-w-6xl">
-          <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-            <Constellation
-              tone="orion"
-              className="left-[6%] -top-40 h-[10rem] w-[14rem] opacity-65 sm:left-[12%] sm:-top-36 sm:h-[11rem] sm:w-[16rem]"
-            />
-            <Constellation
-              tone="cassiopeia"
-              className="right-[4%] -top-12 h-[9rem] w-[15rem] opacity-60 sm:right-[8%] sm:-top-4 sm:h-[10rem] sm:w-[17rem]"
-            />
+          <div className="pointer-events-none absolute inset-0 z-0">
+            <motion.div
+              initial={false}
+              animate={{ opacity: isLit ? 1 : 0 }}
+              transition={{ duration: 2, ease: "easeOut", delay: isLit ? 0.5 : 0 }}
+            >
+              <Constellation
+                tone="orion"
+                className="left-[4%] -top-56 h-[10rem] w-[14rem] opacity-90 sm:left-[10%] sm:-top-64 sm:h-[11rem] sm:w-[16rem]"
+              />
+              <Constellation
+                tone="cassiopeia"
+                className="right-[2%] top-20 h-[9rem] w-[15rem] opacity-85 sm:right-[4%] sm:top-24 sm:h-[10rem] sm:w-[17rem]"
+              />
+            </motion.div>
           </div>
           <div className="relative mx-auto max-w-4xl py-12">
-            <CloudWisp mode="front" placement="section" className="opacity-95" />
+            <CloudWisp mode="front" placement="section" className="opacity-75" />
             <motion.div
               initial={false}
               animate={{
@@ -147,7 +153,7 @@ export default function HomePage() {
         <section className="relative z-10 mx-auto mt-16 max-w-5xl">
           <div className="flex flex-col gap-8 md:flex-row md:items-start md:gap-16">
             <div className="md:w-1/3">
-              <div className="mx-auto w-full max-w-[300px] md:sticky md:top-32">
+              <div className="mx-auto w-full max-w-[300px] md:-mt-4 md:sticky md:top-32">
                 <div className="relative aspect-[11/16] overflow-hidden rounded-2xl border border-parchment/10 opacity-90 shadow-[0_0_36px_rgba(245,197,108,0.08)]">
                   <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),rgba(255,255,255,0.01)_48%,rgba(5,5,26,0.08)_100%)]" />
                   <Image
@@ -161,19 +167,22 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="md:w-2/3">
+            <div className="md:w-2/3 md:-mt-3">
               <StoryLanternSection
                 eyebrow="about the walker"
                 title="Sora Midorikawa / husensan"
                 body={
                   <div className="space-y-3 leading-relaxed">
                     <p>東京情報大学 総合情報学部 2年</p>
-                    <p>Tokyo</p>
+                    <p>ネットワーク・セキュリティ研究室</p>
+                    <p>Japan Tokyo</p>
                     <p>ねずみ幸福論 : ドラマー</p>
+                    <p>楽器:ピアノ・DJ・ギター・ドラム</p>
                     <p>趣味：都内を練り歩くこと</p>
                   </div>
                 }
                 align="left"
+                className="mt-0"
               />
               <StoryLanternSection
                 eyebrow="hackathon notes"
