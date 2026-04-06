@@ -27,6 +27,9 @@
 - Star ritual: while `isLit === false`, body scrolling is locked. Tapping the spark unlocks scroll and begins the world-opening sequence.
 - Gas lamps: the first two lamps act as the entrance gate and are placed more inward; later lamps are distributed along the path with asymmetry.
 - Cloud mist: cloud motion uses `useSpring`-smoothed parallax and extremely low opacity (`0.03` to `0.08`) so the result reads as "mist" rather than explicit clouds.
+- Cloud layer structure: clouds are managed as an independent background layer with low z-index, fixed to the viewport and spread across the full screen so the mist wraps the whole park without clipping at the edges.
+- Cloud dual layering: keep a back cloud layer behind the whole park and a separate front cloud layer in the gap between the title area and the self-introduction copy so overlapping haze deepens the atmosphere without using 3D.
+- Shooting stars: shooting stars are not a spark-triggered event. They are a permanent environmental effect in the far background, with only 1 to 2 thin hand-drawn amber streaks appearing rarely and softly through the mist.
 - Layout depth: no perspective-based 3D. All depth must come from layer ordering, parallax, blur, scale, and atmospheric spacing.
 - Lighting: keep amber watercolor-like glow, soft gradients, blurred transitions, and reveal-by-light behavior.
 
@@ -49,6 +52,8 @@
 - Motion should support atmosphere and readability, not spectacle.
 - Transitions should feel gentle, warm, and story-driven.
 - Prefer slow, staggered, asynchronous motion over repetitive mechanical loops.
+- Current three-part layer concept: front cloud in the title-to-introduction gap, then readable content, then back cloud plus subtle ambient shooting stars as the environmental background system.
+- Rendering order in practice: ambient shooting stars at the furthest back, then back clouds, then starry sky, then gas lamps and content, with the local front cloud reintroduced around the title/introduction transition to brush across the text space.
 
 ## Avoid
 - Sky lanterns

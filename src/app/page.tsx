@@ -103,29 +103,30 @@ export default function HomePage() {
           </motion.section>
         </section>
 
-        <section className="relative z-10 mx-auto -mt-20 max-w-6xl">
-          <CloudWisp className="mx-auto max-w-6xl" />
-
-          <motion.div
-            initial={false}
-            animate={{
-              opacity: isLit ? 1 : 0.4,
-              y: isLit ? 0 : 16,
-            }}
-            transition={{ duration: 1.6, delay: isLit ? 0.45 : 0, ease: "easeOut" }}
-            className="mx-auto -mt-16 max-w-2xl text-center"
-          >
-            <p className="text-[0.72rem] uppercase tracking-[0.32em] text-parchment/48">
-              before the self-introduction
-            </p>
-            <h2 className="mt-5 font-serifStory text-3xl leading-tight text-parchment sm:text-4xl">
-              霧の向こうに、これから歩いていく人の輪郭が静かに現れる。
-            </h2>
-            <p className="mt-5 text-sm leading-8 text-parchment/66 sm:text-base">
-              ここから先は、大学での学び、インターンで積み重ねた実装、音楽とものづくりが重なり合う自己紹介のページ。
-              白いもやの層を抜けるように、少しずつ輪郭がはっきりしていく。
-            </p>
-          </motion.div>
+        <section className="relative z-10 mx-auto mt-4 max-w-6xl">
+          <div className="relative mx-auto max-w-4xl py-12">
+            <CloudWisp mode="front" placement="section" className="opacity-95" />
+            <motion.div
+              initial={false}
+              animate={{
+                opacity: isLit ? 1 : 0.4,
+                y: isLit ? 0 : 16,
+              }}
+              transition={{ duration: 1.6, delay: isLit ? 0.45 : 0, ease: "easeOut" }}
+              className="relative z-10 mx-auto max-w-2xl text-center"
+            >
+              <p className="text-[0.72rem] uppercase tracking-[0.32em] text-parchment/48">
+                before the self-introduction
+              </p>
+              <h2 className="mt-5 font-serifStory text-3xl leading-tight text-parchment sm:text-4xl">
+                霧の向こうに、これから歩いていく人の輪郭が静かに現れる。
+              </h2>
+              <p className="mt-5 text-sm leading-8 text-parchment/66 sm:text-base">
+                ここから先は、大学での学び、インターンで積み重ねた実装、音楽とものづくりが重なり合う自己紹介のページ。
+                白いもやの層を抜けるように、少しずつ輪郭がはっきりしていく。
+              </p>
+            </motion.div>
+          </div>
         </section>
 
         <div className="relative z-10 mx-auto mt-16 max-w-5xl">

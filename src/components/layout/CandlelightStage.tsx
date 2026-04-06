@@ -1,7 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { CloudWisp } from "@/components/layout/CloudWisp";
 import { GasLampPath } from "@/components/layout/GasLampPath";
+import { ShootingStar } from "@/components/layout/ShootingStar";
 import { StarrySky } from "@/components/layout/StarrySky";
 
 type CandlelightStageProps = {
@@ -27,7 +29,9 @@ export function CandlelightStage({
       className="relative min-h-screen overflow-hidden"
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(245,197,108,0.06),transparent_28%),linear-gradient(180deg,rgba(6,6,24,0.94),rgba(5,5,26,1))]" />
+      <ShootingStar />
       <StarrySky />
+      <CloudWisp />
       <GasLampPath isLit={isLit} leftLampLit={leftLampLit} rightLampLit={rightLampLit} />
       <motion.div
         initial={false}

@@ -6,6 +6,8 @@ import { useRef } from "react";
 type CloudWispProps = {
   className?: string;
   layers?: number;
+  mode?: "back" | "front";
+  placement?: "fixed" | "section";
 };
 
 type CloudSpec = {
@@ -58,7 +60,12 @@ function createClouds(count: number): CloudSpec[] {
 
 const clouds = createClouds(8);
 
-export function CloudWisp({ className = "", layers = 8 }: CloudWispProps) {
+export function CloudWisp({
+  className = "",
+  layers = 8,
+  mode = "back",
+  placement = "fixed",
+}: CloudWispProps) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -73,10 +80,22 @@ export function CloudWisp({ className = "", layers = 8 }: CloudWispProps) {
   return (
     <div
       ref={ref}
-      className={`relative left-1/2 h-[22rem] w-screen -translate-x-1/2 overflow-hidden overflow-x-hidden ${className}`}
+      className={`pointer-events-none ${
+        placement === "fixed"
+          ? "fixed left-[-10vw] top-0 h-screen w-[120vw]"
+          : "absolute left-1/2 top-1/2 h-[24rem] w-[120vw] -translate-x-1/2 -translate-y-1/2"
+      } overflow-hidden overflow-x-hidden ${
+        mode === "back" ? "z-[-10]" : "z-[15]"
+      } ${className}`}
     >
       {clouds.slice(0, layers).map((cloud, index) => {
-        const parallaxY = useTransform(smoothProgress, [0, 1], [18 * cloud.depth, -26 * cloud.depth]);
+        const parallaxY = useTransform(
+          smoothProgress,
+          [0, 1],
+          mode === "back"
+            ? [18 * cloud.depth, -26 * cloud.depth]
+            : [28 * cloud.depth, -18 * cloud.depth],
+        );
 
         return (
           <motion.div
@@ -90,18 +109,20 @@ export function CloudWisp({ className = "", layers = 8 }: CloudWispProps) {
           >
             <motion.svg
               viewBox="0 0 420 210"
-              className="h-[180px] w-[min(92vw,820px)] -translate-x-1/2 -translate-y-1/2"
+              className={`${
+                placement === "fixed" ? "h-[180px] w-[min(92vw,820px)]" : "h-[150px] w-[min(78vw,700px)]"
+              } -translate-x-1/2 -translate-y-1/2`}
               animate={{
-                x: [0, cloud.drift, 0],
+                x: [0, mode === "back" ? cloud.drift : cloud.drift * 0.72, 0],
               }}
               transition={{
-                duration: cloud.duration,
+                duration: mode === "back" ? cloud.duration : cloud.duration * 0.82,
                 ease: "easeInOut",
                 repeat: Number.POSITIVE_INFINITY,
                 delay: index * 0.8,
               }}
               style={{
-                scale: `${cloud.scale * cloud.flip} ${cloud.scale}`,
+                scale: `${cloud.scale * cloud.flip} ${mode === "back" ? cloud.scale : cloud.scale * 0.92}`,
               }}
             >
               <defs>
