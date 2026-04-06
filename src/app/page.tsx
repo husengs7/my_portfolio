@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { CandlelightStage } from "@/components/layout/CandlelightStage";
+import { CloudWisp } from "@/components/layout/CloudWisp";
 import { StoryLanternSection } from "@/components/layout/StoryLanternSection";
 import { TheSpark } from "@/components/ui/TheSpark";
 import { useOpeningLight } from "@/hooks/useOpeningLight";
@@ -33,8 +34,6 @@ export default function HomePage() {
               Welcome to my portfolio
             </motion.p>
 
-            <TheSpark isIgniting={hasStarted} onIgnite={ignite} />
-
             <motion.div
               initial={false}
               animate={{
@@ -42,15 +41,20 @@ export default function HomePage() {
                 filter: isLit ? "blur(0px)" : "blur(6px)",
               }}
               transition={{ duration: 1.4, delay: isLit ? 0.3 : 0, ease: "easeOut" }}
-              className="mt-14 space-y-5"
+              className="space-y-5"
             >
               <h1 className="font-serifStory text-4xl leading-tight text-parchment sm:text-5xl">
-                Go ahead and give it a try
+               Sora Midorikawa / husensan
               </h1>
               <p className="max-w-xl text-sm leading-8 text-parchment/76 sm:text-base">
-                暗がりのなかに小さな灯りをともして、自己紹介、ハッカソンの記録、音楽の気配へと続く夜道をひらく。
+                静かな夜明け前の世界、小さな明かりを灯して...
+                ゆっくり見ていってね。
               </p>
             </motion.div>
+
+            <div className="mt-10">
+              <TheSpark isIgniting={hasStarted} onIgnite={ignite} />
+            </div>
 
             <motion.p
               initial={false}
@@ -65,7 +69,32 @@ export default function HomePage() {
           </motion.section>
         </section>
 
-        <div className="relative z-10 mx-auto mt-8 max-w-5xl">
+        <section className="relative z-10 mx-auto -mt-6 max-w-5xl">
+          <CloudWisp className="mx-auto max-w-6xl" />
+
+          <motion.div
+            initial={false}
+            animate={{
+              opacity: isLit ? 1 : 0.4,
+              y: isLit ? 0 : 16,
+            }}
+            transition={{ duration: 1.6, delay: isLit ? 0.45 : 0, ease: "easeOut" }}
+            className="mx-auto -mt-10 max-w-2xl text-center"
+          >
+            <p className="text-[0.72rem] uppercase tracking-[0.32em] text-parchment/48">
+              before the self-introduction
+            </p>
+            <h2 className="mt-5 font-serifStory text-3xl leading-tight text-parchment sm:text-4xl">
+              霧の向こうに、これから歩いていく人の輪郭が静かに現れる。
+            </h2>
+            <p className="mt-5 text-sm leading-8 text-parchment/66 sm:text-base">
+              ここから先は、大学での学び、インターンで積み重ねた実装、音楽とものづくりが重なり合う自己紹介のページ。
+              白いもやの層を抜けるように、少しずつ輪郭がはっきりしていく。
+            </p>
+          </motion.div>
+        </section>
+
+        <div className="relative z-10 mx-auto mt-16 max-w-5xl">
           <StoryLanternSection
             eyebrow="about the walker"
             title="小さな灯りを持って、静かな夜道を歩いていく。"
