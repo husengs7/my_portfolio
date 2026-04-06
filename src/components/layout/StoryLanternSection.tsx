@@ -1,12 +1,13 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
+import type { ReactNode } from "react";
 import { useRef } from "react";
 
 type StoryLanternSectionProps = {
   eyebrow: string;
   title: string;
-  body: string;
+  body: ReactNode;
   align?: "left" | "center" | "right";
 };
 
@@ -42,7 +43,7 @@ export function StoryLanternSection({
       <div className="relative rounded-[2rem] border border-parchment/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01))] px-8 py-12 shadow-glow backdrop-blur-[1px]">
         <p className="mb-4 text-[0.72rem] uppercase tracking-[0.3em] text-amber-100/60">{eyebrow}</p>
         <h2 className="font-serifStory text-3xl leading-tight text-parchment sm:text-4xl">{title}</h2>
-        <p className="mt-5 text-sm leading-8 text-parchment/74 sm:text-base">{body}</p>
+        <div className="mt-5 text-sm leading-8 text-parchment/74 sm:text-base">{body}</div>
       </div>
     </motion.section>
   );

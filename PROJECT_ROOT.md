@@ -16,6 +16,7 @@
 - Current deployment mode: static export / SSG.
 - `next.config.ts` is configured with `output: "export"` and `images.unoptimized: true`.
 - Amplify build config exists in `amplify.yml`.
+- The first Profile section now contains concrete profile content: `Sora Midorikawa / husensan`, Tokyo University of Information Sciences, Tokyo, and drummer activity in `ねずみ幸福論`.
 
 ## Fixed Tech Stack
 - Framework: Next.js with App Router and TypeScript

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useEffect } from "react";
 import { CandlelightStage } from "@/components/layout/CandlelightStage";
 import { CloudWisp } from "@/components/layout/CloudWisp";
@@ -116,40 +117,68 @@ export default function HomePage() {
               transition={{ duration: 1.6, delay: isLit ? 0.45 : 0, ease: "easeOut" }}
               className="relative z-10 mx-auto max-w-2xl text-center"
             >
-              <p className="text-[0.72rem] uppercase tracking-[0.32em] text-parchment/48">
-                before the self-introduction
-              </p>
-              <h2 className="mt-5 font-serifStory text-3xl leading-tight text-parchment sm:text-4xl">
-                霧の向こうに、これから歩いていく人の輪郭が静かに現れる。
-              </h2>
-              <p className="mt-5 text-sm leading-8 text-parchment/66 sm:text-base">
-                ここから先は、大学での学び、インターンで積み重ねた実装、音楽とものづくりが重なり合う自己紹介のページ。
-                白いもやの層を抜けるように、少しずつ輪郭がはっきりしていく。
-              </p>
+              <div className="mt-5 flex items-center justify-center gap-4">
+                <Image
+                  src="/twicon.jpg"
+                  alt="Profile"
+                  width={64}
+                  height={64}
+                  className="h-16 w-16 rounded-full object-cover"
+                />
+                <h2 className="font-serifStory text-3xl leading-tight text-parchment sm:text-4xl">
+                  Profile
+                </h2>
+              </div>
             </motion.div>
           </div>
         </section>
 
-        <div className="relative z-10 mx-auto mt-16 max-w-5xl">
-          <StoryLanternSection
-            eyebrow="about the walker"
-            title="小さな灯りを持って、静かな夜道を歩いていく。"
-            body="散策路の最初に現れるのは、つくる人の気配。ことばとコードと音を携えて、暗い場所にひとつずつ明かりを置いていくための自己紹介。"
-            align="center"
-          />
-          <StoryLanternSection
-            eyebrow="hackathon notes"
-            title="次の街灯のそばでは、試作と挑戦の記録がそっと浮かび上がる。"
-            body="近づくほどに輪郭が見えてくる展示台のように、ハッカソンで形にしたアイデアや、短い時間で積み上げた実装の熱量が、琥珀色の光のなかで読めるようになる。"
-            align="right"
-          />
-          <StoryLanternSection
-            eyebrow="music at midnight"
-            title="さらに歩くと、音の余韻が夜気に混じり、ポートフォリオにもうひとつの表情を与える。"
-            body="音楽活動のセクションは、まっすぐな実績紹介ではなく、夜の園路に響く旋律のように。スクロールとともに、静かな物語の奥行きが少しずつひらいていく。"
-            align="left"
-          />
-        </div>
+        <section className="relative z-10 mx-auto mt-16 max-w-5xl">
+          <div className="flex flex-col gap-8 md:flex-row md:items-start md:gap-16">
+            <div className="md:w-1/3">
+              <div className="mx-auto w-full max-w-[300px] md:sticky md:top-32">
+                <div className="relative aspect-[11/16] overflow-hidden rounded-2xl border border-parchment/10 opacity-90 shadow-[0_0_36px_rgba(245,197,108,0.08)]">
+                  <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),rgba(255,255,255,0.01)_48%,rgba(5,5,26,0.08)_100%)]" />
+                  <Image
+                    src="/my.jpg"
+                    alt="Sora Midorikawa profile"
+                    fill
+                    sizes="(min-width: 768px) 300px, 70vw"
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="md:w-2/3">
+              <StoryLanternSection
+                eyebrow="about the walker"
+                title="Sora Midorikawa / husensan"
+                body={
+                  <div className="space-y-3 leading-relaxed">
+                    <p>東京情報大学 総合情報学部 2年</p>
+                    <p>Tokyo</p>
+                    <p>ねずみ幸福論 : ドラマー</p>
+                    <p>趣味：都内を練り歩くこと</p>
+                  </div>
+                }
+                align="left"
+              />
+              <StoryLanternSection
+                eyebrow="hackathon notes"
+                title="次の街灯のそばでは、試作と挑戦の記録がそっと浮かび上がる。"
+                body="近づくほどに輪郭が見えてくる展示台のように、ハッカソンで形にしたアイデアや、短い時間で積み上げた実装の熱量が、琥珀色の光のなかで読めるようになる。"
+                align="right"
+              />
+              <StoryLanternSection
+                eyebrow="music at midnight"
+                title="さらに歩くと、音の余韻が夜気に混じり、ポートフォリオにもうひとつの表情を与える。"
+                body="音楽活動のセクションは、まっすぐな実績紹介ではなく、夜の園路に響く旋律のように。スクロールとともに、静かな物語の奥行きが少しずつひらいていく。"
+                align="left"
+              />
+            </div>
+          </div>
+        </section>
       </motion.main>
     </CandlelightStage>
   );
