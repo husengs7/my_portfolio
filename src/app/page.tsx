@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 import { CandlelightStage } from "@/components/layout/CandlelightStage";
 import { CloudWisp } from "@/components/layout/CloudWisp";
 import { StoryLanternSection } from "@/components/layout/StoryLanternSection";
@@ -10,9 +11,42 @@ import { useOpeningLight } from "@/hooks/useOpeningLight";
 export default function HomePage() {
   const { hasStarted, ignite, isLit, leftLampLit, rightLampLit } = useOpeningLight();
 
+  useEffect(() => {
+    const { body, documentElement } = document;
+    const previousBodyOverflow = body.style.overflow;
+    const previousBodyPaddingRight = body.style.paddingRight;
+    const previousHtmlOverflow = documentElement.style.overflow;
+    const scrollbarWidth = window.innerWidth - documentElement.clientWidth;
+
+    if (!isLit) {
+      body.style.overflow = "hidden";
+      documentElement.style.overflow = "hidden";
+      if (scrollbarWidth > 0) {
+        body.style.paddingRight = `${scrollbarWidth}px`;
+      }
+    } else {
+      body.style.overflow = "";
+      body.style.paddingRight = "";
+      documentElement.style.overflow = "";
+    }
+
+    return () => {
+      body.style.overflow = previousBodyOverflow;
+      body.style.paddingRight = previousBodyPaddingRight;
+      documentElement.style.overflow = previousHtmlOverflow;
+    };
+  }, [isLit]);
+
   return (
     <CandlelightStage isLit={isLit} leftLampLit={leftLampLit} rightLampLit={rightLampLit}>
-      <main className="relative min-h-[180rem] px-6 pb-40 pt-16">
+      <motion.main
+        initial={false}
+        animate={{
+          opacity: isLit ? 1 : 0.92,
+        }}
+        transition={{ duration: 1.25, delay: isLit ? 0.15 : 0, ease: "easeOut" }}
+        className="relative min-h-[180rem] px-6 pb-40 pt-16"
+      >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,197,108,0.08),transparent_36%)]" />
 
         <section className="relative flex min-h-screen items-center justify-center">
@@ -114,7 +148,7 @@ export default function HomePage() {
             align="left"
           />
         </div>
-      </main>
+      </motion.main>
     </CandlelightStage>
   );
 }
