@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect } from "react";
+import { Constellation } from "@/components/layout/Constellation";
 import { CandlelightStage } from "@/components/layout/CandlelightStage";
 import { CloudWisp } from "@/components/layout/CloudWisp";
 import { StoryLanternSection } from "@/components/layout/StoryLanternSection";
@@ -106,6 +107,16 @@ export default function HomePage() {
         </section>
 
         <section className="relative z-10 mx-auto mt-4 max-w-6xl">
+          <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+            <Constellation
+              tone="orion"
+              className="left-[6%] -top-40 h-[10rem] w-[14rem] opacity-65 sm:left-[12%] sm:-top-36 sm:h-[11rem] sm:w-[16rem]"
+            />
+            <Constellation
+              tone="cassiopeia"
+              className="right-[4%] -top-12 h-[9rem] w-[15rem] opacity-60 sm:right-[8%] sm:-top-4 sm:h-[10rem] sm:w-[17rem]"
+            />
+          </div>
           <div className="relative mx-auto max-w-4xl py-12">
             <CloudWisp mode="front" placement="section" className="opacity-95" />
             <motion.div
