@@ -50,6 +50,7 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,197,108,0.08),transparent_36%)]" />
 
         <section className="relative flex min-h-screen items-center justify-center">
+          <CloudWisp mode="front" placement="section" className="opacity-95" />
           <motion.section
             initial={false}
             animate={{
