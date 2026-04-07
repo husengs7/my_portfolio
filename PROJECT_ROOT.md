@@ -35,6 +35,7 @@
 - Constellation placement: keep a pair of constellations visible around the `Welcome...` to `Profile` transition, with one lifted toward the upper-left near the title and the other resting on the right side slightly lower, so the sky reads as a balanced illustrated star chart.
 - Constellation reveal: constellations stay invisible until the first ignition ritual completes. Once `isLit === true`, they fade in gently with a delayed, atmospheric reveal so the star chart appears to emerge from the night sky after the lamps wake up.
 - Shooting stars: shooting stars are not a spark-triggered event. They are a permanent environmental effect in the far background, with only 1 to 2 thin hand-drawn amber streaks appearing rarely and softly through the mist.
+- Distant skyline: the `city.png` skyline should hold the bottom of the screen with clear physical presence, using a maximum opacity around `0.7`, a slightly raised horizon position, and modest brightness / contrast tuning so the city reads as a definite nighttime landscape without overpowering the park.
 - Layout depth: no perspective-based 3D. All depth must come from layer ordering, parallax, blur, scale, and atmospheric spacing.
 - Lighting: keep amber watercolor-like glow, soft gradients, blurred transitions, and reveal-by-light behavior.
 

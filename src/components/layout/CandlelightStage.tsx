@@ -26,7 +26,7 @@ export function CandlelightStage({
         backgroundColor: isLit ? "#05051a" : "#02020b",
       }}
       transition={{ duration: 1.6, ease: "easeInOut" }}
-      className="relative min-h-screen overflow-hidden"
+      className="relative z-[50] min-h-screen overflow-hidden"
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(245,197,108,0.06),transparent_28%),linear-gradient(180deg,rgba(6,6,24,0.94),rgba(5,5,26,1))]" />
       <ShootingStar />

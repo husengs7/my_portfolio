@@ -41,15 +41,35 @@ export default function HomePage() {
 
   return (
     <CandlelightStage isLit={isLit} leftLampLit={leftLampLit} rightLampLit={rightLampLit}>
-      <motion.main
+      <motion.div
         initial={false}
-        animate={{
-          opacity: isLit ? 1 : 0.92,
+        animate={{ opacity: isLit ? 0.40 : 0 }}
+        transition={{ duration: 2.5, ease: "easeInOut", delay: isLit ? 0.2 : 0 }}
+        className="fixed bottom-[-110px] left-0 right-0 h-[40vh] min-h-[300px] w-full pointer-events-none"
+        style={{
+          zIndex: -20,
+          maskImage: "linear-gradient(to top, black 80%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to top, black 80%, transparent 100%)",
         }}
-        transition={{ duration: 1.25, delay: isLit ? 0.15 : 0, ease: "easeOut" }}
-        className="relative min-h-[180rem] px-6 pb-40 pt-16"
       >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,197,108,0.08),transparent_36%)]" />
+        <Image
+          src="/city.png"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-bottom brightness-90 contrast-110"
+        />
+      </motion.div>
+
+        <motion.main
+          initial={false}
+          animate={{
+            opacity: isLit ? 1 : 0.92,
+          }}
+          transition={{ duration: 1.25, delay: isLit ? 0.15 : 0, ease: "easeOut" }}
+          className="relative z-10 min-h-[180rem] px-6 pb-40 pt-16"
+        >
 
         <section className="relative flex min-h-screen items-center justify-center">
           <CloudWisp mode="front" placement="section" className="opacity-75" />
@@ -199,7 +219,7 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-      </motion.main>
+        </motion.main>
     </CandlelightStage>
   );
 }
