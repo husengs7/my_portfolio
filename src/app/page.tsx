@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Github, Music2, Twitter } from "lucide-react";
 import Image from "next/image";
 import { useEffect } from "react";
 import { Constellation } from "@/components/layout/Constellation";
@@ -12,6 +13,11 @@ import { useOpeningLight } from "@/hooks/useOpeningLight";
 
 export default function HomePage() {
   const { hasStarted, ignite, isLit, leftLampLit, rightLampLit } = useOpeningLight();
+  const profileLinks = [
+    { href: "https://github.com/husengs7", label: "GitHub", icon: Github },
+    { href: "https://x.com/husensan_", label: "X", icon: Twitter },
+    { href: "https://soundcloud.com/husen-tannsu", label: "SoundCloud", icon: Music2 },
+  ];
 
   useEffect(() => {
     const { body, documentElement } = document;
@@ -204,6 +210,24 @@ export default function HomePage() {
                 align="left"
                 className="mt-0"
               />
+              <div className="mt-8 flex flex-wrap gap-x-8 gap-y-4 px-4 md:px-0">
+                {profileLinks.map((link) => {
+                  const Icon = link.icon;
+
+                  return (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex items-center gap-3 text-xl text-parchment/50 transition-all duration-300 hover:text-amber-200 hover:drop-shadow-[0_0_5px_rgba(245,197,108,0.4)]"
+                    >
+                      <Icon size={22} />
+                      <span>{link.label}</span>
+                    </a>
+                  );
+                })}
+              </div>
               <StoryLanternSection
                 eyebrow="hackathon notes"
                 title="次の街灯のそばでは、試作と挑戦の記録がそっと浮かび上がる。"
