@@ -20,11 +20,13 @@ export default function HomePage() {
     { href: "https://soundcloud.com/husen-tannsu", label: "SoundCloud", icon: Music2 },
   ];
   const timelineItems = [
-    { date: "2025.07", label: "某夏ハッカソン「Quest Calendar」開発" },
-    { date: "2025.08", label: "自作アプリ「TrainGuessr」リリース" },
-    { date: "2025.09", label: "ネットワーク・セキュリティ研究室 加入" },
-    { date: "2026.02", label: "42Tokyo Piscine 参加" },
-    { date: "2026.03", label: "Findyハッカソン「Takibi Chat」開発" },
+    { date: "2025.07", label: "[夏季ver]Progateハッカソン powered by AWS  React Nativeによるスマホアプリ開発" },
+    { date: "2025.08~09", label: "100Program (ファイナル進出)  Node.jsによるジオゲッサーwebアプリ" },
+    { date: "2025.10", label: "チームラボFlutter1Dayハッカソン" },
+    { date: "2025.12", label: "【2025年ラスト】Progateハッカソン！supported by RIZAP テクノロジーズ Flutterによる地図アプリ(RIZAP賞)" },
+    { date: "2025.12", label: "RIZAPテクノロジーズ(バックエンド3daysインターン)  Ruby on Railsを用いたchocoZAPのAPI設計。" },
+    { date: "2026.02", label: "42Tokyo Piscineに1ヶ月間参加"},
+    { date: "2026.03", label: "Findy Campus Hackathon ReactとRubyonRailsのスマホアプリ (Findy賞&ウェルスナビ賞"}
   ];
 
   useEffect(() => {
@@ -76,14 +78,14 @@ export default function HomePage() {
         />
       </motion.div>
 
-        <motion.main
-          initial={false}
-          animate={{
-            opacity: isLit ? 1 : 0.92,
-          }}
-          transition={{ duration: 1.25, delay: isLit ? 0.15 : 0, ease: "easeOut" }}
-          className="relative z-10 min-h-[180rem] px-6 pb-40 pt-16"
-        >
+      <motion.main
+        initial={false}
+        animate={{
+          opacity: isLit ? 1 : 0.92,
+        }}
+        transition={{ duration: 1.25, delay: isLit ? 0.15 : 0, ease: "easeOut" }}
+        className="relative z-10 min-h-[180rem] px-6 pb-40 pt-16"
+      >
 
         <section className="relative flex min-h-screen items-center justify-center">
           <CloudWisp mode="front" placement="section" className="opacity-75" />
@@ -115,7 +117,7 @@ export default function HomePage() {
               className="space-y-5"
             >
               <h1 className="font-serifStory text-4xl leading-tight text-parchment sm:text-5xl">
-               Sora Midorikawa / husensan
+                Sora Midorikawa / husensan
               </h1>
               <p className="max-w-xl text-sm leading-8 text-parchment/76 sm:text-base">
                 静かな夜明け前の世界、小さな明かりを灯して...
@@ -239,15 +241,22 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-        <section className="relative z-10 mt-32 w-full px-6">
+        <section className="relative z-10 mt-24 w-full px-6">
           <div className="mx-auto max-w-4xl">
+            <CloudWisp
+              mode="front"
+              placement="section"
+              className="pointer-events-none absolute inset-0 z-0 opacity-60"
+            />
             <div className="mb-12 text-center">
-              <h2 className="font-serifStory text-2xl tracking-[0.3em] text-amber-100/80">Locus</h2>
+              <h2 className="relative z-10 font-serifStory text-2xl tracking-[0.3em] text-amber-100/80">Locus</h2>
             </div>
-            <TimelineThread items={timelineItems} />
+            <div className="relative z-10">
+              <TimelineThread items={timelineItems} />
+            </div>
           </div>
         </section>
-        </motion.main>
+      </motion.main>
     </CandlelightStage>
   );
 }
