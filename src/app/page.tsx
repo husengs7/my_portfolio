@@ -61,7 +61,7 @@ export default function HomePage() {
         initial={false}
         animate={{ opacity: isLit ? 0.40 : 0 }}
         transition={{ duration: 2.5, ease: "easeInOut", delay: isLit ? 0.2 : 0 }}
-        className="fixed bottom-[-110px] left-0 right-0 h-[40vh] min-h-[300px] w-full pointer-events-none"
+        className="fixed bottom-[-110px] left-0 right-0 h-[40vh] min-h-[300px] w-full pointer-events-none md:bottom-[-110px]"
         style={{
           zIndex: -20,
           maskImage: "linear-gradient(to top, black 80%, transparent 100%)",
@@ -74,7 +74,7 @@ export default function HomePage() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-bottom brightness-90 contrast-110"
+          className="-translate-y-[5%] scale-[0.97] object-cover object-top brightness-[1.15] contrast-110 md:translate-y-0 md:scale-100 md:object-cover md:object-bottom md:brightness-90"
         />
       </motion.div>
 
