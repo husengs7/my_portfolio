@@ -188,8 +188,8 @@ export default function HomePage() {
 
         <section className="relative z-10 mx-auto mt-16 max-w-5xl">
           <div className="flex flex-col gap-8 md:flex-row md:items-start md:gap-16">
-            <div className="md:w-1/3">
-              <div className="mx-auto w-full max-w-[300px] md:-mt-4 md:sticky md:top-32">
+            <div className="mb-8 md:mb-0 md:w-1/3">
+              <div className="mx-auto w-full max-w-[190px] md:-mt-4 md:max-w-none md:sticky md:top-32">
                 <div className="relative aspect-[11/16] overflow-hidden rounded-2xl border border-parchment/10 opacity-90 shadow-[0_0_36px_rgba(245,197,108,0.08)]">
                   <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),rgba(255,255,255,0.01)_48%,rgba(5,5,26,0.08)_100%)]" />
                   <Image

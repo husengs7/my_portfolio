@@ -37,7 +37,7 @@ const mobileLampNodes = (
   rightLampLit: boolean,
   isLit: boolean,
 ): LampNode[] => [
-  { id: "opening-left-mobile", side: "left", top: "8rem", x: "-15px", lit: leftLampLit, delay: 0.08, scale: 0.6 },
+  { id: "opening-left-mobile", side: "left", top: "8rem", x: "-32px", lit: leftLampLit, delay: 0.08, scale: 0.6 },
   {
     id: "opening-right-mobile",
     side: "right",
