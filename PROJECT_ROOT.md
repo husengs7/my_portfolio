@@ -61,6 +61,12 @@
 - Current three-part layer concept: front cloud in the title-to-introduction gap, then readable content, then back cloud plus subtle ambient shooting stars as the environmental background system.
 - Rendering order in practice: ambient shooting stars at the furthest back, then back clouds, then starry sky, then constellations in the title-to-profile gap, then gas lamps and readable content, with the local front cloud reintroduced around the title/introduction transition to brush across the text space.
 
+## Architecture
+- The Profile area is a two-column layout: sticky portrait on the left, profile text on the right.
+- Directly below the profile text and the three external links, place a `Locus` heading.
+- `Locus` is followed by the `TimelineThread` component, which acts as the formal career / project timeline connected by a central thread.
+- The previous standalone `hackathon notes` and `music at midnight` story cards are removed from this stage of the layout.
+
 ## Avoid
 - Sky lanterns
 - Neon-heavy color palettes

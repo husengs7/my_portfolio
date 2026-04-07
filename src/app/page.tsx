@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { Constellation } from "@/components/layout/Constellation";
 import { CandlelightStage } from "@/components/layout/CandlelightStage";
 import { CloudWisp } from "@/components/layout/CloudWisp";
+import { TimelineThread } from "@/components/layout/TimelineThread";
 import { StoryLanternSection } from "@/components/layout/StoryLanternSection";
 import { TheSpark } from "@/components/ui/TheSpark";
 import { useOpeningLight } from "@/hooks/useOpeningLight";
@@ -17,6 +18,13 @@ export default function HomePage() {
     { href: "https://github.com/husengs7", label: "GitHub", icon: Github },
     { href: "https://x.com/husensan_", label: "X", icon: Twitter },
     { href: "https://soundcloud.com/husen-tannsu", label: "SoundCloud", icon: Music2 },
+  ];
+  const timelineItems = [
+    { date: "2025.07", label: "某夏ハッカソン「Quest Calendar」開発" },
+    { date: "2025.08", label: "自作アプリ「TrainGuessr」リリース" },
+    { date: "2025.09", label: "ネットワーク・セキュリティ研究室 加入" },
+    { date: "2026.02", label: "42Tokyo Piscine 参加" },
+    { date: "2026.03", label: "Findyハッカソン「Takibi Chat」開発" },
   ];
 
   useEffect(() => {
@@ -228,19 +236,15 @@ export default function HomePage() {
                   );
                 })}
               </div>
-              <StoryLanternSection
-                eyebrow="hackathon notes"
-                title="次の街灯のそばでは、試作と挑戦の記録がそっと浮かび上がる。"
-                body="近づくほどに輪郭が見えてくる展示台のように、ハッカソンで形にしたアイデアや、短い時間で積み上げた実装の熱量が、琥珀色の光のなかで読めるようになる。"
-                align="right"
-              />
-              <StoryLanternSection
-                eyebrow="music at midnight"
-                title="さらに歩くと、音の余韻が夜気に混じり、ポートフォリオにもうひとつの表情を与える。"
-                body="音楽活動のセクションは、まっすぐな実績紹介ではなく、夜の園路に響く旋律のように。スクロールとともに、静かな物語の奥行きが少しずつひらいていく。"
-                align="left"
-              />
             </div>
+          </div>
+        </section>
+        <section className="relative z-10 mt-32 w-full px-6">
+          <div className="mx-auto max-w-4xl">
+            <div className="mb-12 text-center">
+              <h2 className="font-serifStory text-2xl tracking-[0.3em] text-amber-100/80">Locus</h2>
+            </div>
+            <TimelineThread items={timelineItems} />
           </div>
         </section>
         </motion.main>
