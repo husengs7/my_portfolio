@@ -127,7 +127,7 @@ export function TheSpark({ isIgniting, onIgnite }: TheSparkProps) {
             transition={{ duration: 0.5, ease: "easeOut" }}
             className="absolute -bottom-11 whitespace-nowrap text-[0.72rem] uppercase tracking-[0.32em] text-parchment/55"
           >
-            kindle the path
+            Touch the Star
           </motion.span>
         )}
       </AnimatePresence>

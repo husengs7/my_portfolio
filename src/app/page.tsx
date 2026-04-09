@@ -137,7 +137,7 @@ export default function HomePage() {
               transition={{ duration: 0.4 }}
               className="mt-8 text-xs uppercase tracking-[0.28em] text-amber-100/72"
             >
-              shubo...
+              Light the Night
             </motion.p>
           </motion.section>
         </section>
