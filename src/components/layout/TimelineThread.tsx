@@ -17,7 +17,7 @@ type TimelineThreadProps = {
 
 function AwardCrown() {
   return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5 fill-none stroke-amber-400/70 drop-shadow-[0_0_8px_rgba(245,197,108,0.2)] md:h-6 md:w-6">
+    <svg viewBox="0 0 24 24" className="h-12 w-12 fill-none stroke-[#F6E08A] opacity-60 drop-shadow-[0_0_8px_rgba(245,197,108,0.2)] md:h-14 md:w-14">
       <path
         d="M4 17L6.4 11.3L9.2 14.2L12 9.8L14.8 14.2L17.6 11.3L20 17L4 17Z"
         strokeWidth="1.7"
@@ -153,7 +153,7 @@ export function TimelineThread({ items, className = "" }: TimelineThreadProps) {
                       <div className="w-fit max-w-[22rem]">
                         <div className="relative rounded-2xl border border-parchment/10 bg-[linear-gradient(180deg,rgba(245,197,108,0.08),rgba(255,255,255,0.02))] px-6 py-4 shadow-[0_0_20px_rgba(245,197,108,0.06)] backdrop-blur-[1px]">
                           {item.hasAward ? (
-                            <div className="absolute right-[-8px] top-[-8px] z-20">
+                            <div className="absolute right-[-24px] top-[-24px] z-20 rotate-[15deg]">
                               <AwardCrown />
                             </div>
                           ) : null}
@@ -174,7 +174,7 @@ export function TimelineThread({ items, className = "" }: TimelineThreadProps) {
                       <div className="w-fit max-w-[22rem]">
                         <div className="relative rounded-2xl border border-parchment/10 bg-[linear-gradient(180deg,rgba(245,197,108,0.08),rgba(255,255,255,0.02))] px-6 py-4 shadow-[0_0_20px_rgba(245,197,108,0.06)] backdrop-blur-[1px]">
                           {item.hasAward ? (
-                            <div className="absolute right-[-8px] top-[-8px] z-20">
+                            <div className="absolute right-[-24px] top-[-24px] z-20 rotate-[15deg]">
                               <AwardCrown />
                             </div>
                           ) : null}
@@ -193,7 +193,7 @@ export function TimelineThread({ items, className = "" }: TimelineThreadProps) {
                 <div className="max-w-[18rem]">
                   <div className="relative rounded-2xl border border-parchment/10 bg-[linear-gradient(180deg,rgba(245,197,108,0.08),rgba(255,255,255,0.02))] px-6 py-4 shadow-[0_0_20px_rgba(245,197,108,0.06)] backdrop-blur-[1px]">
                     {item.hasAward ? (
-                      <div className="absolute right-[-8px] top-[-8px] z-20">
+                      <div className="absolute right-[-24px] top-[-24px] z-20 rotate-[15deg]">
                         <AwardCrown />
                       </div>
                     ) : null}
