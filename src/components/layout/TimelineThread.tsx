@@ -5,13 +5,36 @@ import { useRef } from "react";
 
 type TimelineItem = {
   date: string;
-  label: string;
+  title: string;
+  description: string;
+  hasAward?: boolean;
 };
 
 type TimelineThreadProps = {
   items: TimelineItem[];
   className?: string;
 };
+
+function AwardCrown() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5 fill-none stroke-amber-400/70 drop-shadow-[0_0_8px_rgba(245,197,108,0.2)] md:h-6 md:w-6">
+      <path
+        d="M4 17L6.4 11.3L9.2 14.2L12 9.8L14.8 14.2L17.6 11.3L20 17L4 17Z"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <circle cx="6.4" cy="8.1" r="1.35" strokeWidth="1.5" />
+      <circle cx="12" cy="6.4" r="1.35" strokeWidth="1.5" />
+      <circle cx="17.6" cy="8.1" r="1.35" strokeWidth="1.5" />
+      <path
+        d="M6 17H18"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
 
 function buildDesktopPath(count: number) {
   const centerX = 320;
@@ -114,7 +137,7 @@ export function TimelineThread({ items, className = "" }: TimelineThreadProps) {
 
           return (
             <motion.div
-              key={`${item.date}-${item.label}`}
+              key={`${item.date}-${item.title}`}
               initial={false}
               style={{
                 opacity: useTransform(scrollYProgress, [index * 0.1, index * 0.1 + 0.14], [0, 1]),
@@ -128,9 +151,15 @@ export function TimelineThread({ items, className = "" }: TimelineThreadProps) {
                   <>
                     <div className="flex w-1/2 justify-end pr-[0.95rem]">
                       <div className="w-fit max-w-[22rem]">
-                        <div className="rounded-2xl border border-parchment/10 bg-[linear-gradient(180deg,rgba(245,197,108,0.08),rgba(255,255,255,0.02))] px-6 py-4 shadow-[0_0_20px_rgba(245,197,108,0.06)] backdrop-blur-[1px]">
+                        <div className="relative rounded-2xl border border-parchment/10 bg-[linear-gradient(180deg,rgba(245,197,108,0.08),rgba(255,255,255,0.02))] px-6 py-4 shadow-[0_0_20px_rgba(245,197,108,0.06)] backdrop-blur-[1px]">
+                          {item.hasAward ? (
+                            <div className="absolute right-[-8px] top-[-8px] z-20">
+                              <AwardCrown />
+                            </div>
+                          ) : null}
                           <span className="block text-[0.75rem] uppercase tracking-[0.24em] text-amber-100/55">{item.date}</span>
-                          <span className="mt-1 block text-[0.95rem] leading-relaxed text-parchment/78">{item.label}</span>
+                          <h3 className="mb-2 mt-2 text-lg font-bold tracking-tight text-amber-100/90 md:text-xl">{item.title}</h3>
+                          <p className="text-sm leading-relaxed text-slate-300/80 md:text-base">{item.description}</p>
                         </div>
                       </div>
                     </div>
@@ -143,9 +172,15 @@ export function TimelineThread({ items, className = "" }: TimelineThreadProps) {
                     <div className="relative z-10 h-2.5 w-2.5 rounded-full bg-amber-100/70 shadow-[0_0_10px_rgba(245,197,108,0.18)]" />
                     <div className="flex w-1/2 justify-start pl-[0.95rem]">
                       <div className="w-fit max-w-[22rem]">
-                        <div className="rounded-2xl border border-parchment/10 bg-[linear-gradient(180deg,rgba(245,197,108,0.08),rgba(255,255,255,0.02))] px-6 py-4 shadow-[0_0_20px_rgba(245,197,108,0.06)] backdrop-blur-[1px]">
+                        <div className="relative rounded-2xl border border-parchment/10 bg-[linear-gradient(180deg,rgba(245,197,108,0.08),rgba(255,255,255,0.02))] px-6 py-4 shadow-[0_0_20px_rgba(245,197,108,0.06)] backdrop-blur-[1px]">
+                          {item.hasAward ? (
+                            <div className="absolute right-[-8px] top-[-8px] z-20">
+                              <AwardCrown />
+                            </div>
+                          ) : null}
                           <span className="block text-[0.75rem] uppercase tracking-[0.24em] text-amber-100/55">{item.date}</span>
-                          <span className="mt-1 block text-[0.95rem] leading-relaxed text-parchment/78">{item.label}</span>
+                          <h3 className="mb-2 mt-2 text-lg font-bold tracking-tight text-amber-100/90 md:text-xl">{item.title}</h3>
+                          <p className="text-sm leading-relaxed text-slate-300/80 md:text-base">{item.description}</p>
                         </div>
                       </div>
                     </div>
@@ -156,9 +191,15 @@ export function TimelineThread({ items, className = "" }: TimelineThreadProps) {
               <div className="flex items-center md:hidden">
                 <div className="mr-4 ml-[3.05rem] relative z-10 h-2.5 w-2.5 rounded-full bg-amber-100/70 shadow-[0_0_10px_rgba(245,197,108,0.18)]" />
                 <div className="max-w-[18rem]">
-                  <div className="rounded-2xl border border-parchment/10 bg-[linear-gradient(180deg,rgba(245,197,108,0.08),rgba(255,255,255,0.02))] px-6 py-4 shadow-[0_0_20px_rgba(245,197,108,0.06)] backdrop-blur-[1px]">
+                  <div className="relative rounded-2xl border border-parchment/10 bg-[linear-gradient(180deg,rgba(245,197,108,0.08),rgba(255,255,255,0.02))] px-6 py-4 shadow-[0_0_20px_rgba(245,197,108,0.06)] backdrop-blur-[1px]">
+                    {item.hasAward ? (
+                      <div className="absolute right-[-8px] top-[-8px] z-20">
+                        <AwardCrown />
+                      </div>
+                    ) : null}
                     <span className="block text-[0.75rem] uppercase tracking-[0.24em] text-amber-100/55">{item.date}</span>
-                    <span className="mt-1 block text-[0.95rem] leading-relaxed text-parchment/78">{item.label}</span>
+                    <h3 className="mb-2 mt-2 text-lg font-bold tracking-tight text-amber-100/90 md:text-xl">{item.title}</h3>
+                    <p className="text-sm leading-relaxed text-slate-300/80 md:text-base">{item.description}</p>
                   </div>
                 </div>
               </div>

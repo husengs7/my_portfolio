@@ -20,13 +20,43 @@ export default function HomePage() {
     { href: "https://soundcloud.com/husen-tannsu", label: "SoundCloud", icon: Music2 },
   ];
   const timelineItems = [
-    { date: "2025.07", label: "[夏季ver]Progateハッカソン powered by AWS  React Nativeによるスマホアプリ開発" },
-    { date: "2025.08~09", label: "100Program (ファイナル進出)  Node.jsによるジオゲッサーwebアプリ" },
-    { date: "2025.10", label: "チームラボFlutter1Dayハッカソン" },
-    { date: "2025.12", label: "【2025年ラスト】Progateハッカソン！supported by RIZAP テクノロジーズ Flutterによる地図アプリ(RIZAP賞)" },
-    { date: "2025.12", label: "RIZAPテクノロジーズ(バックエンド3daysインターン)  Ruby on Railsを用いたchocoZAPのAPI設計。" },
-    { date: "2026.02", label: "42Tokyo Piscineに1ヶ月間参加"},
-    { date: "2026.03", label: "Findy Campus Hackathon ReactとRubyonRailsのスマホアプリ (Findy賞&ウェルスナビ賞"}
+    {
+      date: "2025.07",
+      title: "Progateハッカソン powered by AWS",
+      description: "React Native による宿題支援スマホアプリを開発。",
+    },
+    {
+      date: "2025.08~09",
+      title: "100Program",
+      description: "Node.js によるジオゲッサー Web アプリを制作。ファイナル進出。",
+    },
+    {
+      date: "2025.10",
+      title: "チームラボ Flutter 1Day ハッカソン",
+      description: "短期間でFlutterの基礎とデザインによるユーザー体験を学ぶ。",
+    },
+    {
+      date: "2025.12",
+      title: "Progateハッカソン supported by RIZAP",
+      description: "FlutterとGoogleMap API による地図アプリを開発し、RIZAP 賞を受賞。",
+      hasAward: true,
+    },
+    {
+      date: "2025.12",
+      title: "RIZAPテクノロジーズ 3days インターン",
+      description: "Ruby on Rails を用いた chocoZAP の API 設計に取り組む。",
+    },
+    {
+      date: "2026.02",
+      title: "42Tokyo Piscine",
+      description: "1ヶ月間、教師なしの環境の中、生徒同士のピアラーニングでC言語を学ぶ。",
+    },
+    {
+      date: "2026.03",
+      title: "Findy Campus Hackathon",
+      description: "React と Ruby on Rails のスマホアプリで Findy 賞とウェルスナビ賞を受賞。",
+      hasAward: true,
+    },
   ];
 
   useEffect(() => {
