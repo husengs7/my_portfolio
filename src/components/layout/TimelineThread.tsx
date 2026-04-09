@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { type CSSProperties, useRef } from "react";
 
 type TimelineItem = {
   date: string;
@@ -93,8 +93,8 @@ export function TimelineThread({ items, className = "" }: TimelineThreadProps) {
   return (
     <div
       ref={ref}
-      className={`relative left-0 right-0 mx-auto mt-12 w-full max-w-4xl overflow-x-hidden ${className}`}
-      style={{ minHeight: `${totalHeight}px` }}
+      className={`relative left-0 right-0 mx-auto mt-12 w-full max-w-4xl overflow-hidden overflow-x-hidden max-md:h-auto max-md:overflow-visible ${className} md:min-h-[var(--timeline-height)]`}
+      style={{ "--timeline-height": `${totalHeight}px` } as CSSProperties}
     >
       <div className="absolute inset-y-0 left-14 w-px bg-gradient-to-b from-amber-100/10 via-amber-200/20 to-transparent md:left-1/2 md:-translate-x-1/2" />
 
@@ -134,17 +134,17 @@ export function TimelineThread({ items, className = "" }: TimelineThreadProps) {
         {items.map((item, index) => {
           const isLeft = index % 2 === 0;
           const top = 36 + index * 132;
+          const revealDelay = Math.min(index * 0.08, 0.32);
 
           return (
             <motion.div
               key={`${item.date}-${item.title}`}
-              initial={false}
-              style={{
-                opacity: useTransform(scrollYProgress, [index * 0.1, index * 0.1 + 0.14], [0, 1]),
-                y: useTransform(scrollYProgress, [index * 0.1, index * 0.1 + 0.14], [20, 0]),
-                top: `${top}px`,
-              }}
-              className="absolute left-0 right-0"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, margin: "-10% 0px -20% 0px" }}
+              transition={{ duration: 0.6, delay: revealDelay, ease: "easeOut" }}
+              style={{ "--item-top": `${top}px` } as CSSProperties}
+              className="max-md:relative max-md:left-auto max-md:right-auto max-md:mb-20 max-md:top-0 md:absolute md:left-0 md:right-0 md:top-[var(--item-top)]"
             >
               <div className="hidden md:flex items-center">
                 {isLeft ? (
