@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, Music2, Twitter } from "lucide-react";
+import { ArrowUpRight, Github, Music2, Twitter } from "lucide-react";
 import Image from "next/image";
 import { useEffect } from "react";
 import { Constellation } from "@/components/layout/Constellation";
@@ -56,6 +56,41 @@ export default function HomePage() {
       title: "Findy Campus Hackathon",
       description: "React と Ruby on Rails のスマホアプリで Findy 賞とウェルスナビ賞を受賞。",
       hasAward: true,
+    },
+  ];
+  const productItems = [
+    {
+      title: "Quest Calendar",
+      tags: ["React Native", "Firebase", "TypeScript"],
+      description:
+        "宿題や日々の目標を、クエストを進めるような感覚で記録できるスマホアプリ。学習管理にゲーム的な達成感を持ち込み、日常の継続を支える設計を試した。",
+      viewHref: "https://github.com/husengs7",
+      githubHref: "https://github.com/husengs7",
+      imageSrc: "/city.png",
+      imageAlt: "Quest Calendar preview",
+      imagePosition: "object-[center_20%]",
+    },
+    {
+      title: "TrainGuessr",
+      tags: ["Node.js", "Leaflet", "JavaScript"],
+      description:
+        "駅や路線の風景から現在地を推理する、鉄道好きのためのジオゲッサー系 Web アプリ。地図体験とクイズ性を組み合わせ、短時間でも遊びたくなる導線を磨いた。",
+      viewHref: "https://github.com/husengs7",
+      githubHref: "https://github.com/husengs7",
+      imageSrc: "/my.jpg",
+      imageAlt: "TrainGuessr preview",
+      imagePosition: "object-center",
+    },
+    {
+      title: "Takibi Chat",
+      tags: ["React", "Ruby on Rails", "Supabase"],
+      description:
+        "焚き火を囲むような穏やかな対話をテーマにしたチャットアプリ。Findy Campus Hackathon で形にしたプロトタイプで、安心して会話を始められる空気感を UI に落とし込んだ。",
+      viewHref: "https://github.com/husengs7",
+      githubHref: "https://github.com/husengs7",
+      imageSrc: "/twicon.jpg",
+      imageAlt: "Takibi Chat preview",
+      imagePosition: "object-center",
     },
   ];
 
@@ -283,6 +318,82 @@ export default function HomePage() {
             </div>
             <div className="relative z-10">
               <TimelineThread items={timelineItems} />
+            </div>
+          </div>
+        </section>
+
+        <section className="relative z-10 mt-28 w-full px-6">
+          <div className="mx-auto max-w-5xl">
+            <div className="mb-12 text-center">
+              <h2 className="font-serifStory text-2xl tracking-[0.3em] text-amber-100/80">Product</h2>
+            </div>
+
+            <div className="space-y-10 md:space-y-14">
+              {productItems.map((product, index) => {
+                const isEven = index % 2 === 1;
+
+                return (
+                  <motion.article
+                    key={product.title}
+                    initial={{ opacity: 0, x: isEven ? 36 : -36 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: false, margin: "-10% 0px -15% 0px" }}
+                    transition={{ duration: 0.7, ease: "easeOut" }}
+                    className={`grid overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5 shadow-xl backdrop-blur-[2px] md:grid-cols-2 ${
+                      isEven ? "" : ""
+                    }`}
+                  >
+                    <div className={`${isEven ? "md:order-2" : ""} relative min-h-[14rem] overflow-hidden rounded-t-[1.75rem] md:min-h-[18rem] md:rounded-l-[1.75rem] md:rounded-tr-none ${isEven ? "md:rounded-r-[1.75rem] md:rounded-tl-none" : ""}`}>
+                      <Image
+                        src={product.imageSrc}
+                        alt={product.imageAlt}
+                        fill
+                        sizes="(min-width: 768px) 50vw, 100vw"
+                        className={`object-cover ${product.imagePosition}`}
+                      />
+                      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,5,26,0.04),rgba(5,5,26,0.28))]" />
+                    </div>
+
+                    <div className={`${isEven ? "md:order-1" : ""} flex flex-col justify-center px-6 py-7 md:px-8 md:py-9`}>
+                      <h3 className="font-serifStory text-2xl text-parchment md:text-[1.9rem]">{product.title}</h3>
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {product.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="inline-block rounded-full border border-amber-100/20 bg-amber-100/5 px-3 py-1 text-xs tracking-[0.18em] text-amber-100/70"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <p className="mt-5 text-sm leading-8 text-parchment/72 md:text-base">
+                        {product.description}
+                      </p>
+
+                      <div className="mt-7 flex flex-wrap gap-3">
+                        <a
+                          href={product.viewHref}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-2 rounded-full border border-amber-100/20 bg-amber-100/8 px-4 py-2 text-sm text-amber-100/85 transition-all duration-300 hover:border-amber-100/35 hover:bg-amber-100/12 hover:drop-shadow-[0_0_10px_rgba(245,197,108,0.18)]"
+                        >
+                          <ArrowUpRight size={16} />
+                          <span>View Project</span>
+                        </a>
+                        <a
+                          href={product.githubHref}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-sm text-parchment/72 transition-all duration-300 hover:border-amber-100/30 hover:text-amber-100/90 hover:drop-shadow-[0_0_10px_rgba(245,197,108,0.14)]"
+                        >
+                          <Github size={16} />
+                          <span>GitHub</span>
+                        </a>
+                      </div>
+                    </div>
+                  </motion.article>
+                );
+              })}
             </div>
           </div>
         </section>
