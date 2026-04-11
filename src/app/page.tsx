@@ -60,24 +60,24 @@ export default function HomePage() {
   ];
   const productItems = [
     {
-      title: "Quest Calendar",
-      tags: ["React Native", "Firebase", "TypeScript"],
+      title: "numip",
+      tags: ["Flutter", "Python", "AWS","Cockroach DB"],
       description:
-        "宿題や日々の目標を、クエストを進めるような感覚で記録できるスマホアプリ。学習管理にゲーム的な達成感を持ち込み、日常の継続を支える設計を試した。",
-      viewHref: "https://github.com/husengs7",
-      githubHref: "https://github.com/husengs7",
-      imageSrc: "/city.png",
+        "夜のテーマパークを歩くようなワクワク感で、あなただけの地図をつくることができるAndroidアプリです。",
+      viewHref: "https://topaz.dev/projects/2ea479052aa5c39fc6b0#%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AE%E8%AA%AC%E6%98%8E",
+      githubHref: "https://github.com/k0rucha/numyp",
+      imageSrc: "/numip1.JPG",
       imageAlt: "Quest Calendar preview",
       imagePosition: "object-[center_20%]",
     },
     {
-      title: "TrainGuessr",
+      title: "焚き火チャット",
       tags: ["Node.js", "Leaflet", "JavaScript"],
       description:
         "駅や路線の風景から現在地を推理する、鉄道好きのためのジオゲッサー系 Web アプリ。地図体験とクイズ性を組み合わせ、短時間でも遊びたくなる導線を磨いた。",
       viewHref: "https://github.com/husengs7",
       githubHref: "https://github.com/husengs7",
-      imageSrc: "/my.jpg",
+      imageSrc: "/takibi.JPG",
       imageAlt: "TrainGuessr preview",
       imagePosition: "object-center",
     },
