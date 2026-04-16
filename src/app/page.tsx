@@ -80,6 +80,7 @@ export default function HomePage() {
     {
       title: "numip",
       tags: ["Flutter", "Python", "GoogleMapsAPI","Cockroach DB"],
+      awards: ["RIZAP賞"],
       description:
         "夜のテーマパークを歩くようなワクワク感で、あなただけの地図をつくることができるAndroidアプリです。",
       viewHref: "https://topaz.dev/projects/2ea479052aa5c39fc6b0#%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AE%E8%AA%AC%E6%98%8E",
@@ -91,6 +92,7 @@ export default function HomePage() {
     {
       title: "焚き火チャット",
       tags: ["React", "Ruby on Rails", "WebSocket"],
+      awards: ["Findy賞", "ウェルスナビ賞"],
       description:
         "孤独を感じる夜でも、ゆらめく炎を誰かと囲めば、心は少しだけ軽くなるはず。そんなささやかな温もりを分かち合うwebアプリです。",
       viewHref: "https://canva.link/vzjmpra76g8x5yk",
@@ -102,6 +104,7 @@ export default function HomePage() {
     {
       title: "逆ジオゲッサー",
       tags: ["Node.js", "GoogleMapAPI", "mongoDB"],
+      awards: ["100Programファイナル進出"],
       description:
         "迷子をゲームに。指定されたポイントまで辿る、ジオゲッサーライクなwebアプリです。",
       viewHref: "https://speakerdeck.com/husengs7/100programni-ziogetusafa-biao-suraido",
@@ -382,7 +385,21 @@ export default function HomePage() {
                     </div>
 
                     <div className={`${isEven ? "md:order-1" : ""} flex flex-col justify-center px-6 py-7 md:px-8 md:py-9`}>
-                      <h3 className="font-serifStory text-2xl text-parchment md:text-[1.9rem]">{product.title}</h3>
+                      <div className="flex flex-wrap items-center gap-3">
+                        <h3 className="font-serifStory text-2xl text-parchment md:text-[1.9rem]">{product.title}</h3>
+                        {product.awards.length > 0 ? (
+                          <div className="flex flex-wrap gap-2">
+                            {product.awards.map((award) => (
+                              <span
+                                key={award}
+                                className="inline-block rounded-full border border-amber-200/20 bg-amber-200/8 px-3 py-1 text-xs tracking-[0.08em] text-amber-100/80"
+                              >
+                                {award}
+                              </span>
+                            ))}
+                          </div>
+                        ) : null}
+                      </div>
                       <div className="mt-4 flex flex-wrap gap-2">
                         {product.tags.map((tag) => (
                           <span
