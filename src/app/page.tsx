@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, Github, Music2, Twitter } from "lucide-react";
+import { ArrowUpRight, Github, Mail, Music2, Twitter } from "lucide-react";
 import Image from "next/image";
 import { useEffect } from "react";
 import { Constellation } from "@/components/layout/Constellation";
@@ -332,6 +332,12 @@ export default function HomePage() {
                     </a>
                   );
                 })}
+              </div>
+              <div className="mt-10 px-4 md:px-0">
+                <div className="flex items-center gap-3 font-mono text-base text-parchment/50">
+                  <Mail size={20} />
+                  <span>zqpzggzvk@mozmail.com</span>
+                </div>
               </div>
             </div>
           </div>
