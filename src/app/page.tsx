@@ -406,7 +406,7 @@ export default function HomePage() {
                           </div>
                         ) : null}
                       </div>
-                      <div className="mt-4 flex flex-wrap gap-2">
+                      <div className="mt-4 hidden flex-wrap gap-2 md:flex">
                         {product.tags.map((tag) => (
                           <span
                             key={tag}
@@ -420,12 +420,12 @@ export default function HomePage() {
                         {product.description}
                       </p>
 
-                      <div className="mt-7 flex flex-wrap gap-3">
+                      <div className="mt-7 flex items-center justify-start gap-2 md:gap-3">
                         <a
                           href={product.viewHref}
                           target="_blank"
                           rel="noreferrer"
-                          className="inline-flex items-center gap-2 rounded-full border border-amber-100/20 bg-amber-100/8 px-4 py-2 text-sm text-amber-100/85 transition-all duration-300 hover:border-amber-100/35 hover:bg-amber-100/12 hover:drop-shadow-[0_0_10px_rgba(245,197,108,0.18)]"
+                          className="inline-flex items-center gap-2 rounded-full border border-amber-100/20 bg-amber-100/8 px-3 py-2 text-xs text-amber-100/85 transition-all duration-300 hover:border-amber-100/35 hover:bg-amber-100/12 hover:drop-shadow-[0_0_10px_rgba(245,197,108,0.18)] md:px-4 md:text-sm"
                         >
                           <ArrowUpRight size={16} />
                           <span>View Project</span>
@@ -434,7 +434,7 @@ export default function HomePage() {
                           href={product.githubHref}
                           target="_blank"
                           rel="noreferrer"
-                          className="inline-flex items-center gap-2 rounded-full border border-violet-300/20 bg-violet-400/8 px-4 py-2 text-sm text-violet-200/90 transition-all duration-300 hover:border-violet-300/35 hover:bg-violet-400/12 hover:text-violet-100 hover:drop-shadow-[0_0_10px_rgba(167,139,250,0.22)]"
+                          className="inline-flex items-center gap-2 rounded-full border border-violet-300/20 bg-violet-400/8 px-3 py-2 text-xs text-violet-200/90 transition-all duration-300 hover:border-violet-300/35 hover:bg-violet-400/12 hover:text-violet-100 hover:drop-shadow-[0_0_10px_rgba(167,139,250,0.22)] md:px-4 md:text-sm"
                         >
                           <Github size={16} />
                           <span>GitHub</span>
