@@ -106,7 +106,7 @@ export default function HomePage() {
         "迷子をゲームに。指定されたポイントまで辿る、ジオゲッサーライクなwebアプリです。",
       viewHref: "https://speakerdeck.com/husengs7/100programni-ziogetusafa-biao-suraido",
       githubHref: "https://github.com/husengs7/Tokyo-Flag-capturing-geogesser",
-      imageSrc: "/twicon.jpg",
+      imageSrc: "/100Program.jpg",
       imageAlt: "Takibi Chat preview",
       imagePosition: "object-center",
     },
