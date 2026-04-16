@@ -15,9 +15,27 @@ import { useOpeningLight } from "@/hooks/useOpeningLight";
 export default function HomePage() {
   const { hasStarted, ignite, isLit, leftLampLit, rightLampLit } = useOpeningLight();
   const profileLinks = [
-    { href: "https://github.com/husengs7", label: "GitHub", icon: Github },
-    { href: "https://x.com/husensan_", label: "X", icon: Twitter },
-    { href: "https://soundcloud.com/husen-tannsu", label: "SoundCloud", icon: Music2 },
+    {
+      href: "https://github.com/husengs7",
+      label: "GitHub",
+      icon: Github,
+      hoverClass:
+        "hover:text-violet-400 hover:drop-shadow-[0_0_7px_rgba(139,92,246,0.55)]",
+    },
+    {
+      href: "https://x.com/husensan_",
+      label: "X",
+      icon: Twitter,
+      hoverClass:
+        "hover:text-sky-400 hover:drop-shadow-[0_0_7px_rgba(56,189,248,0.55)]",
+    },
+    {
+      href: "https://soundcloud.com/husen-tannsu",
+      label: "SoundCloud",
+      icon: Music2,
+      hoverClass:
+        "hover:text-orange-400 hover:drop-shadow-[0_0_7px_rgba(251,146,60,0.55)]",
+    },
   ];
   const timelineItems = [
     {
@@ -304,7 +322,7 @@ export default function HomePage() {
                       href={link.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex items-center gap-3 text-xl text-parchment/50 transition-all duration-300 hover:text-amber-200 hover:drop-shadow-[0_0_5px_rgba(245,197,108,0.4)]"
+                      className={`flex items-center gap-3 text-xl text-parchment/50 transition-all duration-300 ${link.hoverClass}`}
                     >
                       <Icon size={22} />
                       <span>{link.label}</span>
@@ -393,7 +411,7 @@ export default function HomePage() {
                           href={product.githubHref}
                           target="_blank"
                           rel="noreferrer"
-                          className="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-sm text-parchment/72 transition-all duration-300 hover:border-amber-100/30 hover:text-amber-100/90 hover:drop-shadow-[0_0_10px_rgba(245,197,108,0.14)]"
+                          className="inline-flex items-center gap-2 rounded-full border border-violet-300/20 bg-violet-400/8 px-4 py-2 text-sm text-violet-200/90 transition-all duration-300 hover:border-violet-300/35 hover:bg-violet-400/12 hover:text-violet-100 hover:drop-shadow-[0_0_10px_rgba(167,139,250,0.22)]"
                         >
                           <Github size={16} />
                           <span>GitHub</span>
