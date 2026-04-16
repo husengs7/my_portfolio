@@ -61,7 +61,7 @@ export default function HomePage() {
   const productItems = [
     {
       title: "numip",
-      tags: ["Flutter", "Python", "AWS","Cockroach DB"],
+      tags: ["Flutter", "Python", "GoogleMapsAPI","Cockroach DB"],
       description:
         "夜のテーマパークを歩くようなワクワク感で、あなただけの地図をつくることができるAndroidアプリです。",
       viewHref: "https://topaz.dev/projects/2ea479052aa5c39fc6b0#%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AE%E8%AA%AC%E6%98%8E",
@@ -72,22 +72,22 @@ export default function HomePage() {
     },
     {
       title: "焚き火チャット",
-      tags: ["Node.js", "Leaflet", "JavaScript"],
+      tags: ["React", "Ruby on Rails", "WebSocket"],
       description:
-        "駅や路線の風景から現在地を推理する、鉄道好きのためのジオゲッサー系 Web アプリ。地図体験とクイズ性を組み合わせ、短時間でも遊びたくなる導線を磨いた。",
-      viewHref: "https://github.com/husengs7",
-      githubHref: "https://github.com/husengs7",
+        "孤独を感じる夜でも、ゆらめく炎を誰かと囲めば、心は少しだけ軽くなるはず。そんなささやかな温もりを分かち合うwebアプリです。",
+      viewHref: "https://canva.link/vzjmpra76g8x5yk",
+      githubHref: "https://github.com/Findy-Campus-Hackathon-2026/findy-hackathon-takibi",
       imageSrc: "/takibi.JPG",
       imageAlt: "TrainGuessr preview",
       imagePosition: "object-center",
     },
     {
-      title: "Takibi Chat",
-      tags: ["React", "Ruby on Rails", "Supabase"],
+      title: "逆ジオゲッサー",
+      tags: ["Node.js", "GoogleMapAPI", "mongoDB"],
       description:
-        "焚き火を囲むような穏やかな対話をテーマにしたチャットアプリ。Findy Campus Hackathon で形にしたプロトタイプで、安心して会話を始められる空気感を UI に落とし込んだ。",
-      viewHref: "https://github.com/husengs7",
-      githubHref: "https://github.com/husengs7",
+        "迷子をゲームに。指定されたポイントまで辿る、ジオゲッサーライクなwebアプリです。",
+      viewHref: "https://speakerdeck.com/husengs7/100programni-ziogetusafa-biao-suraido",
+      githubHref: "https://github.com/husengs7/Tokyo-Flag-capturing-geogesser",
       imageSrc: "/twicon.jpg",
       imageAlt: "Takibi Chat preview",
       imagePosition: "object-center",
