@@ -83,7 +83,7 @@ export default function HomePage() {
       awards: ["RIZAP賞"],
       description:
         "夜のテーマパークを歩くようなワクワク感で、あなただけの地図をつくることができるAndroidアプリです。",
-      viewHref: "https://topaz.dev/projects/2ea479052aa5c39fc6b0#%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AE%E8%AA%AC%E6%98%8E",
+      viewHref: "https://topaz.dev/projects/2ea479052aa5c39fc6b0",
       githubHref: "https://github.com/k0rucha/numyp",
       imageSrc: "/numip1.JPG",
       imageAlt: "Quest Calendar preview",
