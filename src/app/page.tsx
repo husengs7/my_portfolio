@@ -392,7 +392,9 @@ export default function HomePage() {
 
                     <div className={`${isEven ? "md:order-1" : ""} flex flex-col justify-center px-6 py-7 md:px-8 md:py-9`}>
                       <div className="flex flex-wrap items-center gap-3">
-                        <h3 className="font-serifStory text-2xl text-parchment md:text-[1.9rem]">{product.title}</h3>
+                        <h3 className="mb-2 mt-2 text-2xl font-bold tracking-tight text-amber-100/90 md:text-[1.9rem]">
+                          {product.title}
+                        </h3>
                         {product.awards.length > 0 ? (
                           <div className="flex flex-wrap gap-2">
                             {product.awards.map((award) => (

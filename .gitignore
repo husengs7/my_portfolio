@@ -5,3 +5,5 @@ dist/
 .DS_Store
 *.tsbuildinfo
 PERFORMANCE_AUDIT.md
+.vscode/
+.codex
