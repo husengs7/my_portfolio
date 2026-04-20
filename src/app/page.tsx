@@ -336,7 +336,7 @@ export default function HomePage() {
               <div className="mt-10 px-4 md:px-0">
                 <div className="flex items-center gap-3 font-mono text-base text-parchment/50">
                   <Mail size={20} />
-                  <span>zqpzggzvk@mozmail.com</span>
+                  <span>j25376ms@edu.tuis.ac.jp</span>
                 </div>
               </div>
             </div>
