@@ -12,9 +12,110 @@ import { StoryLanternSection } from "@/components/layout/StoryLanternSection";
 import { TheSpark } from "@/components/ui/TheSpark";
 import { useOpeningLight } from "@/hooks/useOpeningLight";
 
+type SubProductItem = {
+  title: string;
+  imageSrc: string;
+  imageAlt: string;
+  description: string;
+  tags: string[];
+  viewHref: string;
+  githubHref: string;
+  imagePosition: string;
+};
+
+function SubProductCard({ product }: { product: SubProductItem }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  return (
+    <motion.article
+      layout
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: false, margin: "-8% 0px -12% 0px" }}
+      transition={{ duration: 0.55, ease: "easeOut" }}
+      onHoverStart={() => setIsExpanded(true)}
+      onHoverEnd={() => setIsExpanded(false)}
+      onClick={() => setIsExpanded((current) => !current)}
+      className={`relative w-full overflow-visible self-start rounded-[1.5rem] border border-parchment/10 bg-[linear-gradient(180deg,rgba(245,197,108,0.08),rgba(255,255,255,0.02))] shadow-[0_0_20px_rgba(245,197,108,0.06)] backdrop-blur-[1px] transition-shadow duration-300 md:basis-[calc((100%-3rem)/3)] md:max-w-[calc((100%-3rem)/3)] ${
+        isExpanded ? "z-20 shadow-[0_0_28px_rgba(245,197,108,0.14)]" : "z-0"
+      }`}
+    >
+      <div className="pointer-events-none absolute inset-x-8 top-5 h-24 rounded-full bg-[radial-gradient(circle,rgba(245,197,108,0.12)_0%,rgba(245,197,108,0.05)_42%,rgba(5,5,26,0)_74%)] blur-2xl" />
+      <div className="relative overflow-hidden rounded-t-[1.5rem]">
+        <div className="relative aspect-[16/9]">
+          <Image
+            src={product.imageSrc}
+            alt={product.imageAlt}
+            fill
+            sizes="(min-width: 768px) 33vw, 100vw"
+            className={`object-cover ${product.imagePosition}`}
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,5,26,0.05),rgba(5,5,26,0.35))]" />
+        </div>
+      </div>
+
+      <div className="relative px-5 pb-5 pt-4">
+        <h3 className="text-lg font-bold tracking-tight text-amber-100/90 md:text-xl">
+          {product.title}
+        </h3>
+
+        <div className="mt-4 flex items-center justify-start gap-2">
+          <a
+            href={product.viewHref}
+            target="_blank"
+            rel="noreferrer"
+            onClick={(event) => event.stopPropagation()}
+            className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-amber-100/20 bg-amber-100/8 px-3 py-2 text-xs text-amber-100/85 transition-all duration-300 hover:border-amber-100/35 hover:bg-amber-100/12 hover:drop-shadow-[0_0_10px_rgba(245,197,108,0.18)]"
+          >
+            <ArrowUpRight size={15} />
+            <span>View Project</span>
+          </a>
+          <a
+            href={product.githubHref}
+            target="_blank"
+            rel="noreferrer"
+            onClick={(event) => event.stopPropagation()}
+            className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-violet-300/20 bg-violet-400/8 px-3 py-2 text-xs text-violet-200/90 transition-all duration-300 hover:border-violet-300/35 hover:bg-violet-400/12 hover:text-violet-100 hover:drop-shadow-[0_0_10px_rgba(167,139,250,0.22)]"
+          >
+            <Github size={15} />
+            <span>GitHub</span>
+          </a>
+        </div>
+
+        <motion.div
+          layout
+          initial={false}
+          animate={{
+            height: isExpanded ? "auto" : 0,
+            opacity: isExpanded ? 1 : 0,
+            marginTop: isExpanded ? 16 : 0,
+          }}
+          transition={{ duration: 0.28, ease: "easeOut" }}
+          className="overflow-hidden"
+        >
+          <div className="border-t border-parchment/10 pt-4">
+            <div className="flex flex-wrap gap-2">
+              {product.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="inline-block rounded-full border border-amber-100/20 bg-amber-100/5 px-3 py-1 text-[0.68rem] tracking-[0.16em] text-amber-100/70"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <p className="mt-4 text-sm leading-7 text-parchment/72">
+              {product.description}
+            </p>
+          </div>
+        </motion.div>
+      </div>
+    </motion.article>
+  );
+}
+
 export default function HomePage() {
   const { hasStarted, ignite, isLit, leftLampLit, rightLampLit } = useOpeningLight();
-  const [expandedSubProduct, setExpandedSubProduct] = useState<string | null>(null);
   const profileLinks = [
     {
       href: "https://github.com/husengs7",
@@ -115,7 +216,7 @@ export default function HomePage() {
       imagePosition: "object-center",
     },
   ];
-  const subProductItems = [
+  const subProductItems: SubProductItem[] = [
     {
       title: "Park Memo",
       imageSrc: "/numip.JPG",
@@ -511,101 +612,10 @@ export default function HomePage() {
               })}
             </div>
 
-            <div className="mt-20 grid grid-cols-1 gap-6 md:grid-cols-3">
-              {subProductItems.map((product) => {
-                const isExpanded = expandedSubProduct === product.title;
-
-                return (
-                  <motion.article
-                    key={product.title}
-                    layout
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: false, margin: "-8% 0px -12% 0px" }}
-                    transition={{ duration: 0.55, ease: "easeOut" }}
-                    onHoverStart={() => setExpandedSubProduct(product.title)}
-                    onHoverEnd={() => setExpandedSubProduct((current) => (current === product.title ? null : current))}
-                    onClick={() =>
-                      setExpandedSubProduct((current) => (current === product.title ? null : product.title))
-                    }
-                    className={`relative overflow-visible rounded-[1.5rem] border border-parchment/10 bg-[linear-gradient(180deg,rgba(245,197,108,0.08),rgba(255,255,255,0.02))] shadow-[0_0_20px_rgba(245,197,108,0.06)] backdrop-blur-[1px] transition-shadow duration-300 ${
-                      isExpanded
-                        ? "z-20 shadow-[0_0_28px_rgba(245,197,108,0.14)]"
-                        : "z-0"
-                    }`}
-                  >
-                    <div className="pointer-events-none absolute inset-x-8 top-5 h-24 rounded-full bg-[radial-gradient(circle,rgba(245,197,108,0.12)_0%,rgba(245,197,108,0.05)_42%,rgba(5,5,26,0)_74%)] blur-2xl" />
-                    <div className="relative overflow-hidden rounded-t-[1.5rem]">
-                      <div className="relative aspect-[16/9]">
-                        <Image
-                          src={product.imageSrc}
-                          alt={product.imageAlt}
-                          fill
-                          sizes="(min-width: 768px) 33vw, 100vw"
-                          className={`object-cover ${product.imagePosition}`}
-                        />
-                        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,5,26,0.05),rgba(5,5,26,0.35))]" />
-                      </div>
-                    </div>
-
-                    <div className="relative px-5 pb-5 pt-4">
-                      <h3 className="text-lg font-bold tracking-tight text-amber-100/90 md:text-xl">
-                        {product.title}
-                      </h3>
-
-                      <div className="mt-4 flex items-center justify-start gap-2">
-                        <a
-                          href={product.viewHref}
-                          target="_blank"
-                          rel="noreferrer"
-                          onClick={(event) => event.stopPropagation()}
-                          className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-amber-100/20 bg-amber-100/8 px-3 py-2 text-xs text-amber-100/85 transition-all duration-300 hover:border-amber-100/35 hover:bg-amber-100/12 hover:drop-shadow-[0_0_10px_rgba(245,197,108,0.18)]"
-                        >
-                          <ArrowUpRight size={15} />
-                          <span>View Project</span>
-                        </a>
-                        <a
-                          href={product.githubHref}
-                          target="_blank"
-                          rel="noreferrer"
-                          onClick={(event) => event.stopPropagation()}
-                          className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-violet-300/20 bg-violet-400/8 px-3 py-2 text-xs text-violet-200/90 transition-all duration-300 hover:border-violet-300/35 hover:bg-violet-400/12 hover:text-violet-100 hover:drop-shadow-[0_0_10px_rgba(167,139,250,0.22)]"
-                        >
-                          <Github size={15} />
-                          <span>GitHub</span>
-                        </a>
-                      </div>
-
-                      <motion.div
-                        initial={false}
-                        animate={{
-                          height: isExpanded ? "auto" : 0,
-                          opacity: isExpanded ? 1 : 0,
-                          marginTop: isExpanded ? 16 : 0,
-                        }}
-                        transition={{ duration: 0.28, ease: "easeOut" }}
-                        className="overflow-hidden"
-                      >
-                        <div className="border-t border-parchment/10 pt-4">
-                          <div className="flex flex-wrap gap-2">
-                            {product.tags.map((tag) => (
-                              <span
-                                key={tag}
-                                className="inline-block rounded-full border border-amber-100/20 bg-amber-100/5 px-3 py-1 text-[0.68rem] tracking-[0.16em] text-amber-100/70"
-                              >
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
-                          <p className="mt-4 text-sm leading-7 text-parchment/72">
-                            {product.description}
-                          </p>
-                        </div>
-                      </motion.div>
-                    </div>
-                  </motion.article>
-                );
-              })}
+            <div className="mt-20 flex flex-col gap-6 md:flex-row md:flex-wrap md:items-start">
+              {subProductItems.map((product) => (
+                <SubProductCard key={product.title} product={product} />
+              ))}
             </div>
           </div>
         </section>
