@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Github, Mail, Music2, Twitter } from "lucide-react";
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Constellation } from "@/components/layout/Constellation";
 import { CandlelightStage } from "@/components/layout/CandlelightStage";
 import { CloudWisp } from "@/components/layout/CloudWisp";
@@ -14,6 +14,7 @@ import { useOpeningLight } from "@/hooks/useOpeningLight";
 
 export default function HomePage() {
   const { hasStarted, ignite, isLit, leftLampLit, rightLampLit } = useOpeningLight();
+  const [expandedSubProduct, setExpandedSubProduct] = useState<string | null>(null);
   const profileLinks = [
     {
       href: "https://github.com/husengs7",
@@ -112,6 +113,68 @@ export default function HomePage() {
       imageSrc: "/100Program.jpg",
       imageAlt: "Takibi Chat preview",
       imagePosition: "object-center",
+    },
+  ];
+  const subProductItems = [
+    {
+      title: "Park Memo",
+      imageSrc: "/numip.JPG",
+      imageAlt: "Park Memo preview",
+      description: "歩いた街の断片を、言葉と写真で静かに残していく散策メモの試作。",
+      tags: ["Next.js", "TypeScript", "Supabase"],
+      viewHref: "https://example.com/park-memo",
+      githubHref: "https://github.com/husengs7/park-memo",
+      imagePosition: "object-center",
+    },
+    {
+      title: "Midnight Queue",
+      imageSrc: "/takibi.JPG",
+      imageAlt: "Midnight Queue preview",
+      description: "小さな相談を焚き火のように受け止める、順番待ち付きチャット体験の断片。",
+      tags: ["React", "Firebase", "Tailwind CSS"],
+      viewHref: "https://example.com/midnight-queue",
+      githubHref: "https://github.com/husengs7/midnight-queue",
+      imagePosition: "object-[center_42%]",
+    },
+    {
+      title: "Night Transit",
+      imageSrc: "/100Program.jpg",
+      imageAlt: "Night Transit preview",
+      description: "深夜の路線図をもとに、移動そのものをゲーム化する都市体験のプロトタイプ。",
+      tags: ["Node.js", "Mapbox", "MongoDB"],
+      viewHref: "https://example.com/night-transit",
+      githubHref: "https://github.com/husengs7/night-transit",
+      imagePosition: "object-center",
+    },
+    {
+      title: "Lantern Notes",
+      imageSrc: "/numip1.JPG",
+      imageAlt: "Lantern Notes preview",
+      description: "個人開発の気づきを、あとから灯りのように読み返せる設計メモ集。",
+      tags: ["Astro", "MDX", "Framer Motion"],
+      viewHref: "https://example.com/lantern-notes",
+      githubHref: "https://github.com/husengs7/lantern-notes",
+      imagePosition: "object-[center_35%]",
+    },
+    {
+      title: "Quiet Signal",
+      imageSrc: "/my.jpg",
+      imageAlt: "Quiet Signal preview",
+      description: "通知ではなく気配でつながる、静かなコミュニケーションの UI 実験。",
+      tags: ["Figma", "React", "WebSocket"],
+      viewHref: "https://example.com/quiet-signal",
+      githubHref: "https://github.com/husengs7/quiet-signal",
+      imagePosition: "object-top",
+    },
+    {
+      title: "Amber Atlas",
+      imageSrc: "/city.png",
+      imageAlt: "Amber Atlas preview",
+      description: "夜景のレイヤー表現と地図的な視点をつなぐ、背景演出のビジュアル研究。",
+      tags: ["Three.js", "GLSL", "Next.js"],
+      viewHref: "https://example.com/amber-atlas",
+      githubHref: "https://github.com/husengs7/amber-atlas",
+      imagePosition: "object-[center_70%]",
     },
   ];
 
@@ -442,6 +505,103 @@ export default function HomePage() {
                           <span>GitHub</span>
                         </a>
                       </div>
+                    </div>
+                  </motion.article>
+                );
+              })}
+            </div>
+
+            <div className="mt-20 grid grid-cols-1 gap-6 md:grid-cols-3">
+              {subProductItems.map((product) => {
+                const isExpanded = expandedSubProduct === product.title;
+
+                return (
+                  <motion.article
+                    key={product.title}
+                    layout
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, margin: "-8% 0px -12% 0px" }}
+                    transition={{ duration: 0.55, ease: "easeOut" }}
+                    onHoverStart={() => setExpandedSubProduct(product.title)}
+                    onHoverEnd={() => setExpandedSubProduct((current) => (current === product.title ? null : current))}
+                    onClick={() =>
+                      setExpandedSubProduct((current) => (current === product.title ? null : product.title))
+                    }
+                    className={`relative overflow-visible rounded-[1.5rem] border border-parchment/10 bg-[linear-gradient(180deg,rgba(245,197,108,0.08),rgba(255,255,255,0.02))] shadow-[0_0_20px_rgba(245,197,108,0.06)] backdrop-blur-[1px] transition-shadow duration-300 ${
+                      isExpanded
+                        ? "z-20 shadow-[0_0_28px_rgba(245,197,108,0.14)]"
+                        : "z-0"
+                    }`}
+                  >
+                    <div className="pointer-events-none absolute inset-x-8 top-5 h-24 rounded-full bg-[radial-gradient(circle,rgba(245,197,108,0.12)_0%,rgba(245,197,108,0.05)_42%,rgba(5,5,26,0)_74%)] blur-2xl" />
+                    <div className="relative overflow-hidden rounded-t-[1.5rem]">
+                      <div className="relative aspect-[16/9]">
+                        <Image
+                          src={product.imageSrc}
+                          alt={product.imageAlt}
+                          fill
+                          sizes="(min-width: 768px) 33vw, 100vw"
+                          className={`object-cover ${product.imagePosition}`}
+                        />
+                        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,5,26,0.05),rgba(5,5,26,0.35))]" />
+                      </div>
+                    </div>
+
+                    <div className="relative px-5 pb-5 pt-4">
+                      <h3 className="text-lg font-bold tracking-tight text-amber-100/90 md:text-xl">
+                        {product.title}
+                      </h3>
+
+                      <div className="mt-4 flex items-center justify-start gap-2">
+                        <a
+                          href={product.viewHref}
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={(event) => event.stopPropagation()}
+                          className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-amber-100/20 bg-amber-100/8 px-3 py-2 text-xs text-amber-100/85 transition-all duration-300 hover:border-amber-100/35 hover:bg-amber-100/12 hover:drop-shadow-[0_0_10px_rgba(245,197,108,0.18)]"
+                        >
+                          <ArrowUpRight size={15} />
+                          <span>View Project</span>
+                        </a>
+                        <a
+                          href={product.githubHref}
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={(event) => event.stopPropagation()}
+                          className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-violet-300/20 bg-violet-400/8 px-3 py-2 text-xs text-violet-200/90 transition-all duration-300 hover:border-violet-300/35 hover:bg-violet-400/12 hover:text-violet-100 hover:drop-shadow-[0_0_10px_rgba(167,139,250,0.22)]"
+                        >
+                          <Github size={15} />
+                          <span>GitHub</span>
+                        </a>
+                      </div>
+
+                      <motion.div
+                        initial={false}
+                        animate={{
+                          height: isExpanded ? "auto" : 0,
+                          opacity: isExpanded ? 1 : 0,
+                          marginTop: isExpanded ? 16 : 0,
+                        }}
+                        transition={{ duration: 0.28, ease: "easeOut" }}
+                        className="overflow-hidden"
+                      >
+                        <div className="border-t border-parchment/10 pt-4">
+                          <div className="flex flex-wrap gap-2">
+                            {product.tags.map((tag) => (
+                              <span
+                                key={tag}
+                                className="inline-block rounded-full border border-amber-100/20 bg-amber-100/5 px-3 py-1 text-[0.68rem] tracking-[0.16em] text-amber-100/70"
+                              >
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                          <p className="mt-4 text-sm leading-7 text-parchment/72">
+                            {product.description}
+                          </p>
+                        </div>
+                      </motion.div>
                     </div>
                   </motion.article>
                 );
