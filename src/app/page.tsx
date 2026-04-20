@@ -99,7 +99,7 @@ export default function HomePage() {
       githubHref: "https://github.com/Findy-Campus-Hackathon-2026/findy-hackathon-takibi",
       imageSrc: "/takibi.JPG",
       imageAlt: "TrainGuessr preview",
-      imagePosition: "object-center",
+      imagePosition: "object-center md:object-[center_48%]",
     },
     {
       title: "逆ジオゲッサー",
