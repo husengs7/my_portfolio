@@ -19,6 +19,7 @@ type SubProductItem = {
   description: string;
   tags: string[];
   viewHref?: string;
+  viewLabel?: string;
   githubHref: string;
   imagePosition: string;
 };
@@ -69,7 +70,7 @@ function SubProductCard({ product }: { product: SubProductItem }) {
               className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-amber-100/20 bg-amber-100/8 px-3 py-2 text-xs text-amber-100/85 transition-all duration-300 hover:border-amber-100/35 hover:bg-amber-100/12 hover:drop-shadow-[0_0_10px_rgba(245,197,108,0.18)]"
             >
               <ArrowUpRight size={15} />
-              <span>View Project</span>
+              <span>{product.viewLabel ?? "View Project"}</span>
             </a>
           ) : null}
           <a
@@ -231,13 +232,14 @@ export default function HomePage() {
       imagePosition: "object-center",
     },
     {
-      title: "Midnight Queue",
-      imageSrc: "/takibi.JPG",
-      imageAlt: "Midnight Queue preview",
-      description: "小さな相談を焚き火のように受け止める、順番待ち付きチャット体験の断片。",
-      tags: ["React", "Firebase", "Tailwind CSS"],
-      viewHref: "https://example.com/midnight-queue",
-      githubHref: "https://github.com/husengs7/midnight-queue",
+      title: "TrainGuessr",
+      imageSrc: "/trainguessr.jpg",
+      imageAlt: "TrainGuessr preview",
+      description: "乗換案内から、駅名を推測するクイズです。  企画：takopi 制作：takopi・husensan supported by TokyoNuMap",
+      tags: ["JavaScript", "Node.js",],
+      viewHref: "https://trainguessrquiz.github.io/TrainGuessr/",
+      viewLabel: "Play",
+      githubHref: "https://github.com/TrainGuessrquiz/TrainGuessr",
       imagePosition: "object-[center_42%]",
     },
     {
