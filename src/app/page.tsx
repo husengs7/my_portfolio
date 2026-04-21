@@ -709,6 +709,20 @@ export default function HomePage() {
             </motion.div>
           </div>
         </section>
+
+        <footer className="relative z-10 px-6 pt-24 text-center">
+          <div className="mb-5">
+            <p className="text-[0.65rem] uppercase tracking-[0.28em] text-amber-100/42">
+              Built With
+            </p>
+            <p className="mt-2 text-xs tracking-[0.18em] text-parchment/45">
+              Next.js / Tailwind CSS / AWS Amplify
+            </p>
+          </div>
+          <p className="text-xs tracking-[0.24em] text-parchment/38">
+            © 2026 husensan. All rights reserved.
+          </p>
+        </footer>
       </motion.main>
     </CandlelightStage>
   );
