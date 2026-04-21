@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Night in the Park - Candlelight Path",
+  title: "husensan'sPortfolio",
   description: "A storybook portfolio lit by candlelight.",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
