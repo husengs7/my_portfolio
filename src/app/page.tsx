@@ -14,18 +14,23 @@ import { useOpeningLight } from "@/hooks/useOpeningLight";
 
 type SubProductItem = {
   title: string;
-  imageSrc: string;
-  imageAlt: string;
-  description: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  description?: string;
   tags: string[];
   viewHref?: string;
   viewLabel?: string;
-  githubHref: string;
-  imagePosition: string;
+  playHref?: string;
+  playLabel?: string;
+  githubHref?: string;
+  imagePosition?: string;
 };
 
 function SubProductCard({ product }: { product: SubProductItem }) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const hasPrimaryLinks = Boolean(product.viewHref || product.playHref);
+  const hasLinks = Boolean(product.viewHref || product.playHref || product.githubHref);
+  const hasDetails = product.tags.length > 0 || Boolean(product.description);
 
   return (
     <motion.article
@@ -42,25 +47,40 @@ function SubProductCard({ product }: { product: SubProductItem }) {
       }`}
     >
       <div className="pointer-events-none absolute inset-x-8 top-5 h-24 rounded-full bg-[radial-gradient(circle,rgba(245,197,108,0.12)_0%,rgba(245,197,108,0.05)_42%,rgba(5,5,26,0)_74%)] blur-2xl" />
-      <div className="relative overflow-hidden rounded-t-[1.5rem]">
-        <div className="relative aspect-[16/9]">
-          <Image
-            src={product.imageSrc}
-            alt={product.imageAlt}
-            fill
-            sizes="(min-width: 768px) 33vw, 100vw"
-            className={`object-cover ${product.imagePosition}`}
-          />
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,5,26,0.05),rgba(5,5,26,0.35))]" />
+      {product.imageSrc ? (
+        <div className="relative overflow-hidden rounded-t-[1.5rem]">
+          <div className="relative aspect-[16/9]">
+            <Image
+              src={product.imageSrc}
+              alt={product.imageAlt ?? product.title}
+              fill
+              sizes="(min-width: 768px) 33vw, 100vw"
+              className={`object-cover ${product.imagePosition ?? "object-center"}`}
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,5,26,0.05),rgba(5,5,26,0.35))]" />
+          </div>
         </div>
-      </div>
+      ) : null}
 
       <div className="relative px-5 pb-5 pt-4">
         <h3 className="text-lg font-bold tracking-tight text-amber-100/90 md:text-xl">
           {product.title}
         </h3>
 
-      <div className="mt-4 flex items-center justify-start gap-2">
+        {hasLinks ? (
+          <div className="mt-4 flex items-center justify-start gap-2">
+          {product.playHref ? (
+            <a
+              href={product.playHref}
+              target="_blank"
+              rel="noreferrer"
+              onClick={(event) => event.stopPropagation()}
+              className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-orange-300/20 bg-orange-400/8 px-3 py-2 text-xs text-orange-100/90 transition-all duration-300 hover:border-orange-300/35 hover:bg-orange-400/12 hover:text-orange-50 hover:drop-shadow-[0_0_10px_rgba(251,146,60,0.22)]"
+            >
+              <ArrowUpRight size={15} />
+              <span>{product.playLabel ?? "Play"}</span>
+            </a>
+          ) : null}
           {product.viewHref ? (
             <a
               href={product.viewHref}
@@ -73,21 +93,25 @@ function SubProductCard({ product }: { product: SubProductItem }) {
               <span>{product.viewLabel ?? "View Project"}</span>
             </a>
           ) : null}
-          <a
-            href={product.githubHref}
-            target="_blank"
-            rel="noreferrer"
-            onClick={(event) => event.stopPropagation()}
-            className={`inline-flex items-center justify-center gap-2 rounded-full border border-violet-300/20 bg-violet-400/8 px-3 py-2 text-xs text-violet-200/90 transition-all duration-300 hover:border-violet-300/35 hover:bg-violet-400/12 hover:text-violet-100 hover:drop-shadow-[0_0_10px_rgba(167,139,250,0.22)] ${
-              product.viewHref ? "flex-1" : "w-full"
-            }`}
-          >
-            <Github size={15} />
-            <span>GitHub</span>
-          </a>
-        </div>
+          {product.githubHref ? (
+            <a
+              href={product.githubHref}
+              target="_blank"
+              rel="noreferrer"
+              onClick={(event) => event.stopPropagation()}
+              className={`inline-flex items-center justify-center gap-2 rounded-full border border-violet-300/20 bg-violet-400/8 px-3 py-2 text-xs text-violet-200/90 transition-all duration-300 hover:border-violet-300/35 hover:bg-violet-400/12 hover:text-violet-100 hover:drop-shadow-[0_0_10px_rgba(167,139,250,0.22)] ${
+                hasPrimaryLinks ? "flex-1" : "w-full"
+              }`}
+            >
+              <Github size={15} />
+              <span>GitHub</span>
+            </a>
+          ) : null}
+          </div>
+        ) : null}
 
-        <motion.div
+        {hasDetails ? (
+          <motion.div
           layout
           initial={false}
           animate={{
@@ -99,7 +123,8 @@ function SubProductCard({ product }: { product: SubProductItem }) {
           className="overflow-hidden"
         >
           <div className="border-t border-parchment/10 pt-4">
-            <div className="flex flex-wrap gap-2">
+            {product.tags.length > 0 ? (
+              <div className="flex flex-wrap gap-2">
               {product.tags.map((tag) => (
                 <span
                   key={tag}
@@ -108,12 +133,16 @@ function SubProductCard({ product }: { product: SubProductItem }) {
                   {tag}
                 </span>
               ))}
-            </div>
-            <p className="mt-4 text-sm leading-7 text-parchment/72">
-              {product.description}
-            </p>
+              </div>
+            ) : null}
+            {product.description ? (
+              <p className="mt-4 text-sm leading-7 text-parchment/72">
+                {product.description}
+              </p>
+            ) : null}
           </div>
-        </motion.div>
+          </motion.div>
+        ) : null}
       </div>
     </motion.article>
   );
@@ -243,42 +272,32 @@ export default function HomePage() {
       imagePosition: "object-[center_42%]",
     },
     {
-      title: "Night Transit",
-      imageSrc: "/100Program.jpg",
-      imageAlt: "Night Transit preview",
-      description: "深夜の路線図をもとに、移動そのものをゲーム化する都市体験のプロトタイプ。",
-      tags: ["Node.js", "Mapbox", "MongoDB"],
-      viewHref: "https://example.com/night-transit",
-      githubHref: "https://github.com/husengs7/night-transit",
+      title: "Quest Calendar",
+      imageSrc: "/todoq.JPG",
+      imageAlt: "Quest Calendar preview",
+      description: "宿題を倒しながら8月31日の滅亡から世界を救います。",
+      tags: ["React Native", "JavaScript", "Dynamodb"],
+      viewHref: "https://topaz.dev/projects/41a165c1c1bf47342bfc",
+      playHref: "https://hackathon-summer-vacation.github.io/quest-calendar/",
+      githubHref: "https://github.com/hackathon-summer-vacation/quest-calendar",
       imagePosition: "object-center",
     },
     {
-      title: "Lantern Notes",
-      imageSrc: "/numip1.JPG",
-      imageAlt: "Lantern Notes preview",
-      description: "個人開発の気づきを、あとから灯りのように読み返せる設計メモ集。",
-      tags: ["Astro", "MDX", "Framer Motion"],
-      githubHref: "https://github.com/husengs7/lantern-notes",
+      title: "Tab AM Radio Filter",
+      imageSrc: "/tab.png",
+      imageAlt: "Tab AM Radio Filter preview",
+      description: "任意のタブの音声をAMラジオ風の音質にリアルタイム変換するChrome拡張機能です。",
+      tags: ["JavaScript"],
+      githubHref: "https://github.com/husengs7/Tab-AM-Radio-Filter",
       imagePosition: "object-[center_35%]",
     },
     {
-      title: "Quiet Signal",
-      imageSrc: "/my.jpg",
-      imageAlt: "Quiet Signal preview",
-      description: "通知ではなく気配でつながる、静かなコミュニケーションの UI 実験。",
-      tags: ["Figma", "React", "WebSocket"],
-      githubHref: "https://github.com/husengs7/quiet-signal",
-      imagePosition: "object-top",
+      title: "andmore",
+      tags: [],
     },
     {
-      title: "Amber Atlas",
-      imageSrc: "/city.png",
-      imageAlt: "Amber Atlas preview",
-      description: "夜景のレイヤー表現と地図的な視点をつなぐ、背景演出のビジュアル研究。",
-      tags: ["Three.js", "GLSL", "Next.js"],
-      viewHref: "https://example.com/amber-atlas",
-      githubHref: "https://github.com/husengs7/amber-atlas",
-      imagePosition: "object-[center_70%]",
+      title: "andmore",
+      tags: [],
     },
   ];
 
