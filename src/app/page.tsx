@@ -18,7 +18,7 @@ type SubProductItem = {
   imageAlt: string;
   description: string;
   tags: string[];
-  viewHref: string;
+  viewHref?: string;
   githubHref: string;
   imagePosition: string;
 };
@@ -59,23 +59,27 @@ function SubProductCard({ product }: { product: SubProductItem }) {
           {product.title}
         </h3>
 
-        <div className="mt-4 flex items-center justify-start gap-2">
-          <a
-            href={product.viewHref}
-            target="_blank"
-            rel="noreferrer"
-            onClick={(event) => event.stopPropagation()}
-            className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-amber-100/20 bg-amber-100/8 px-3 py-2 text-xs text-amber-100/85 transition-all duration-300 hover:border-amber-100/35 hover:bg-amber-100/12 hover:drop-shadow-[0_0_10px_rgba(245,197,108,0.18)]"
-          >
-            <ArrowUpRight size={15} />
-            <span>View Project</span>
-          </a>
+      <div className="mt-4 flex items-center justify-start gap-2">
+          {product.viewHref ? (
+            <a
+              href={product.viewHref}
+              target="_blank"
+              rel="noreferrer"
+              onClick={(event) => event.stopPropagation()}
+              className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-amber-100/20 bg-amber-100/8 px-3 py-2 text-xs text-amber-100/85 transition-all duration-300 hover:border-amber-100/35 hover:bg-amber-100/12 hover:drop-shadow-[0_0_10px_rgba(245,197,108,0.18)]"
+            >
+              <ArrowUpRight size={15} />
+              <span>View Project</span>
+            </a>
+          ) : null}
           <a
             href={product.githubHref}
             target="_blank"
             rel="noreferrer"
             onClick={(event) => event.stopPropagation()}
-            className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-violet-300/20 bg-violet-400/8 px-3 py-2 text-xs text-violet-200/90 transition-all duration-300 hover:border-violet-300/35 hover:bg-violet-400/12 hover:text-violet-100 hover:drop-shadow-[0_0_10px_rgba(167,139,250,0.22)]"
+            className={`inline-flex items-center justify-center gap-2 rounded-full border border-violet-300/20 bg-violet-400/8 px-3 py-2 text-xs text-violet-200/90 transition-all duration-300 hover:border-violet-300/35 hover:bg-violet-400/12 hover:text-violet-100 hover:drop-shadow-[0_0_10px_rgba(167,139,250,0.22)] ${
+              product.viewHref ? "flex-1" : "w-full"
+            }`}
           >
             <Github size={15} />
             <span>GitHub</span>
@@ -218,13 +222,12 @@ export default function HomePage() {
   ];
   const subProductItems: SubProductItem[] = [
     {
-      title: "Park Memo",
-      imageSrc: "/numip.JPG",
-      imageAlt: "Park Memo preview",
-      description: "歩いた街の断片を、言葉と写真で静かに残していく散策メモの試作。",
-      tags: ["Next.js", "TypeScript", "Supabase"],
-      viewHref: "https://example.com/park-memo",
-      githubHref: "https://github.com/husengs7/park-memo",
+      title: "TODOファーム",
+      imageSrc: "/farmTodo.JPG",
+      imageAlt: "TODOファーム preview",
+      description: "農場でお花を育てることのできる、Todo管理アプリです。",
+      tags: ["Flutter"],
+      githubHref: "https://github.com/husengs7/teamlab-1dayhackathon-farmTodo",
       imagePosition: "object-center",
     },
     {
@@ -253,7 +256,6 @@ export default function HomePage() {
       imageAlt: "Lantern Notes preview",
       description: "個人開発の気づきを、あとから灯りのように読み返せる設計メモ集。",
       tags: ["Astro", "MDX", "Framer Motion"],
-      viewHref: "https://example.com/lantern-notes",
       githubHref: "https://github.com/husengs7/lantern-notes",
       imagePosition: "object-[center_35%]",
     },
@@ -263,7 +265,6 @@ export default function HomePage() {
       imageAlt: "Quiet Signal preview",
       description: "通知ではなく気配でつながる、静かなコミュニケーションの UI 実験。",
       tags: ["Figma", "React", "WebSocket"],
-      viewHref: "https://example.com/quiet-signal",
       githubHref: "https://github.com/husengs7/quiet-signal",
       imagePosition: "object-top",
     },
