@@ -42,13 +42,13 @@ function SubProductCard({ product }: { product: SubProductItem }) {
       onHoverStart={() => setIsExpanded(true)}
       onHoverEnd={() => setIsExpanded(false)}
       onClick={() => setIsExpanded((current) => !current)}
-      className={`relative w-full overflow-visible self-start rounded-[1.5rem] border border-parchment/10 bg-[linear-gradient(180deg,rgba(245,197,108,0.08),rgba(255,255,255,0.02))] shadow-[0_0_20px_rgba(245,197,108,0.06)] backdrop-blur-[1px] transition-shadow duration-300 md:basis-[calc((100%-3rem)/3)] md:max-w-[calc((100%-3rem)/3)] ${
+      className={`relative w-full overflow-visible self-start rounded-[1.25rem] border border-parchment/10 bg-[linear-gradient(180deg,rgba(245,197,108,0.08),rgba(255,255,255,0.02))] shadow-[0_0_20px_rgba(245,197,108,0.06)] backdrop-blur-[1px] transition-shadow duration-300 md:basis-[calc((100%-3rem)/3)] md:max-w-[calc((100%-3rem)/3)] md:rounded-[1.5rem] ${
         isExpanded ? "z-20 shadow-[0_0_28px_rgba(245,197,108,0.14)]" : "z-0"
       }`}
     >
       <div className="pointer-events-none absolute inset-x-8 top-5 h-24 rounded-full bg-[radial-gradient(circle,rgba(245,197,108,0.12)_0%,rgba(245,197,108,0.05)_42%,rgba(5,5,26,0)_74%)] blur-2xl" />
       {product.imageSrc ? (
-        <div className="relative overflow-hidden rounded-t-[1.5rem]">
+        <div className="relative overflow-hidden rounded-t-[1.25rem] md:rounded-t-[1.5rem]">
           <div className="relative aspect-[16/9]">
             <Image
               src={product.imageSrc}
@@ -62,22 +62,22 @@ function SubProductCard({ product }: { product: SubProductItem }) {
         </div>
       ) : null}
 
-      <div className="relative px-5 pb-5 pt-4">
-        <h3 className="text-lg font-bold tracking-tight text-amber-100/90 md:text-xl">
+      <div className="relative px-2.5 pb-3 pt-3 md:px-5 md:pb-5 md:pt-4">
+        <h3 className="text-sm font-bold tracking-tight text-amber-100/90 md:text-xl">
           {product.title}
         </h3>
 
         {hasLinks ? (
-          <div className="mt-4 flex items-center justify-start gap-2">
+          <div className="mt-3 flex items-center justify-start gap-1.5 md:mt-4 md:gap-2">
           {product.playHref ? (
             <a
               href={product.playHref}
               target="_blank"
               rel="noreferrer"
               onClick={(event) => event.stopPropagation()}
-              className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-orange-300/20 bg-orange-400/8 px-3 py-2 text-xs text-orange-100/90 transition-all duration-300 hover:border-orange-300/35 hover:bg-orange-400/12 hover:text-orange-50 hover:drop-shadow-[0_0_10px_rgba(251,146,60,0.22)]"
+              className="inline-flex flex-1 items-center justify-center gap-1 rounded-full border border-orange-300/20 bg-orange-400/8 px-2 py-1.5 text-[0.65rem] text-orange-100/90 transition-all duration-300 hover:border-orange-300/35 hover:bg-orange-400/12 hover:text-orange-50 hover:drop-shadow-[0_0_10px_rgba(251,146,60,0.22)] md:gap-2 md:px-3 md:py-2 md:text-xs"
             >
-              <ArrowUpRight size={15} />
+              <ArrowUpRight size={13} />
               <span>{product.playLabel ?? "Play"}</span>
             </a>
           ) : null}
@@ -87,9 +87,9 @@ function SubProductCard({ product }: { product: SubProductItem }) {
               target="_blank"
               rel="noreferrer"
               onClick={(event) => event.stopPropagation()}
-              className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-amber-100/20 bg-amber-100/8 px-3 py-2 text-xs text-amber-100/85 transition-all duration-300 hover:border-amber-100/35 hover:bg-amber-100/12 hover:drop-shadow-[0_0_10px_rgba(245,197,108,0.18)]"
+              className="inline-flex flex-1 items-center justify-center gap-1 rounded-full border border-amber-100/20 bg-amber-100/8 px-2 py-1.5 text-[0.65rem] text-amber-100/85 transition-all duration-300 hover:border-amber-100/35 hover:bg-amber-100/12 hover:drop-shadow-[0_0_10px_rgba(245,197,108,0.18)] md:gap-2 md:px-3 md:py-2 md:text-xs"
             >
-              <ArrowUpRight size={15} />
+              <ArrowUpRight size={13} />
               <span>{product.viewLabel ?? "View Project"}</span>
             </a>
           ) : null}
@@ -99,11 +99,11 @@ function SubProductCard({ product }: { product: SubProductItem }) {
               target="_blank"
               rel="noreferrer"
               onClick={(event) => event.stopPropagation()}
-              className={`inline-flex items-center justify-center gap-2 rounded-full border border-violet-300/20 bg-violet-400/8 px-3 py-2 text-xs text-violet-200/90 transition-all duration-300 hover:border-violet-300/35 hover:bg-violet-400/12 hover:text-violet-100 hover:drop-shadow-[0_0_10px_rgba(167,139,250,0.22)] ${
+              className={`inline-flex items-center justify-center gap-1 rounded-full border border-violet-300/20 bg-violet-400/8 px-2 py-1.5 text-[0.65rem] text-violet-200/90 transition-all duration-300 hover:border-violet-300/35 hover:bg-violet-400/12 hover:text-violet-100 hover:drop-shadow-[0_0_10px_rgba(167,139,250,0.22)] md:gap-2 md:px-3 md:py-2 md:text-xs ${
                 hasPrimaryLinks ? "flex-1" : "w-full"
               }`}
             >
-              <Github size={15} />
+              <Github size={13} />
               <span>GitHub</span>
             </a>
           ) : null}
@@ -136,7 +136,7 @@ function SubProductCard({ product }: { product: SubProductItem }) {
               </div>
             ) : null}
             {product.description ? (
-              <p className="mt-4 text-sm leading-7 text-parchment/72">
+                          <p className="mt-4 text-xs leading-6 text-parchment/72 md:text-sm md:leading-7">
                 {product.description}
               </p>
             ) : null}
@@ -634,11 +634,79 @@ export default function HomePage() {
               })}
             </div>
 
-            <div className="mt-20 flex flex-col gap-6 md:flex-row md:flex-wrap md:items-start">
+            <div className="mt-20 grid grid-cols-2 gap-3 md:flex md:flex-row md:flex-wrap md:items-start md:gap-6">
               {subProductItems.map((product) => (
                 <SubProductCard key={product.title} product={product} />
               ))}
             </div>
+          </div>
+        </section>
+
+        <section className="relative z-10 mt-28 w-full px-6">
+          <div className="mx-auto max-w-4xl">
+            <CloudWisp
+              mode="front"
+              placement="section"
+              className="pointer-events-none absolute inset-0 z-0 opacity-45"
+            />
+            <div className="mb-12 text-center">
+              <h2 className="relative z-10 font-serifStory text-2xl tracking-[0.3em] text-amber-100/80">Sound</h2>
+            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, margin: "-10% 0px -15% 0px" }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              className="relative z-10 overflow-hidden rounded-[1.75rem] border border-parchment/10 bg-[linear-gradient(180deg,rgba(245,197,108,0.08),rgba(255,255,255,0.02))] p-4 shadow-[0_0_24px_rgba(245,197,108,0.07)] backdrop-blur-[1px] md:p-5"
+            >
+              <iframe
+                width="100%"
+                height="166"
+                scrolling="no"
+                frameBorder="no"
+                allow="autoplay"
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A1809529197&color=%23740aec&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+                className="rounded-2xl"
+                title="SoundCloud player - シュガーゲイザーデモ"
+              />
+              <div className="mt-3 overflow-hidden text-ellipsis whitespace-nowrap break-normal text-[10px] font-thin text-[#cccccc] [font-family:Interstate,Lucida_Grande,Lucida_Sans_Unicode,Lucida_Sans,Garuda,Verdana,Tahoma,sans-serif]">
+                <a
+                  href="https://soundcloud.com/husen-tannsu"
+                  title="husensan"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-[#cccccc] no-underline"
+                >
+                  husensan
+                </a>
+                {" · "}
+                <a
+                  href="https://soundcloud.com/husen-tannsu/mmablc26o3uh"
+                  title="シュガーゲイザーデモ"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-[#cccccc] no-underline"
+                >
+                  シュガーゲイザーデモ
+                </a>
+              </div>
+              <iframe
+                width="100%"
+                height="202"
+                src="https://www.bandlab.com/embed/?id=852a5920-f9d1-47a9-aafb-e57b11abf8d2"
+                allowFullScreen
+                className="mt-6 rounded-2xl"
+                title="BandLab player"
+              />
+              <iframe
+                width="100%"
+                height="202"
+                src="https://www.bandlab.com/embed/?id=36250eed-8eb8-f011-8196-0022484a3197"
+                allowFullScreen
+                className="mt-6 rounded-2xl"
+                title="BandLab player 2"
+              />
+            </motion.div>
           </div>
         </section>
       </motion.main>
