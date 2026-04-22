@@ -232,6 +232,7 @@ export default function HomePage() {
       description:
         "孤独を感じる夜でも、ゆらめく炎を誰かと囲めば、心は少しだけ軽くなるはず。そんなささやかな温もりを分かち合うwebアプリです。",
       viewHref: "https://canva.link/vzjmpra76g8x5yk",
+      playHref: "https://findy-campus-hackathon-2026.github.io/findy-hackathon-takibi/",
       githubHref: "https://github.com/Findy-Campus-Hackathon-2026/findy-hackathon-takibi",
       imageSrc: "/takibi.JPG",
       imageAlt: "TrainGuessr preview",
@@ -609,6 +610,17 @@ export default function HomePage() {
                       </p>
 
                       <div className="mt-7 flex items-center justify-start gap-2 md:gap-3">
+                        {product.playHref ? (
+                          <a
+                            href={product.playHref}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-2 rounded-full border border-orange-300/20 bg-orange-400/8 px-3 py-2 text-xs text-orange-100/90 transition-all duration-300 hover:border-orange-300/35 hover:bg-orange-400/12 hover:text-orange-50 hover:drop-shadow-[0_0_10px_rgba(251,146,60,0.22)] md:px-4 md:text-sm"
+                          >
+                            <ArrowUpRight size={16} />
+                            <span>Play</span>
+                          </a>
+                        ) : null}
                         <a
                           href={product.viewHref}
                           target="_blank"
