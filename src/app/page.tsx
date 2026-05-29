@@ -13,6 +13,7 @@ import { TheSpark } from "@/components/ui/TheSpark";
 import { useOpeningLight } from "@/hooks/useOpeningLight";
 
 type SubProductItem = {
+  id: string;
   title: string;
   imageSrc?: string;
   imageAlt?: string;
@@ -253,6 +254,7 @@ export default function HomePage() {
   ];
   const subProductItems: SubProductItem[] = [
     {
+      id: "todo-farm",
       title: "TODOファーム",
       imageSrc: "/farmTodo.JPG",
       imageAlt: "TODOファーム preview",
@@ -262,6 +264,7 @@ export default function HomePage() {
       imagePosition: "object-center",
     },
     {
+      id: "train-guessr",
       title: "TrainGuessr",
       imageSrc: "/trainguessr.jpg",
       imageAlt: "TrainGuessr preview",
@@ -273,6 +276,7 @@ export default function HomePage() {
       imagePosition: "object-[center_42%]",
     },
     {
+      id: "quest-calendar",
       title: "Quest Calendar",
       imageSrc: "/todoq.JPG",
       imageAlt: "Quest Calendar preview",
@@ -284,6 +288,7 @@ export default function HomePage() {
       imagePosition: "object-center",
     },
     {
+      id: "tab-am-radio-filter",
       title: "Tab AM Radio Filter",
       imageSrc: "/tab.png",
       imageAlt: "Tab AM Radio Filter preview",
@@ -293,10 +298,12 @@ export default function HomePage() {
       imagePosition: "object-[center_35%]",
     },
     {
+      id: "andmore-1",
       title: "andmore",
       tags: [],
     },
     {
+      id: "andmore-2",
       title: "andmore",
       tags: [],
     },
@@ -648,7 +655,7 @@ export default function HomePage() {
 
             <div className="mt-20 grid grid-cols-2 gap-3 md:flex md:flex-row md:flex-wrap md:items-start md:gap-6">
               {subProductItems.map((product) => (
-                <SubProductCard key={product.title} product={product} />
+                <SubProductCard key={product.id} product={product} />
               ))}
             </div>
           </div>
