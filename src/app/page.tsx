@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, Github, Mail, Music2, Twitter } from "lucide-react";
+import { ArrowUpRight, BookOpenText, Github, Mail, Music2, Twitter } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Constellation } from "@/components/layout/Constellation";
@@ -165,6 +165,13 @@ export default function HomePage() {
       icon: Twitter,
       hoverClass:
         "hover:text-sky-400 hover:drop-shadow-[0_0_7px_rgba(56,189,248,0.55)]",
+    },
+    {
+      href: "https://qiita.com/husensan",
+      label: "Qiita",
+      icon: BookOpenText,
+      hoverClass:
+        "hover:text-emerald-400 hover:drop-shadow-[0_0_7px_rgba(52,211,153,0.55)]",
     },
     {
       href: "https://soundcloud.com/husen-tannsu",
