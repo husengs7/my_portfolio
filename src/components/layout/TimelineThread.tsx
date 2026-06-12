@@ -1,12 +1,14 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
+import { ExternalLink } from "lucide-react";
 import { type CSSProperties, useRef } from "react";
 
 type TimelineItem = {
   date: string;
   title: string;
   description: string;
+  descriptionHref?: string;
   hasAward?: boolean;
 };
 
@@ -78,6 +80,26 @@ function buildMobilePath(count: number) {
   }
 
   return path;
+}
+
+function TimelineDescription({ item }: { item: TimelineItem }) {
+  const className = "text-sm leading-relaxed text-slate-300/80 md:text-base";
+
+  if (!item.descriptionHref) {
+    return <p className={className}>{item.description}</p>;
+  }
+
+  return (
+    <a
+      href={item.descriptionHref}
+      target="_blank"
+      rel="noreferrer"
+      className={`${className} inline-flex items-center gap-1.5 transition-all duration-300 hover:text-amber-100 hover:drop-shadow-[0_0_8px_rgba(245,197,108,0.24)]`}
+    >
+      <span>{item.description}</span>
+      <ExternalLink className="h-3.5 w-3.5 shrink-0 text-amber-100/70" aria-hidden="true" />
+    </a>
+  );
 }
 
 export function TimelineThread({ items, className = "" }: TimelineThreadProps) {
@@ -159,7 +181,7 @@ export function TimelineThread({ items, className = "" }: TimelineThreadProps) {
                           ) : null}
                           <span className="block text-[0.75rem] uppercase tracking-[0.24em] text-amber-100/55">{item.date}</span>
                           <h3 className="mb-2 mt-2 text-lg font-bold tracking-tight text-amber-100/90 md:text-xl">{item.title}</h3>
-                          <p className="text-sm leading-relaxed text-slate-300/80 md:text-base">{item.description}</p>
+                          <TimelineDescription item={item} />
                         </div>
                       </div>
                     </div>
@@ -180,7 +202,7 @@ export function TimelineThread({ items, className = "" }: TimelineThreadProps) {
                           ) : null}
                           <span className="block text-[0.75rem] uppercase tracking-[0.24em] text-amber-100/55">{item.date}</span>
                           <h3 className="mb-2 mt-2 text-lg font-bold tracking-tight text-amber-100/90 md:text-xl">{item.title}</h3>
-                          <p className="text-sm leading-relaxed text-slate-300/80 md:text-base">{item.description}</p>
+                          <TimelineDescription item={item} />
                         </div>
                       </div>
                     </div>
@@ -199,7 +221,7 @@ export function TimelineThread({ items, className = "" }: TimelineThreadProps) {
                     ) : null}
                     <span className="block text-[0.75rem] uppercase tracking-[0.24em] text-amber-100/55">{item.date}</span>
                     <h3 className="mb-2 mt-2 text-lg font-bold tracking-tight text-amber-100/90 md:text-xl">{item.title}</h3>
-                    <p className="text-sm leading-relaxed text-slate-300/80 md:text-base">{item.description}</p>
+                    <TimelineDescription item={item} />
                   </div>
                 </div>
               </div>

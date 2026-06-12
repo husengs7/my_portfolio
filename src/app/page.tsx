@@ -219,6 +219,17 @@ export default function HomePage() {
       description: "React と Ruby on Rails のスマホアプリで Findy 賞とウェルスナビ賞を受賞。",
       hasAward: true,
     },
+    {
+      date: "2026.05",
+      title: "Findy 学生エンジニアの個人開発LT",
+      description: "「Fラン学生が考える、AI時代のデザインに執着した突破口」でLT登壇。",
+      descriptionHref: "https://speakerdeck.com/husengs7/franxue-sheng-gakao-eru-aishi-dai-nodezainnizhi-zhao-sitatu-po-kou",
+    },
+	{
+      date: "2026.06",
+      title: "Findy DevRel インターン join",
+      description: "FindyのDeveloper Relations室に、長期インターンとして参画。",
+    },
   ];
   const productItems = [
     {
@@ -505,11 +516,10 @@ export default function HomePage() {
                 title="Sora Midorikawa / husensan"
                 body={
                   <div className="space-y-3 leading-relaxed">
+					<p>Findy DevRel インターン</p>
                     <p>東京情報大学 総合情報学部 2年</p>
                     <p>ネットワーク・セキュリティ研究室</p>
-                    <p>Japan Tokyo</p>
                     <p>ねずみ幸福論 : ドラマー</p>
-                    <p>楽器:ピアノ・DJ・ギター・ドラム</p>
                     <p>趣味：都内を練り歩くこと</p>
                   </div>
                 }
