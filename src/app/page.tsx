@@ -705,27 +705,6 @@ export default function HomePage() {
                 className="rounded-2xl"
                 title="SoundCloud player - シュガーゲイザーデモ"
               />
-              <div className="mt-3 overflow-hidden text-ellipsis whitespace-nowrap break-normal text-[10px] font-thin text-[#cccccc] [font-family:Interstate,Lucida_Grande,Lucida_Sans_Unicode,Lucida_Sans,Garuda,Verdana,Tahoma,sans-serif]">
-                <a
-                  href="https://soundcloud.com/husen-tannsu"
-                  title="husensan"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-[#cccccc] no-underline"
-                >
-                  husensan
-                </a>
-                {" · "}
-                <a
-                  href="https://soundcloud.com/husen-tannsu/mmablc26o3uh"
-                  title="シュガーゲイザーデモ"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-[#cccccc] no-underline"
-                >
-                  シュガーゲイザーデモ
-                </a>
-              </div>
               <iframe
                 width="100%"
                 height="202"
@@ -741,6 +720,14 @@ export default function HomePage() {
                 allowFullScreen
                 className="mt-6 rounded-2xl"
                 title="BandLab player 2"
+              />
+              <iframe
+                width="100%"
+                height="202"
+                src="https://www.bandlab.com/embed/?id=b11f0432-7e55-4c44-bf52-3d188f30e505"
+                allowFullScreen
+                className="mt-6 rounded-2xl"
+                title="BandLab player 3"
               />
             </motion.div>
           </div>
