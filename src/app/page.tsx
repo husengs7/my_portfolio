@@ -248,6 +248,13 @@ export default function HomePage() {
       tags: ["internship"],
       description: "FindyのDeveloper Relations室に、長期インターンとして参画。",
     },
+    {
+      date: "2026.09",
+      title: "LOCAL STAGE Project推しゲーLT",
+      tags: ["lightning-talk"],
+      description: "推しゲーLTでエロゲと鬱ゲーとICOについて話した。",
+      descriptionHref: "https://speakerdeck.com/husengs7/setsumei-ha-noizudearu-ico-kara-manabu-gemu-dezain",
+    },
   ];
   const productItems = [
     {
@@ -588,13 +595,21 @@ export default function HomePage() {
                     aria-pressed={timelineFilter === value}
                     aria-controls="locus-timeline"
                     onClick={() => setTimelineFilter(value)}
-                    className={`min-h-11 rounded-md border px-4 py-2 text-sm tracking-normal transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-100 ${
+                    className={`group relative min-h-11 px-4 py-2 text-sm tracking-normal transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-100 ${
                       timelineFilter === value
-                        ? "border-amber-100/40 bg-amber-100/10 text-amber-100"
-                        : "border-parchment/15 text-parchment/60 hover:border-parchment/30 hover:text-parchment"
+                        ? "text-amber-100"
+                        : "text-parchment/60 hover:text-parchment"
                     }`}
                   >
                     {label}
+                    <span
+                      aria-hidden="true"
+                      className={`pointer-events-none absolute inset-x-4 bottom-1 h-px origin-center bg-amber-100/70 transition-[transform,opacity] duration-300 ease-out motion-reduce:transition-none ${
+                        timelineFilter === value
+                          ? "scale-x-100 opacity-100"
+                          : "scale-x-0 opacity-0 group-hover:scale-x-100 group-hover:opacity-40"
+                      }`}
+                    />
                   </button>
                 ))}
               </div>
