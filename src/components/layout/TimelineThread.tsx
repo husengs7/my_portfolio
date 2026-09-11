@@ -4,12 +4,15 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { type CSSProperties, useRef } from "react";
 
-type TimelineItem = {
+export type TimelineTag = "hackathon" | "internship" | "lightning-talk" | "other";
+
+export type TimelineItem = {
   date: string;
   title: string;
   description: string;
   descriptionHref?: string;
   hasAward?: boolean;
+  tags: TimelineTag[];
 };
 
 type TimelineThreadProps = {
@@ -80,6 +83,12 @@ function buildMobilePath(count: number) {
   }
 
   return path;
+}
+
+function TimelineMetadata({ item }: { item: TimelineItem }) {
+  return (
+    <span className="block text-[0.75rem] uppercase tracking-[0.24em] text-amber-100/55">{item.date}</span>
+  );
 }
 
 function TimelineDescription({ item }: { item: TimelineItem }) {
@@ -179,7 +188,7 @@ export function TimelineThread({ items, className = "" }: TimelineThreadProps) {
                               <AwardCrown />
                             </div>
                           ) : null}
-                          <span className="block text-[0.75rem] uppercase tracking-[0.24em] text-amber-100/55">{item.date}</span>
+                          <TimelineMetadata item={item} />
                           <h3 className="mb-2 mt-2 text-lg font-bold tracking-tight text-amber-100/90 md:text-xl">{item.title}</h3>
                           <TimelineDescription item={item} />
                         </div>
@@ -200,7 +209,7 @@ export function TimelineThread({ items, className = "" }: TimelineThreadProps) {
                               <AwardCrown />
                             </div>
                           ) : null}
-                          <span className="block text-[0.75rem] uppercase tracking-[0.24em] text-amber-100/55">{item.date}</span>
+                          <TimelineMetadata item={item} />
                           <h3 className="mb-2 mt-2 text-lg font-bold tracking-tight text-amber-100/90 md:text-xl">{item.title}</h3>
                           <TimelineDescription item={item} />
                         </div>
@@ -219,7 +228,7 @@ export function TimelineThread({ items, className = "" }: TimelineThreadProps) {
                         <AwardCrown />
                       </div>
                     ) : null}
-                    <span className="block text-[0.75rem] uppercase tracking-[0.24em] text-amber-100/55">{item.date}</span>
+                    <TimelineMetadata item={item} />
                     <h3 className="mb-2 mt-2 text-lg font-bold tracking-tight text-amber-100/90 md:text-xl">{item.title}</h3>
                     <TimelineDescription item={item} />
                   </div>

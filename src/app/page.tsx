@@ -7,10 +7,18 @@ import { useEffect, useState } from "react";
 import { Constellation } from "@/components/layout/Constellation";
 import { CandlelightStage } from "@/components/layout/CandlelightStage";
 import { CloudWisp } from "@/components/layout/CloudWisp";
-import { TimelineThread } from "@/components/layout/TimelineThread";
+import { TimelineThread, type TimelineItem, type TimelineTag } from "@/components/layout/TimelineThread";
 import { StoryLanternSection } from "@/components/layout/StoryLanternSection";
 import { TheSpark } from "@/components/ui/TheSpark";
 import { useOpeningLight } from "@/hooks/useOpeningLight";
+
+const timelineFilters: { value: "all" | TimelineTag; label: string }[] = [
+  { value: "all", label: "All" },
+  { value: "internship", label: "intern" },
+  { value: "hackathon", label: "Hackathon" },
+  { value: "lightning-talk", label: "LT" },
+  { value: "other", label: "Other" },
+];
 
 type SubProductItem = {
   id: string;
@@ -150,6 +158,7 @@ function SubProductCard({ product }: { product: SubProductItem }) {
 }
 
 export default function HomePage() {
+  const [timelineFilter, setTimelineFilter] = useState<"all" | TimelineTag>("all");
   const { hasStarted, ignite, isLit, leftLampLit, rightLampLit } = useOpeningLight();
   const profileLinks = [
     {
@@ -181,53 +190,62 @@ export default function HomePage() {
         "hover:text-orange-400 hover:drop-shadow-[0_0_7px_rgba(251,146,60,0.55)]",
     },
   ];
-  const timelineItems = [
+  const timelineItems: TimelineItem[] = [
     {
       date: "2025.07",
       title: "Progateハッカソン powered by AWS",
+      tags: ["hackathon"],
       description: "React Native による宿題支援スマホアプリを開発。",
     },
     {
       date: "2025.08~09",
       title: "100Program",
+      tags: ["hackathon"],
       description: "Node.js によるジオゲッサー Web アプリを制作。ファイナル進出。",
     },
     {
       date: "2025.10",
       title: "チームラボ Flutter 1Day ハッカソン",
+      tags: ["hackathon"],
       description: "短期間でFlutterの基礎とデザインによるユーザー体験を学ぶ。",
     },
     {
       date: "2025.12",
       title: "Progateハッカソン supported by RIZAP",
+      tags: ["hackathon"],
       description: "FlutterとGoogleMap API による地図アプリを開発し、RIZAP 賞を受賞。",
       hasAward: true,
     },
     {
       date: "2025.12",
       title: "RIZAPテクノロジーズ 3days インターン",
+      tags: ["internship"],
       description: "Ruby on Rails を用いた chocoZAP の API 設計に取り組む。",
     },
     {
       date: "2026.02",
       title: "42Tokyo Piscine",
+      tags: ["other"],
       description: "1ヶ月間、教師なしの環境の中、生徒同士のピアラーニングでC言語を学ぶ。",
     },
     {
       date: "2026.03",
       title: "Findy Campus Hackathon",
+      tags: ["hackathon"],
       description: "React と Ruby on Rails のスマホアプリで Findy 賞とウェルスナビ賞を受賞。",
       hasAward: true,
     },
     {
       date: "2026.05",
       title: "Findy 学生エンジニアの個人開発LT",
+      tags: ["lightning-talk"],
       description: "「Fラン学生が考える、AI時代のデザインに執着した突破口」でLT登壇。",
       descriptionHref: "https://speakerdeck.com/husengs7/franxue-sheng-gakao-eru-aishi-dai-nodezainnizhi-zhao-sitatu-po-kou",
     },
 	{
       date: "2026.06",
       title: "Findy DevRel インターン join",
+      tags: ["internship"],
       description: "FindyのDeveloper Relations室に、長期インターンとして参画。",
     },
   ];
@@ -560,11 +578,29 @@ export default function HomePage() {
               placement="section"
               className="pointer-events-none absolute inset-0 z-0 opacity-60"
             />
-            <div className="mb-12 text-center">
+            <div className="relative z-10 mb-12 text-center">
               <h2 className="relative z-10 font-serifStory text-2xl tracking-[0.3em] text-amber-100/80">Locus</h2>
+              <div className="mt-6 flex flex-wrap justify-center gap-2" role="group" aria-label="活動の絞り込み">
+                {timelineFilters.map(({ value, label }) => (
+                  <button
+                    key={value}
+                    type="button"
+                    aria-pressed={timelineFilter === value}
+                    aria-controls="locus-timeline"
+                    onClick={() => setTimelineFilter(value)}
+                    className={`min-h-11 rounded-md border px-4 py-2 text-sm tracking-normal transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-100 ${
+                      timelineFilter === value
+                        ? "border-amber-100/40 bg-amber-100/10 text-amber-100"
+                        : "border-parchment/15 text-parchment/60 hover:border-parchment/30 hover:text-parchment"
+                    }`}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
             </div>
-            <div className="relative z-10">
-              <TimelineThread items={timelineItems} />
+            <div id="locus-timeline" className="relative z-10">
+              <TimelineThread items={timelineItems.filter((item) => timelineFilter === "all" || item.tags.includes(timelineFilter))} />
             </div>
           </div>
         </section>
