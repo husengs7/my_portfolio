@@ -255,6 +255,12 @@ export default function HomePage() {
       description: "推しゲーLTでエロゲと鬱ゲーとICOについて話した。",
       descriptionHref: "https://speakerdeck.com/husengs7/setsumei-ha-noizudearu-ico-kara-manabu-gemu-dezain",
     },
+    {
+      date: "2026.09",
+      title: "Google Japan Data Center Hardware Hackathon 2026",
+      tags: ["hackathon"],
+      description: "GoogleでDellのサーバーをチームで組み上げた。",
+    },
   ];
   const productItems = [
     {
