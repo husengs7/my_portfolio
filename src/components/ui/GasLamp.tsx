@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 type GasLampProps = {
   side: "left" | "right";
@@ -9,6 +10,9 @@ type GasLampProps = {
 };
 
 export function GasLamp({ side, isLit, delay = 0 }: GasLampProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { margin: "160px 0px" });
+  const animateFlame = isLit && isInView;
   const alignClass = side === "left" ? "items-start" : "items-end";
   const frameColor = "#052015";
   const frameHighlight = "#15392b";
@@ -19,7 +23,7 @@ export function GasLamp({ side, isLit, delay = 0 }: GasLampProps) {
   const mantleStroke = isLit ? "#fff0bf" : "#a6a8ab";
 
   return (
-    <div className={`pointer-events-none relative flex h-[26rem] w-40 ${alignClass} justify-start`}>
+    <div ref={ref} className={`pointer-events-none relative flex h-[26rem] w-40 ${alignClass} justify-start`}>
       <motion.div
         initial={false}
         animate={{
@@ -37,18 +41,18 @@ export function GasLamp({ side, isLit, delay = 0 }: GasLampProps) {
       <motion.div
         initial={false}
         animate={
-          isLit
+          animateFlame
             ? {
                 opacity: [0.72, 1, 0.84, 0.94],
                 scale: [0.985, 1.018, 0.994, 1.01],
               }
             : {
-                opacity: 0.14,
-                scale: 0.97,
+                opacity: isLit ? 0.84 : 0.14,
+                scale: isLit ? 1 : 0.97,
               }
         }
         transition={
-          isLit
+          animateFlame
             ? {
                 duration: 1.9,
                 delay,
@@ -93,13 +97,13 @@ export function GasLamp({ side, isLit, delay = 0 }: GasLampProps) {
             d="M80 63L111 75L102 122L80 138L58 122L49 75Z"
             initial={false}
             animate={{
-              opacity: isLit ? [0.62, 0.98, 0.76] : 0,
-              scale: isLit ? [0.97, 1.03, 0.99] : 0.84,
+              opacity: animateFlame ? [0.62, 0.98, 0.76] : isLit ? 0.76 : 0,
+              scale: animateFlame ? [0.97, 1.03, 0.99] : isLit ? 1 : 0.84,
             }}
             transition={{
               duration: 1.4,
               delay,
-              repeat: isLit ? Number.POSITIVE_INFINITY : 0,
+              repeat: animateFlame ? Number.POSITIVE_INFINITY : 0,
               ease: "easeInOut",
             }}
             fill={`url(#inner-glow-${side})`}
@@ -204,12 +208,12 @@ export function GasLamp({ side, isLit, delay = 0 }: GasLampProps) {
             d="M68 80L92 80L88 110L80 120L72 110Z"
             initial={false}
             animate={{
-              opacity: isLit ? [0.24, 0.44, 0.28] : 0.04,
+              opacity: animateFlame ? [0.24, 0.44, 0.28] : isLit ? 0.28 : 0.04,
             }}
             transition={{
               duration: 1.2,
               delay,
-              repeat: Number.POSITIVE_INFINITY,
+              repeat: animateFlame ? Number.POSITIVE_INFINITY : 0,
               ease: "easeInOut",
             }}
             fill={glowFill}
@@ -220,12 +224,12 @@ export function GasLamp({ side, isLit, delay = 0 }: GasLampProps) {
             d="M80 78L87 91L84 110L80 121L76 110L73 91Z"
             initial={false}
             animate={{
-              opacity: isLit ? [0.22, 0.46, 0.26] : 0.12,
+              opacity: animateFlame ? [0.22, 0.46, 0.26] : isLit ? 0.26 : 0.12,
             }}
             transition={{
               duration: 1.4,
               delay,
-              repeat: Number.POSITIVE_INFINITY,
+              repeat: animateFlame ? Number.POSITIVE_INFINITY : 0,
               ease: "easeInOut",
             }}
             fill={isLit ? "rgba(248,196,92,0.56)" : "rgba(142,144,146,0.28)"}
@@ -236,7 +240,7 @@ export function GasLamp({ side, isLit, delay = 0 }: GasLampProps) {
             d="M80 75L88 90L85 111L80 124L75 111L72 90Z"
             initial={false}
             animate={
-              isLit
+              animateFlame
                 ? {
                     opacity: [0.7, 1, 0.85],
                     scaleY: [0.9, 1.08, 0.95],
@@ -244,14 +248,14 @@ export function GasLamp({ side, isLit, delay = 0 }: GasLampProps) {
                     y: [-1, 0, 1],
                   }
                 : {
-                    opacity: 0.22,
-                    scaleY: 0.82,
-                    scaleX: 0.94,
-                    y: 2,
+                    opacity: isLit ? 0.85 : 0.22,
+                    scaleY: isLit ? 0.95 : 0.82,
+                    scaleX: isLit ? 0.99 : 0.94,
+                    y: isLit ? 0 : 2,
                   }
             }
             transition={
-              isLit
+              animateFlame
                 ? {
                     duration: 0.72,
                     delay,
