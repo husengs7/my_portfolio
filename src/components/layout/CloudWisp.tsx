@@ -81,7 +81,7 @@ function CloudWispLayer({
         left: `${cloud.left}%`,
         transform: `translateY(${round((mode === "back" ? 18 : 28) * cloud.depth)}px)`,
       }}
-      className="absolute"
+      className={`absolute ${index % 2 === 1 ? "hidden md:block" : ""}`}
     >
       <svg
         viewBox="0 0 420 210"
