@@ -1,8 +1,5 @@
 "use client";
 
-import { motion, type MotionValue, useScroll, useSpring, useTransform } from "framer-motion";
-import { useRef } from "react";
-
 type CloudWispProps = {
   className?: string;
   layers?: number;
@@ -19,8 +16,6 @@ type CloudSpec = {
   opacity: number;
   strokeOpacity: number;
   flip: number;
-  duration: number;
-  drift: number;
   depth: number;
   blurStdDeviation: number;
 };
@@ -60,8 +55,6 @@ function createClouds(count: number): CloudSpec[] {
       opacity,
       strokeOpacity: round(Math.max(opacity - 0.01, 0.02)),
       flip: normalize(randomE) > 0.5 ? -1 : 1,
-      duration: round(30 + normalize(randomA * 0.6) * 30),
-      drift: round(-26 + normalize(randomB * 0.7) * 52),
       depth: round(0.55 + normalize(randomC * 0.8) * 0.6),
       blurStdDeviation: round(7 + scale * 1.6),
     };
@@ -75,50 +68,26 @@ function CloudWispLayer({
   index,
   mode,
   placement,
-  smoothProgress,
 }: {
   cloud: CloudSpec;
   index: number;
   mode: "back" | "front";
   placement: "fixed" | "section";
-  smoothProgress: MotionValue<number>;
 }) {
-  const parallaxY = useTransform(
-    smoothProgress,
-    [0, 1],
-    mode === "back"
-      ? [round(18 * cloud.depth), round(-26 * cloud.depth)]
-      : [round(28 * cloud.depth), round(-18 * cloud.depth)],
-  );
-  const xDrift = mode === "back" ? cloud.drift : round(cloud.drift * 0.72);
-  const yScale = mode === "back" ? cloud.scale : round(cloud.scale * 0.92);
-
   return (
-    <motion.div
+    <div
       style={{
         top: `${cloud.top}%`,
         left: `${cloud.left}%`,
-        y: parallaxY,
+        transform: `translateY(${round((mode === "back" ? 18 : 28) * cloud.depth)}px)`,
       }}
       className="absolute"
     >
-      <motion.svg
+      <svg
         viewBox="0 0 420 210"
         className={`${
           placement === "fixed" ? "h-[180px] w-[min(92vw,820px)]" : "h-[150px] w-[min(78vw,700px)]"
         } -translate-x-1/2 -translate-y-1/2`}
-        animate={{
-          x: [0, xDrift, 0],
-        }}
-        transition={{
-          duration: mode === "back" ? cloud.duration : round(cloud.duration * 0.82),
-          ease: "easeInOut",
-          repeat: Number.POSITIVE_INFINITY,
-          delay: round(index * 0.8),
-        }}
-        style={{
-          scale: `${round(cloud.scale * cloud.flip)} ${yScale}`,
-        }}
       >
         <defs>
           <filter id={`cloud-blur-${mode}-${placement}-${index}`}>
@@ -141,8 +110,8 @@ function CloudWispLayer({
           strokeLinejoin="round"
           filter={`url(#cloud-blur-${mode}-${placement}-${index})`}
         />
-      </motion.svg>
-    </motion.div>
+      </svg>
+    </div>
   );
 }
 
@@ -152,20 +121,8 @@ export function CloudWisp({
   mode = "back",
   placement = "fixed",
 }: CloudWispProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 80,
-    damping: 24,
-    mass: 0.9,
-  });
-
   return (
     <div
-      ref={ref}
       className={`pointer-events-none ${
         placement === "fixed"
           ? "fixed left-[-10vw] top-0 h-screen w-[120vw]"
@@ -181,7 +138,6 @@ export function CloudWisp({
           index={index}
           mode={mode}
           placement={placement}
-          smoothProgress={smoothProgress}
         />
       ))}
     </div>
