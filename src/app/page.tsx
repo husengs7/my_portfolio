@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, BookOpenText, Github, Mail, Music2, Twitter } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { Picture } from "@/components/blog/picture";
 import { Constellation } from "@/components/layout/Constellation";
 import { CandlelightStage } from "@/components/layout/CandlelightStage";
 import { CloudWisp } from "@/components/layout/CloudWisp";
@@ -751,7 +752,7 @@ export default function HomePage() {
             <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-3">
               {workItems.map((work) => {
                 const banner = (
-                  <div className="relative aspect-video overflow-hidden rounded-lg border border-parchment/10 bg-white/5">
+                  <Picture className="aspect-video">
                     <Image
                       src={work.imageSrc}
                       alt={work.title}
@@ -759,11 +760,11 @@ export default function HomePage() {
                       sizes="(min-width: 1024px) 325px, (min-width: 768px) 33vw, 100vw"
                       className="object-contain"
                     />
-                  </div>
+                  </Picture>
                 );
 
                 return work.href ? (
-                  <a key={work.imageSrc} href={work.href} target="_blank" rel="noreferrer" className="block rounded-lg transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-100">
+                  <a key={work.imageSrc} href={work.href} target="_blank" rel="noreferrer" className="block rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-100">
                     {banner}
                   </a>
                 ) : (

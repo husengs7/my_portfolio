@@ -30,3 +30,56 @@ body::selection {
   background: rgba(245, 197, 108, 0.32);
   color: #fdf5e6;
 }
+
+.gymnopedies-picture {
+  transition: border-color 300ms ease;
+}
+
+.gymnopedies-picture::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: inset 0 0 18px rgba(245, 197, 108, 0.18);
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+@media (hover: hover) {
+  .gymnopedies-picture img {
+    opacity: 0.75;
+    filter: grayscale(60%);
+    transition: opacity 700ms ease, filter 700ms ease;
+  }
+
+  .gymnopedies-picture:hover img,
+  a:focus-visible .gymnopedies-picture img {
+    opacity: 1;
+    filter: grayscale(0%);
+  }
+
+  .gymnopedies-picture:hover {
+    border-color: rgba(245, 197, 108, 0.45);
+  }
+
+  .gymnopedies-picture:hover::after {
+    opacity: 1;
+  }
+}
+
+a:focus-visible .gymnopedies-picture {
+  border-color: rgba(245, 197, 108, 0.45);
+}
+
+a:focus-visible .gymnopedies-picture::after {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gymnopedies-picture,
+  .gymnopedies-picture img,
+  .gymnopedies-picture::after {
+    transition: none;
+  }
+}
