@@ -22,10 +22,10 @@ const timelineFilters: { value: "all" | TimelineTag; label: string }[] = [
 
 // Add banner paths from public here, e.g. { imageSrc: "/event.png", title: "Event" }.
 const workItems: { imageSrc: string; title: string; href?: string }[] = [
-  { imageSrc: "/イベント体験談LT.png", title: "イベント体験談LT", href: "https://student.findy-code.io/events/c14BzbyfQTOEmzc8a0MgAA" },
-  { imageSrc: "/学びシェアLT.png", title: "学びシェアLT", href: "https://student.findy-code.io/events/bJglxz3USJmeqvfJr7qn0Q" },
-  { imageSrc: "/テック文化祭.jpg", title: "テック文化祭", href: "https://student.findy-code.io/events/b0u9w8WfRTmI4OFWEm188Q" },
-  { imageSrc: "/推しクラウド.png", title: "推しクラウド", href: "https://student.findy-code.io/events/_0FNJsGVTa2d0-e_cYNb0Q" },
+  { imageSrc: "/event-experience-lt.png", title: "イベント体験談LT", href: "https://student.findy-code.io/events/c14BzbyfQTOEmzc8a0MgAA" },
+  { imageSrc: "/learning-share-lt.png", title: "学びシェアLT", href: "https://student.findy-code.io/events/bJglxz3USJmeqvfJr7qn0Q" },
+  { imageSrc: "/tech-festival.jpg", title: "テック文化祭", href: "https://student.findy-code.io/events/b0u9w8WfRTmI4OFWEm188Q" },
+  { imageSrc: "/favorite-cloud.png", title: "推しクラウド", href: "https://student.findy-code.io/events/_0FNJsGVTa2d0-e_cYNb0Q" },
 ];
 
 type SubProductItem = {
