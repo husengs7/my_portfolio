@@ -40,7 +40,7 @@ function StarGlyph({ type, size }: { type: "dot" | "cross"; size: number }) {
 
 export function StarrySky() {
   return (
-    <div className="pointer-events-none absolute inset-x-0 top-0 h-[34rem] overflow-hidden">
+    <div className="pointer-events-none fixed inset-x-0 top-0 h-[34rem] overflow-hidden">
       <div className="absolute inset-0 bg-[linear-gradient(180deg,#020212_0%,rgba(3,3,17,0.94)_34%,rgba(5,5,26,0.58)_72%,rgba(5,5,26,0)_100%)]" />
       {stars.map((star) => (
         <motion.div
