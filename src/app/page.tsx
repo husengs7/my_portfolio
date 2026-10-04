@@ -20,6 +20,14 @@ const timelineFilters: { value: "all" | TimelineTag; label: string }[] = [
   { value: "other", label: "Other" },
 ];
 
+// Add banner paths from public here, e.g. { imageSrc: "/event.png", title: "Event" }.
+const workItems: { imageSrc: string; title: string; href?: string }[] = [
+  { imageSrc: "/イベント体験談LT.png", title: "イベント体験談LT", href: "https://student.findy-code.io/events/c14BzbyfQTOEmzc8a0MgAA" },
+  { imageSrc: "/学びシェアLT.png", title: "学びシェアLT", href: "https://student.findy-code.io/events/bJglxz3USJmeqvfJr7qn0Q" },
+  { imageSrc: "/テック文化祭.jpg", title: "テック文化祭", href: "https://student.findy-code.io/events/b0u9w8WfRTmI4OFWEm188Q" },
+  { imageSrc: "/推しクラウド.png", title: "推しクラウド", href: "https://student.findy-code.io/events/_0FNJsGVTa2d0-e_cYNb0Q" },
+];
+
 type SubProductItem = {
   id: string;
   title: string;
@@ -730,6 +738,40 @@ export default function HomePage() {
             <div className="mt-20 grid grid-cols-2 gap-3 md:flex md:flex-row md:flex-wrap md:items-start md:gap-6">
               {subProductItems.map((product) => (
                 <SubProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="relative z-10 mt-28 w-full px-6" aria-labelledby="work-heading">
+          <div className="mx-auto max-w-5xl">
+            <div className="mb-12 text-center">
+              <h2 id="work-heading" className="font-serifStory text-2xl tracking-[0.3em] text-amber-100/80">Work</h2>
+            </div>
+            <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-3">
+              {workItems.map((work) => {
+                const banner = (
+                  <div className="relative aspect-video overflow-hidden rounded-lg border border-parchment/10 bg-white/5">
+                    <Image
+                      src={work.imageSrc}
+                      alt={work.title}
+                      fill
+                      sizes="(min-width: 1024px) 325px, (min-width: 768px) 33vw, 100vw"
+                      className="object-contain"
+                    />
+                  </div>
+                );
+
+                return work.href ? (
+                  <a key={work.imageSrc} href={work.href} target="_blank" rel="noreferrer" className="block rounded-lg transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-100">
+                    {banner}
+                  </a>
+                ) : (
+                  <div key={work.imageSrc}>{banner}</div>
+                );
+              })}
+              {workItems.length === 0 && [0, 1, 2].map((slot) => (
+                <div key={slot} aria-hidden="true" className="aspect-video rounded-lg border border-parchment/10 bg-white/5" />
               ))}
             </div>
           </div>
