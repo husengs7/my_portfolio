@@ -38,31 +38,8 @@ export function GasLamp({ side, isLit, delay = 0 }: GasLampProps) {
         className={`absolute top-6 ${side === "left" ? "-left-2" : "-right-2"} h-56 w-56 rounded-full bg-[radial-gradient(circle,rgba(255,224,165,0.42)_0%,rgba(245,197,108,0.26)_24%,rgba(210,141,55,0.18)_44%,rgba(5,5,26,0)_76%)] blur-3xl`}
       />
 
-      <motion.div
-        initial={false}
-        animate={
-          animateFlame
-            ? {
-                opacity: [0.72, 1, 0.84, 0.94],
-                scale: [0.985, 1.018, 0.994, 1.01],
-              }
-            : {
-                opacity: isLit ? 0.84 : 0.14,
-                scale: isLit ? 1 : 0.97,
-              }
-        }
-        transition={
-          animateFlame
-            ? {
-                duration: 1.9,
-                delay,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "easeInOut",
-              }
-            : {
-                duration: 0.5,
-              }
-        }
+      <div
+        style={{ opacity: isLit ? 0.84 : 0.14 }}
         className={`relative mt-0 flex h-full w-36 ${alignClass}`}
       >
         <svg viewBox="0 0 160 360" className="h-full w-full overflow-visible">
@@ -273,7 +250,7 @@ export function GasLamp({ side, isLit, delay = 0 }: GasLampProps) {
             style={{ transformOrigin: "80px 100px" }}
           />
         </svg>
-      </motion.div>
+      </div>
     </div>
   );
 }
