@@ -422,7 +422,7 @@ export default function HomePage() {
           fill
           priority
           sizes="100vw"
-          className="-translate-y-[5%] scale-[0.97] object-cover object-top brightness-[1.35] contrast-110 md:translate-y-0 md:scale-100 md:object-cover md:object-bottom md:brightness-[1.1]"
+          className="-translate-y-[5%] scale-[0.97] object-cover object-top brightness-[1.4] contrast-110 md:translate-y-0 md:scale-100 md:object-cover md:object-bottom md:brightness-[1.15]"
         />
       </motion.div>
 
