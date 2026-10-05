@@ -490,22 +490,7 @@ export default function HomePage() {
         </section>
 
         <section className="relative z-10 mx-auto mt-4 max-w-6xl">
-          <div className="pointer-events-none absolute inset-0 z-0">
-            <motion.div
-              initial={false}
-              animate={{ opacity: isLit ? 1 : 0 }}
-              transition={{ duration: 2, ease: "easeOut", delay: isLit ? 0.5 : 0 }}
-            >
-              <Constellation
-                tone="orion"
-                className="left-[4%] -top-56 h-[10rem] w-[14rem] opacity-90 sm:left-[10%] sm:-top-64 sm:h-[11rem] sm:w-[16rem]"
-              />
-              <Constellation
-                tone="cassiopeia"
-                className="right-[2%] top-20 h-[9rem] w-[15rem] opacity-85 sm:right-[4%] sm:top-24 sm:h-[10rem] sm:w-[17rem]"
-              />
-            </motion.div>
-          </div>
+          <Constellation tone="orion" className="left-0 -top-28 h-24 w-36 opacity-80 sm:left-[8%] sm:h-28 sm:w-44" />
           <div className="relative mx-auto max-w-4xl py-12">
             <CloudWisp mode="front" placement="section" className="opacity-75" />
             <motion.div
@@ -594,6 +579,7 @@ export default function HomePage() {
           </div>
         </section>
         <section className="relative z-10 mt-24 w-full px-6">
+          <Constellation tone="cassiopeia" className="right-0 -top-28 h-24 w-36 opacity-80 sm:right-[8%] sm:h-28 sm:w-44" />
           <div className="mx-auto max-w-4xl">
             <CloudWisp
               mode="front"
@@ -639,6 +625,7 @@ export default function HomePage() {
           <div className="mx-auto max-w-5xl">
             <div className="mb-12 text-center">
               <h2 className="font-serifStory text-2xl tracking-[0.3em] text-amber-100/80">Product</h2>
+              <Constellation tone="lyra" className="left-0 -top-28 h-24 w-36 opacity-80 sm:left-[8%] sm:h-28 sm:w-44" />
             </div>
 
             <div className="space-y-10 md:space-y-14">
@@ -787,6 +774,7 @@ export default function HomePage() {
             />
             <div className="mb-12 text-center">
               <h2 className="relative z-10 font-serifStory text-2xl tracking-[0.3em] text-amber-100/80">Sound</h2>
+              <Constellation tone="cygnus" className="right-0 -top-28 h-24 w-36 opacity-80 sm:right-[8%] sm:h-28 sm:w-44" />
             </div>
             <motion.div
               initial={{ opacity: 0, y: 24 }}

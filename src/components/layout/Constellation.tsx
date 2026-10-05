@@ -1,6 +1,6 @@
 "use client";
 
-type ConstellationTone = "orion" | "cassiopeia";
+type ConstellationTone = "orion" | "cassiopeia" | "lyra" | "cygnus";
 
 type ConstellationProps = {
   className?: string;
@@ -15,35 +15,53 @@ const constellationMap: Record<
   }
 > = {
   orion: {
+    // Simplified main-star outline, not a scaled sky chart.
     lines: [
-      "M40 38C52 46 66 58 79 71C95 87 113 101 131 111",
-      "M81 72C89 82 97 90 104 100",
-      "M78 70C71 88 64 104 57 121",
-      "M58 122C72 126 92 130 110 127C126 125 139 117 150 108",
+      "M88 30L164 44L142 82L172 150L92 142L114 94L88 30",
+      "M114 94L128 88L142 82",
     ],
     points: [
-      { cx: 40, cy: 38, r: 3.1 },
-      { cx: 79, cy: 71, accent: true },
-      { cx: 104, cy: 100, r: 2.5 },
-      { cx: 57, cy: 121, r: 2.8 },
-      { cx: 110, cy: 127, accent: true },
-      { cx: 150, cy: 108, r: 2.7 },
+      { cx: 88, cy: 30, accent: true }, // Betelgeuse
+      { cx: 164, cy: 44, r: 2.8 }, // Bellatrix
+      { cx: 114, cy: 94, r: 2.5 }, // Alnitak
+      { cx: 128, cy: 88, r: 2.7 }, // Alnilam
+      { cx: 142, cy: 82, r: 2.4 }, // Mintaka
+      { cx: 92, cy: 142, r: 2.7 }, // Saiph
+      { cx: 172, cy: 150, accent: true }, // Rigel
+    ],
+  },
+  lyra: {
+    lines: ["M82 34L108 76L174 64L194 132L128 144L108 76"],
+    points: [
+      { cx: 82, cy: 34, accent: true }, // Vega
+      { cx: 108, cy: 76, r: 2.3 }, // Zeta Lyrae
+      { cx: 174, cy: 64, r: 2.4 }, // Delta Lyrae
+      { cx: 194, cy: 132, r: 2.8 }, // Sulafat
+      { cx: 128, cy: 144, r: 2.6 }, // Sheliak
+    ],
+  },
+  cygnus: {
+    lines: ["M130 26L130 76L130 154", "M48 110L88 92L130 76L174 66L220 48"],
+    points: [
+      { cx: 130, cy: 26, accent: true }, // Deneb
+      { cx: 130, cy: 76, r: 3 }, // Sadr
+      { cx: 130, cy: 154, r: 2.6 }, // Albireo
+      { cx: 48, cy: 110, r: 2.3 }, // Zeta Cygni
+      { cx: 88, cy: 92, r: 2.7 }, // Gienah
+      { cx: 174, cy: 66, r: 2.5 }, // Delta Cygni
+      { cx: 220, cy: 48, r: 2.2 }, // Iota Cygni
     ],
   },
   cassiopeia: {
     lines: [
-      "M34 99C48 88 60 80 74 74C89 69 103 69 116 76",
-      "M116 76C126 84 137 94 149 100",
-      "M149 100C159 91 170 81 183 75",
-      "M183 75C195 84 208 98 222 110",
+      "M34 58L82 118L130 76L170 124L222 46",
     ],
     points: [
-      { cx: 34, cy: 99, r: 2.7 },
-      { cx: 74, cy: 74, accent: true },
-      { cx: 116, cy: 76, r: 2.8 },
-      { cx: 149, cy: 100, r: 3 },
-      { cx: 183, cy: 75, accent: true },
-      { cx: 222, cy: 110, r: 3.2 },
+      { cx: 34, cy: 58, r: 2.7 }, // Caph
+      { cx: 82, cy: 118, accent: true }, // Schedar
+      { cx: 130, cy: 76, accent: true }, // Gamma Cassiopeiae
+      { cx: 170, cy: 124, r: 2.5 }, // Ruchbah
+      { cx: 222, cy: 46, r: 2.3 }, // Segin
     ],
   },
 };
