@@ -276,7 +276,14 @@ export default function HomePage() {
       title: "テック文化祭 2026 by Findy Student",
       tags: ["other"],
       description: "イベント主催をした。",
-    }
+    },
+    {
+      date: "2026.10",
+      title: "STECH Fes 2026",
+      tags: ["lightning-talk"],
+      description: "「おそらく日本で唯一のDevRelインターン生として」でLT登壇。",
+      descriptionHref: "https://speakerdeck.com/husengs7/osoraku-nippon-de-yuiitsu-no-devrel-intansei-toshite",
+    },
   ];
   const productItems = [
     {
