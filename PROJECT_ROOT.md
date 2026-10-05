@@ -16,7 +16,8 @@
 - Current deployment mode: static export / SSG.
 - `next.config.ts` is configured with `output: "export"` and `images.unoptimized: true`.
 - Amplify build config exists in `amplify.yml`.
-- The first Profile section now contains concrete profile content: `Sora Midorikawa / husensan`, Tokyo University of Information Sciences, Tokyo, and drummer activity in `ねずみ幸福論`.
+- The page currently contains `Profile`, `Locus`, `Product`, `Work`, and `Sound` sections.
+- Profile content includes `Sora Midorikawa / husensan`, Tokyo University of Information Sciences, Tokyo, and drummer activity in `ねずみ幸福論`.
 
 ## Fixed Tech Stack
 - Framework: Next.js with App Router and TypeScript
@@ -27,14 +28,14 @@
 ## Fixed Rules
 - Star ritual: while `isLit === false`, body scrolling is locked. Tapping the spark unlocks scroll and begins the world-opening sequence.
 - Gas lamps: the first two lamps act as the entrance gate and are placed more inward; later lamps are distributed along the path with asymmetry.
-- Cloud mist: cloud motion uses `useSpring`-smoothed parallax and extremely low opacity (`0.03` to `0.08`) so the result reads as "mist" rather than explicit clouds.
+- Cloud mist: clouds use deterministic positions and extremely low opacity (`0.03` to `0.08`) so the result reads as "mist" rather than explicit clouds.
 - Cloud layer structure: clouds are managed as an independent background layer with low z-index, fixed to the viewport and spread across the full screen so the mist wraps the whole park without clipping at the edges.
 - Cloud dual layering: keep a back cloud layer behind the whole park and a separate front cloud layer in the gap between the title area and the self-introduction copy so overlapping haze deepens the atmosphere without using 3D.
-- Front cloud duplication: the same `CloudWisp` front-layer configuration is intentionally used in two places, once behind the title section and once before the self-introduction section. Do not replace one with the other; both should coexist with the same opacity, `useSpring` parallax, and gentle drift settings.
+- Front cloud duplication: the `CloudWisp` front layer is used around the title/Profile transition and again around the Locus/Product area to preserve the layered haze.
 - Constellations: place lightweight hand-drawn amber constellations in the gap between the title and Profile sections. They must sit behind readable content but in front of the deepest background cloud layer, and remain completely static as a picture-book style drawing of stars and connecting lines.
-- Constellation placement: keep a pair of constellations visible around the `Welcome...` to `Profile` transition, with one lifted toward the upper-left near the title and the other resting on the right side slightly lower, so the sky reads as a balanced illustrated star chart.
+- Constellation placement: distribute the six constellations around the title, Profile, Locus, Product, Work, and Sound transitions so the sky reads as a balanced illustrated star chart while keeping readable content clear.
 - Constellation reveal: constellations stay invisible until the first ignition ritual completes. Once `isLit === true`, they fade in gently with a delayed, atmospheric reveal so the star chart appears to emerge from the night sky after the lamps wake up.
-- Shooting stars: shooting stars are not a spark-triggered event. They are a permanent environmental effect in the far background, with only 1 to 2 thin hand-drawn amber streaks appearing rarely and softly through the mist.
+- Shooting stars: shooting stars are not a spark-triggered event. Six thin hand-drawn amber streaks appear at staggered intervals in the far background.
 - Distant skyline: the `city.png` skyline should hold the bottom of the screen with clear physical presence, using a maximum opacity around `0.7`, a slightly raised horizon position, and modest brightness / contrast tuning so the city reads as a definite nighttime landscape without overpowering the park.
 - Layout depth: no perspective-based 3D. All depth must come from layer ordering, parallax, blur, scale, and atmospheric spacing.
 - Lighting: keep amber watercolor-like glow, soft gradients, blurred transitions, and reveal-by-light behavior.
@@ -58,14 +59,18 @@
 - Motion should support atmosphere and readability, not spectacle.
 - Transitions should feel gentle, warm, and story-driven.
 - Prefer slow, staggered, asynchronous motion over repetitive mechanical loops.
-- Current three-part layer concept: front cloud in the title-to-introduction gap, then readable content, then back cloud plus subtle ambient shooting stars as the environmental background system.
-- Rendering order in practice: ambient shooting stars at the furthest back, then back clouds, then starry sky, then constellations in the title-to-profile gap, then gas lamps and readable content, with the local front cloud reintroduced around the title/introduction transition to brush across the text space.
+- Current layer concept: front clouds around the title/Profile transition and Locus/Product area, readable content, then back clouds plus ambient shooting stars as the environmental background system.
+- Rendering order in practice: ambient shooting stars at the furthest back, then back clouds and starry sky, then static constellations, gas lamps, and readable content.
+- Cloud animation is disabled. On small screens, alternate cloud wisps are hidden so each block renders fewer shapes while keeping its configured placement.
 
 ## Architecture
 - The Profile area is a two-column layout: sticky portrait on the left, profile text on the right.
 - Directly below the profile text and the three external links, place a `Locus` heading.
 - `Locus` is followed by the `TimelineThread` component, which acts as the formal career / project timeline connected by a central thread.
-- The previous standalone `hackathon notes` and `music at midnight` story cards are removed from this stage of the layout.
+- `Locus` supports hidden item tags (`internship`, `hackathon`, `lightning-talk`, and `other`) with underlined filter controls ordered as Internship, Hackathon, LT, and Other.
+- `Locus` displays 10 timeline items by default and can expand to reveal the remaining entries with a blurred continuation preview.
+- `Work` displays event banner cards in one column on mobile and three columns on desktop.
+- `Sound` contains embedded SoundCloud and BandLab players.
 
 ## Avoid
 - Sky lanterns
@@ -82,6 +87,6 @@
 - Preserve the feeling of a calm nighttime walk at every stage of implementation.
 
 ## Next Steps
-- Implement the self-introduction section with real profile details.
-- Build the Works / hackathon achievement cards.
-- Continue refining content reveal timing and section transitions as profile content is added.
+- Keep timeline entries, event links, and profile details synchronized with the portfolio.
+- Continue refining responsive spacing and reveal timing without changing the quiet picture-book atmosphere.
+- Recheck AWS Amplify static-export behavior when adding or renaming public assets.
