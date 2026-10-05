@@ -271,6 +271,12 @@ export default function HomePage() {
       tags: ["hackathon"],
       description: "GoogleでDellのサーバーをチームで組み上げた。",
     },
+    {
+      date: "2026.09",
+      title: "テック文化祭 2026 by Findy Student",
+      tags: ["other"],
+      description: "イベント主催をした。",
+    }
   ];
   const productItems = [
     {

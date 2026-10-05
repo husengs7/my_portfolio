@@ -186,8 +186,8 @@ export function TimelineThread({ items, className = "", previewFrom }: TimelineT
                 {isLeft ? (
                   <>
                     <div className="flex w-1/2 justify-end pr-[0.95rem]">
-                      <div className="w-fit max-w-[22rem]">
-                        <div className="relative rounded-2xl border border-parchment/10 bg-[linear-gradient(180deg,rgba(245,197,108,0.08),rgba(255,255,255,0.02))] px-6 py-4 shadow-[0_0_20px_rgba(245,197,108,0.06)] backdrop-blur-[1px]">
+                      <div className="w-fit min-w-[18rem] max-w-[22rem]">
+                        <div className="relative min-h-[9.5rem] rounded-2xl border border-parchment/10 bg-[linear-gradient(180deg,rgba(245,197,108,0.08),rgba(255,255,255,0.02))] px-6 py-4 shadow-[0_0_20px_rgba(245,197,108,0.06)] backdrop-blur-[1px]">
                           {item.hasAward ? (
                             <div className="absolute right-[-24px] top-[-24px] z-20 rotate-[15deg]">
                               <AwardCrown />
@@ -207,8 +207,8 @@ export function TimelineThread({ items, className = "", previewFrom }: TimelineT
                     <div className="w-1/2" />
                     <div className="relative z-10 h-2.5 w-2.5 rounded-full bg-amber-100/70 shadow-[0_0_10px_rgba(245,197,108,0.18)]" />
                     <div className="flex w-1/2 justify-start pl-[0.95rem]">
-                      <div className="w-fit max-w-[22rem]">
-                        <div className="relative rounded-2xl border border-parchment/10 bg-[linear-gradient(180deg,rgba(245,197,108,0.08),rgba(255,255,255,0.02))] px-6 py-4 shadow-[0_0_20px_rgba(245,197,108,0.06)] backdrop-blur-[1px]">
+                      <div className="w-fit min-w-[18rem] max-w-[22rem]">
+                        <div className="relative min-h-[9.5rem] rounded-2xl border border-parchment/10 bg-[linear-gradient(180deg,rgba(245,197,108,0.08),rgba(255,255,255,0.02))] px-6 py-4 shadow-[0_0_20px_rgba(245,197,108,0.06)] backdrop-blur-[1px]">
                           {item.hasAward ? (
                             <div className="absolute right-[-24px] top-[-24px] z-20 rotate-[15deg]">
                               <AwardCrown />
@@ -226,8 +226,8 @@ export function TimelineThread({ items, className = "", previewFrom }: TimelineT
 
               <div className="flex items-center md:hidden">
                 <div className="mr-4 ml-[3.05rem] relative z-10 h-2.5 w-2.5 rounded-full bg-amber-100/70 shadow-[0_0_10px_rgba(245,197,108,0.18)]" />
-                <div className="max-w-[18rem]">
-                  <div className="relative rounded-2xl border border-parchment/10 bg-[linear-gradient(180deg,rgba(245,197,108,0.08),rgba(255,255,255,0.02))] px-6 py-4 shadow-[0_0_20px_rgba(245,197,108,0.06)] backdrop-blur-[1px]">
+                <div className="w-full max-w-[18rem]">
+                  <div className="relative min-h-[9.5rem] rounded-2xl border border-parchment/10 bg-[linear-gradient(180deg,rgba(245,197,108,0.08),rgba(255,255,255,0.02))] px-6 py-4 shadow-[0_0_20px_rgba(245,197,108,0.06)] backdrop-blur-[1px]">
                     {item.hasAward ? (
                       <div className="absolute right-[-24px] top-[-24px] z-20 rotate-[15deg]">
                         <AwardCrown />
