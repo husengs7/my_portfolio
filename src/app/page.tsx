@@ -634,7 +634,7 @@ export default function HomePage() {
                 const hasTriangulum = product.title === "焚き火チャット";
 
                 return (
-                  <div key={product.title} className={`relative ${hasTriangulum ? "pb-28 xl:pb-0" : ""}`}>
+                  <div key={product.title} className={`relative ${hasTriangulum ? "pb-[17rem] xl:pb-0" : ""}`}>
                   <motion.article
                     initial={{ opacity: 0, x: isEven ? 36 : -36 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -721,7 +721,7 @@ export default function HomePage() {
                     </div>
                   </motion.article>
                   {hasTriangulum && (
-                    <Constellation tone="triangulum" className="bottom-0 right-0 h-24 w-36 opacity-80 sm:h-28 sm:w-44 xl:bottom-auto xl:left-full xl:top-1/2 xl:ml-4 xl:-translate-y-1/2" />
+                    <Constellation tone="triangulum" className="bottom-0 right-0 h-24 w-36 opacity-80 sm:h-28 sm:w-44 xl:bottom-auto xl:left-full xl:top-[calc(50%+10rem)] xl:ml-4 xl:-translate-y-1/2" />
                   )}
                   </div>
                 );
