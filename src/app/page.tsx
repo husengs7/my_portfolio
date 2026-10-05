@@ -8,7 +8,8 @@ import { Picture } from "@/components/blog/picture";
 import { Constellation } from "@/components/layout/Constellation";
 import { CandlelightStage } from "@/components/layout/CandlelightStage";
 import { CloudWisp } from "@/components/layout/CloudWisp";
-import { TimelineThread, type TimelineItem, type TimelineTag } from "@/components/layout/TimelineThread";
+import { type TimelineItem, type TimelineTag } from "@/components/layout/TimelineThread";
+import { ExpandableTimeline } from "@/components/layout/ExpandableTimeline";
 import { StoryLanternSection } from "@/components/layout/StoryLanternSection";
 import { TheSpark } from "@/components/ui/TheSpark";
 import { useOpeningLight } from "@/hooks/useOpeningLight";
@@ -615,8 +616,8 @@ export default function HomePage() {
                 ))}
               </div>
             </div>
-            <div id="locus-timeline" className="relative z-10">
-              <TimelineThread items={timelineItems.filter((item) => timelineFilter === "all" || item.tags.includes(timelineFilter))} />
+            <div className="relative z-10">
+              <ExpandableTimeline key={timelineFilter} items={timelineItems.filter((item) => timelineFilter === "all" || item.tags.includes(timelineFilter))} />
             </div>
           </div>
         </section>

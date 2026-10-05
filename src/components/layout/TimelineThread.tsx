@@ -18,6 +18,7 @@ export type TimelineItem = {
 type TimelineThreadProps = {
   items: TimelineItem[];
   className?: string;
+  previewFrom?: number;
 };
 
 function AwardCrown() {
@@ -111,7 +112,7 @@ function TimelineDescription({ item }: { item: TimelineItem }) {
   );
 }
 
-export function TimelineThread({ items, className = "" }: TimelineThreadProps) {
+export function TimelineThread({ items, className = "", previewFrom }: TimelineThreadProps) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -166,16 +167,20 @@ export function TimelineThread({ items, className = "" }: TimelineThreadProps) {
           const isLeft = index % 2 === 0;
           const top = 36 + index * 132;
           const revealDelay = Math.min(index * 0.08, 0.32);
+          const isPreview = previewFrom !== undefined && index >= previewFrom;
 
           return (
             <motion.div
               key={`${item.date}-${item.title}`}
+              data-timeline-preview={isPreview || undefined}
+              aria-hidden={isPreview || undefined}
+              inert={isPreview || undefined}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false, margin: "-10% 0px -20% 0px" }}
               transition={{ duration: 0.6, delay: revealDelay, ease: "easeOut" }}
               style={{ "--item-top": `${top}px` } as CSSProperties}
-              className="max-md:relative max-md:left-auto max-md:right-auto max-md:mb-20 max-md:top-0 md:absolute md:left-0 md:right-0 md:top-[var(--item-top)]"
+              className={`max-md:relative max-md:left-auto max-md:right-auto max-md:mb-20 max-md:top-0 md:absolute md:left-0 md:right-0 md:top-[var(--item-top)] ${isPreview ? "pointer-events-none blur-sm [mask-image:linear-gradient(to_bottom,black,transparent)]" : ""}`}
             >
               <div className="hidden md:flex items-center">
                 {isLeft ? (
