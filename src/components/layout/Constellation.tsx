@@ -1,6 +1,6 @@
 "use client";
 
-type ConstellationTone = "orion" | "cassiopeia" | "lyra" | "cygnus";
+type ConstellationTone = "orion" | "cassiopeia" | "lyra" | "cygnus" | "triangulum" | "aries";
 
 type ConstellationProps = {
   className?: string;
@@ -50,6 +50,22 @@ const constellationMap: Record<
       { cx: 88, cy: 92, r: 2.7 }, // Gienah
       { cx: 174, cy: 66, r: 2.5 }, // Delta Cygni
       { cx: 220, cy: 48, r: 2.2 }, // Iota Cygni
+    ],
+  },
+  triangulum: {
+    lines: ["M62 136L170 40L198 78Z"],
+    points: [
+      { cx: 62, cy: 136, r: 2.7 }, // Alpha Trianguli
+      { cx: 170, cy: 40, accent: true }, // Beta Trianguli
+      { cx: 198, cy: 78, r: 2.3 }, // Gamma Trianguli
+    ],
+  },
+  aries: {
+    lines: ["M58 60L154 86L188 124"],
+    points: [
+      { cx: 58, cy: 60, accent: true }, // Hamal
+      { cx: 154, cy: 86, r: 2.8 }, // Sheratan
+      { cx: 188, cy: 124, r: 2.2 }, // Mesarthim
     ],
   },
   cassiopeia: {

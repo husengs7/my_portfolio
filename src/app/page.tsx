@@ -490,7 +490,7 @@ export default function HomePage() {
         </section>
 
         <section className="relative z-10 mx-auto mt-4 max-w-6xl">
-          <Constellation tone="orion" className="left-0 -top-28 h-24 w-36 opacity-80 sm:left-[8%] sm:h-28 sm:w-44" />
+          <Constellation tone="orion" className="left-0 -top-16 h-24 w-36 opacity-80 sm:left-[8%] sm:h-28 sm:w-44" />
           <div className="relative mx-auto max-w-4xl py-12">
             <CloudWisp mode="front" placement="section" className="opacity-75" />
             <motion.div
@@ -579,7 +579,7 @@ export default function HomePage() {
           </div>
         </section>
         <section className="relative z-10 mt-24 w-full px-6">
-          <Constellation tone="cassiopeia" className="right-0 -top-28 h-24 w-36 opacity-80 sm:right-[8%] sm:h-28 sm:w-44" />
+          <Constellation tone="cassiopeia" className="right-0 -top-44 h-24 w-36 opacity-80 sm:right-[8%] sm:h-28 sm:w-44 md:-top-[18.5rem]" />
           <div className="mx-auto max-w-4xl">
             <CloudWisp
               mode="front"
@@ -625,16 +625,17 @@ export default function HomePage() {
           <div className="mx-auto max-w-5xl">
             <div className="mb-12 text-center">
               <h2 className="font-serifStory text-2xl tracking-[0.3em] text-amber-100/80">Product</h2>
-              <Constellation tone="lyra" className="left-0 -top-28 h-24 w-36 opacity-80 sm:left-[8%] sm:h-28 sm:w-44" />
+              <Constellation tone="lyra" className="left-0 -top-36 h-24 w-36 opacity-80 sm:left-[8%] sm:h-28 sm:w-44 md:top-16" />
             </div>
 
             <div className="space-y-10 md:space-y-14">
               {productItems.map((product, index) => {
                 const isEven = index % 2 === 1;
+                const hasTriangulum = product.title === "焚き火チャット";
 
                 return (
+                  <div key={product.title} className={`relative ${hasTriangulum ? "pb-28 xl:pb-0" : ""}`}>
                   <motion.article
-                    key={product.title}
                     initial={{ opacity: 0, x: isEven ? 36 : -36 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: false, margin: "-10% 0px -15% 0px" }}
@@ -719,6 +720,10 @@ export default function HomePage() {
                       </div>
                     </div>
                   </motion.article>
+                  {hasTriangulum && (
+                    <Constellation tone="triangulum" className="bottom-0 right-0 h-24 w-36 opacity-80 sm:h-28 sm:w-44 xl:bottom-auto xl:left-full xl:top-1/2 xl:ml-4 xl:-translate-y-1/2" />
+                  )}
+                  </div>
                 );
               })}
             </div>
@@ -774,7 +779,7 @@ export default function HomePage() {
             />
             <div className="mb-12 text-center">
               <h2 className="relative z-10 font-serifStory text-2xl tracking-[0.3em] text-amber-100/80">Sound</h2>
-              <Constellation tone="cygnus" className="right-0 -top-28 h-24 w-36 opacity-80 sm:right-[8%] sm:h-28 sm:w-44" />
+              <Constellation tone="cygnus" className="right-0 -top-44 h-24 w-36 opacity-80 sm:right-[8%] sm:h-28 sm:w-44 md:-top-[17.25rem]" />
             </div>
             <motion.div
               initial={{ opacity: 0, y: 24 }}
@@ -822,6 +827,7 @@ export default function HomePage() {
         </section>
 
         <footer className="relative z-10 px-6 pt-24 text-center">
+          <Constellation tone="aries" className="left-0 top-4 h-24 w-36 opacity-80 sm:left-[8%] sm:h-28 sm:w-44" />
           <div className="mb-5">
             <p className="text-[0.65rem] uppercase tracking-[0.28em] text-amber-100/42">
               Built With
