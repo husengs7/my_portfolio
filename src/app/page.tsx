@@ -311,6 +311,17 @@ export default function HomePage() {
       imagePosition: "object-[center_20%]",
     },
     {
+      title: "me-fo",
+      tags: ["React", "Hono", "Cloudflare D1", "Cloudflare R2", "Workers AI", "Google Maps API"],
+      awards: [],
+      description: "",
+      playHref: "https://me-fo.tokyo-odh-292.workers.dev/",
+      githubHref: "https://github.com/benat-library/TOCHIJI",
+      imageSrc: "/me-fo.png",
+      imageAlt: "me-fo preview",
+      imagePosition: "object-center",
+    },
+    {
       title: "焚き火チャット",
       tags: ["React", "Ruby on Rails", "WebSocket"],
       awards: ["Findy賞", "ウェルスナビ賞"],
@@ -725,24 +736,28 @@ export default function HomePage() {
                             <span>Play</span>
                           </a>
                         ) : null}
-                        <a
-                          href={product.viewHref}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="inline-flex items-center gap-2 rounded-full border border-amber-100/20 bg-amber-100/8 px-3 py-2 text-xs text-amber-100/85 transition-all duration-300 hover:border-amber-100/35 hover:bg-amber-100/12 hover:drop-shadow-[0_0_10px_rgba(245,197,108,0.18)] md:px-4 md:text-sm"
-                        >
-                          <ArrowUpRight size={16} />
-                          <span>View Project</span>
-                        </a>
-                        <a
-                          href={product.githubHref}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="inline-flex items-center gap-2 rounded-full border border-violet-300/20 bg-violet-400/8 px-3 py-2 text-xs text-violet-200/90 transition-all duration-300 hover:border-violet-300/35 hover:bg-violet-400/12 hover:text-violet-100 hover:drop-shadow-[0_0_10px_rgba(167,139,250,0.22)] md:px-4 md:text-sm"
-                        >
-                          <Github size={16} />
-                          <span>GitHub</span>
-                        </a>
+                        {product.viewHref ? (
+                          <a
+                            href={product.viewHref}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-2 rounded-full border border-amber-100/20 bg-amber-100/8 px-3 py-2 text-xs text-amber-100/85 transition-all duration-300 hover:border-amber-100/35 hover:bg-amber-100/12 hover:drop-shadow-[0_0_10px_rgba(245,197,108,0.18)] md:px-4 md:text-sm"
+                          >
+                            <ArrowUpRight size={16} />
+                            <span>View Project</span>
+                          </a>
+                        ) : null}
+                        {product.githubHref ? (
+                          <a
+                            href={product.githubHref}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-2 rounded-full border border-violet-300/20 bg-violet-400/8 px-3 py-2 text-xs text-violet-200/90 transition-all duration-300 hover:border-violet-300/35 hover:bg-violet-400/12 hover:text-violet-100 hover:drop-shadow-[0_0_10px_rgba(167,139,250,0.22)] md:px-4 md:text-sm"
+                          >
+                            <Github size={16} />
+                            <span>GitHub</span>
+                          </a>
+                        ) : null}
                       </div>
                     </div>
                   </motion.article>
