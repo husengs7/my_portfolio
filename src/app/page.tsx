@@ -38,6 +38,7 @@ type SubProductItem = {
   imageAlt?: string;
   description?: string;
   tags: string[];
+  awards?: string[];
   viewHref?: string;
   viewLabel?: string;
   playHref?: string;
@@ -83,9 +84,19 @@ function SubProductCard({ product }: { product: SubProductItem }) {
       ) : null}
 
       <div className="relative px-2.5 pb-3 pt-3 md:px-5 md:pb-5 md:pt-4">
-        <h3 className="text-sm font-bold tracking-tight text-amber-100/90 md:text-xl">
-          {product.title}
-        </h3>
+        <div className="flex min-w-0 flex-nowrap items-center gap-2 overflow-hidden md:gap-3">
+          <h3 className="min-w-0 truncate whitespace-nowrap text-sm font-bold tracking-tight text-amber-100/90 md:text-xl">
+            {product.title}
+          </h3>
+          {product.awards?.map((award) => (
+            <span
+              key={award}
+              className="inline-block shrink-0 whitespace-nowrap rounded-full border border-amber-200/20 bg-amber-200/8 px-1.5 py-0.5 text-[0.45rem] tracking-normal text-amber-100/80 md:px-2 md:py-1 md:text-[0.55rem]"
+            >
+              {award}
+            </span>
+          ))}
+        </div>
 
         {hasLinks ? (
           <div className="mt-3 flex items-center justify-start gap-1.5 md:mt-4 md:gap-2">
@@ -312,20 +323,20 @@ export default function HomePage() {
       imageAlt: "TrainGuessr preview",
       imagePosition: "object-center md:object-[center_48%]",
     },
-    {
-      title: "逆ジオゲッサー",
-      tags: ["Node.js", "GoogleMapAPI", "mongoDB"],
-      awards: ["100Programファイナル進出"],
-      description:
-        "迷子をゲームに。指定されたポイントまで辿る、ジオゲッサーライクなwebアプリです。",
-      viewHref: "https://speakerdeck.com/husengs7/100programni-ziogetusafa-biao-suraido",
-      githubHref: "https://github.com/husengs7/Tokyo-Flag-capturing-geogesser",
-      imageSrc: "/100Program.jpg",
-      imageAlt: "Takibi Chat preview",
-      imagePosition: "object-center",
-    },
   ];
   const subProductItems: SubProductItem[] = [
+    {
+      id: "reverse-geoguessr",
+      title: "逆ジオゲッサー",
+      imageSrc: "/100Program.jpg",
+      imageAlt: "逆ジオゲッサー preview",
+      description: "迷子をゲームに。指定されたポイントまで辿る、ジオゲッサーライクなwebアプリです。",
+      tags: ["Node.js", "GoogleMapAPI", "mongoDB"],
+      awards: ["100Programファイナル進出"],
+      viewHref: "https://speakerdeck.com/husengs7/100programni-ziogetusafa-biao-suraido",
+      githubHref: "https://github.com/husengs7/Tokyo-Flag-capturing-geogesser",
+      imagePosition: "object-center",
+    },
     {
       id: "todo-farm",
       title: "TODOファーム",
