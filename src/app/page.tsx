@@ -316,6 +316,7 @@ export default function HomePage() {
       awards: [],
       description: "",
       playHref: "https://me-fo.tokyo-odh-292.workers.dev/",
+      viewHref: "https://speakerdeck.com/benat/me-fo",
       githubHref: "https://github.com/benat-library/TOCHIJI",
       imageSrc: "/me-fo.png",
       imageAlt: "me-fo preview",
