@@ -341,6 +341,8 @@ export default function HomePage() {
       awards: [],
       description: "テック文化祭2026の「おたのしみコンテンツ」セッションで使用した、最大100人の同時参加を想定したエンジニア向け雑学クイズアプリです。",
       playHref: "https://student-live-quiz.findystudent.workers.dev/quiz",
+      viewHref: "https://pbs.twimg.com/media/HTM03i4bwAA_LKR?format=jpg&name=large",
+      githubHref: "https://github.com/husengs7/student-live-quiz",
       imageSrc: "/findystudentquiz.png",
       imageAlt: "findystudentquiz preview",
       imagePosition: "object-center",
