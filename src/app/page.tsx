@@ -47,6 +47,78 @@ type SubProductItem = {
   imagePosition?: string;
 };
 
+type ShowcaseItem = {
+  title: string;
+  href: string;
+  imageSrc: string;
+};
+
+function ShowcaseSection({ title, items }: { title: string; items: ShowcaseItem[] }) {
+  const [expanded, setExpanded] = useState(false);
+  const visibleItems = expanded ? items : items.slice(0, 5);
+  const remaining = items.length - visibleItems.length;
+
+  return (
+    <section className="relative z-10 mt-28 w-full px-6" aria-labelledby={`${title.toLowerCase()}-heading`}>
+      <div className="mx-auto max-w-5xl">
+        <div className="mb-12 text-center">
+          <h2 id={`${title.toLowerCase()}-heading`} className="font-serifStory text-2xl tracking-[0.3em] text-amber-100/80">
+            {title}
+          </h2>
+        </div>
+        <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-3">
+          {visibleItems.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`${item.title}を開く`}
+              className="block rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-100"
+            >
+              <Picture className="aspect-video">
+                <Image
+                  src={item.imageSrc}
+                  alt={item.title}
+                  fill
+                  sizes="(min-width: 1024px) 325px, (min-width: 768px) 33vw, 100vw"
+                  className="object-cover"
+                />
+              </Picture>
+            </a>
+          ))}
+          {remaining > 0 ? (
+            <button
+              type="button"
+              onClick={() => setExpanded(true)}
+              aria-expanded={expanded}
+              className="flex aspect-video items-center justify-center rounded-md border border-parchment/10 bg-white/5 text-center text-amber-100/70 transition-colors duration-300 hover:border-amber-100/30 hover:bg-amber-100/8 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-100"
+            >
+              <span>
+                <span className="block font-serifStory text-lg">View more</span>
+                <span className="mt-1 block text-xs tracking-[0.14em] text-parchment/45">{remaining} remaining</span>
+              </span>
+            </button>
+          ) : null}
+          {expanded && items.length > 5 ? (
+            <button
+              type="button"
+              onClick={() => setExpanded(false)}
+              aria-expanded={expanded}
+              className="flex aspect-video items-center justify-center rounded-md border border-parchment/10 bg-white/5 text-center text-amber-100/70 transition-colors duration-300 hover:border-amber-100/30 hover:bg-amber-100/8 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-100"
+            >
+              <span>
+                <span className="block font-serifStory text-lg">Show less</span>
+                <span className="mt-1 block text-xs tracking-[0.14em] text-parchment/45">Back to 5</span>
+              </span>
+            </button>
+          ) : null}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function SubProductCard({ product }: { product: SubProductItem }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const hasPrimaryLinks = Boolean(product.viewHref || product.playHref);
@@ -217,6 +289,43 @@ export default function HomePage() {
       icon: Music2,
       hoverClass:
         "hover:text-orange-400 hover:drop-shadow-[0_0_7px_rgba(251,146,60,0.55)]",
+    },
+  ];
+  const writingItems: ShowcaseItem[] = [
+    {
+      title: "赤いきつね食ってたら、AWSのS3だった。",
+      href: "https://qiita.com/husensan/items/c2797409e091dd2aae73",
+      imageSrc: "/qiita-c2797409e091dd2aae73.jpg",
+    },
+    {
+      title: "FindyのDevRelインターンとして、イベント参加者から運営になって。",
+      href: "https://qiita.com/husensan/items/62bf2a60f313d1e3de3c",
+      imageSrc: "/qiita-62bf2a60f313d1e3de3c.jpg",
+    },
+    {
+      title: "タイトルにFラン学生ってつけて、初めてのLTした話",
+      href: "https://qiita.com/husensan/items/5bc23454bcf7ad83e371",
+      imageSrc: "/qiita-5bc23454bcf7ad83e371.jpg",
+    },
+    {
+      title: "DJフェスのイケイケ音楽と、イケイケ5G回線",
+      href: "https://qiita.com/husensan/items/01b32994d5ce0d83c824",
+      imageSrc: "/qiita-01b32994d5ce0d83c824.jpg",
+    },
+    {
+      title: "1万4千円の化石なら、npm run dev -- --turboを使え。……と言いたかったけど、今は違うのか（泣）",
+      href: "https://qiita.com/husensan/items/b37851dbb3856645d375",
+      imageSrc: "/qiita-b37851dbb3856645d375.jpg",
+    },
+    {
+      title: "Fire TV StickをPCのサブディスプレイにしてデスクを拡張（乗っ取り）する方法【spacedesk編】",
+      href: "https://qiita.com/husensan/items/6c1313143f1629c63d1e",
+      imageSrc: "/qiita-6c1313143f1629c63d1e.jpg",
+    },
+    {
+      title: "Fire TV StickをPCのスピーカーにしてリビングを乗っ取る方法。",
+      href: "https://qiita.com/husensan/items/a1356bf12c11fcb0288f",
+      imageSrc: "/qiita-a1356bf12c11fcb0288f.jpg",
     },
   ];
   const timelineItems: TimelineItem[] = [
@@ -813,6 +922,8 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+
+        <ShowcaseSection title="Writing" items={writingItems} />
 
         <section className="relative z-10 mt-28 w-full px-6" aria-labelledby="work-heading">
           <div className="mx-auto max-w-5xl">
