@@ -416,6 +416,16 @@ export default function HomePage() {
       githubHref: "https://github.com/husengs7/Tab-AM-Radio-Filter",
       imagePosition: "object-[center_35%]",
     },
+    {
+      id: "presentation-dark",
+      title: "SlideChat",
+      imageSrc: "/presentation-dark.png",
+      imageAlt: "SlideChat preview",
+      description: "PDFをチャット形式で、あたかもAIが生成しているかのように1枚ずつ表示するReact製プレゼンテーションアプリです。",
+      tags: ["React", "PDF.js"],
+      githubHref: "https://github.com/husengs7/chatGPTstyle-presenteationAPP",
+      imagePosition: "object-center",
+    },
   ];
 
   useEffect(() => {
