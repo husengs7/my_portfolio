@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, BookOpenText, Github, Mail, Music2, Twitter } from "lucide-react";
+import { ArrowUpRight, BookOpenText, Github, Mail, Music2, Presentation, Twitter } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Picture } from "@/components/blog/picture";
@@ -196,6 +196,13 @@ export default function HomePage() {
       icon: Twitter,
       hoverClass:
         "hover:text-sky-400 hover:drop-shadow-[0_0_7px_rgba(56,189,248,0.55)]",
+    },
+    {
+      href: "https://speakerdeck.com/husengs7",
+      label: "Speaker Deck",
+      icon: Presentation,
+      hoverClass:
+        "hover:text-amber-300 hover:drop-shadow-[0_0_7px_rgba(252,211,77,0.5)]",
     },
     {
       href: "https://qiita.com/husensan",
@@ -612,7 +619,7 @@ export default function HomePage() {
                 align="left"
                 className="mt-0"
               />
-              <div className="mt-8 flex flex-wrap gap-x-8 gap-y-4 px-4 md:px-0">
+              <div className="mt-8 flex flex-wrap gap-x-8 gap-y-4 px-4 md:-ml-20 md:w-[calc(100%+5rem)] md:flex-nowrap md:px-0">
                 {profileLinks.map((link) => {
                   const Icon = link.icon;
 
@@ -622,7 +629,7 @@ export default function HomePage() {
                       href={link.href}
                       target="_blank"
                       rel="noreferrer"
-                      className={`flex items-center gap-3 text-xl text-parchment/50 transition-all duration-300 ${link.hoverClass}`}
+                      className={`flex shrink-0 items-center gap-3 whitespace-nowrap text-xl text-parchment/50 transition-all duration-300 ${link.hoverClass}`}
                     >
                       <Icon size={22} />
                       <span>{link.label}</span>
