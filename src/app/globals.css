@@ -68,6 +68,19 @@ body::selection {
   .gymnopedies-picture:hover::after {
     opacity: 1;
   }
+
+  .gymnopedies-picture.showcase-always-bright img,
+  a:hover .gymnopedies-picture.showcase-always-bright img,
+  a:focus-visible .gymnopedies-picture.showcase-always-bright img {
+    opacity: 1;
+    filter: none;
+  }
+
+  .gymnopedies-picture.showcase-always-bright::after,
+  .gymnopedies-picture.showcase-always-bright:hover::after,
+  a:focus-visible .gymnopedies-picture.showcase-always-bright::after {
+    opacity: 0;
+  }
 }
 
 a:focus-visible .gymnopedies-picture {

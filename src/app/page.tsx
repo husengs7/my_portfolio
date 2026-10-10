@@ -76,7 +76,7 @@ function ShowcaseSection({ title, items }: { title: string; items: ShowcaseItem[
               aria-label={`${item.title}を開く`}
               className="block rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-100"
             >
-              <Picture className="aspect-video">
+              <Picture className={`aspect-video ${title === "Speaking" ? "showcase-always-bright" : ""}`}>
                 <Image
                   src={item.imageSrc}
                   alt={item.title}
