@@ -314,7 +314,7 @@ export default function HomePage() {
       title: "me-fo",
       tags: ["React", "Hono", "Cloudflare D1", "Cloudflare R2", "Workers AI", "Google Maps API"],
       awards: [],
-      description: "",
+      description: "みんなの気持ちをお天気予報にしました。",
       playHref: "https://me-fo.tokyo-odh-292.workers.dev/",
       viewHref: "https://speakerdeck.com/benat/me-fo",
       githubHref: "https://github.com/benat-library/TOCHIJI",
