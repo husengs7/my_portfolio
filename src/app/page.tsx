@@ -340,6 +340,7 @@ export default function HomePage() {
       tags: [],
       awards: [],
       description: "",
+      playHref: "https://student-live-quiz.findystudent.workers.dev/quiz",
       imageSrc: "/findystudentquiz.png",
       imageAlt: "findystudentquiz preview",
       imagePosition: "object-center",
