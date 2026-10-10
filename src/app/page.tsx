@@ -416,16 +416,6 @@ export default function HomePage() {
       githubHref: "https://github.com/husengs7/Tab-AM-Radio-Filter",
       imagePosition: "object-[center_35%]",
     },
-    {
-      id: "andmore-1",
-      title: "andmore",
-      tags: [],
-    },
-    {
-      id: "andmore-2",
-      title: "andmore",
-      tags: [],
-    },
   ];
 
   useEffect(() => {
