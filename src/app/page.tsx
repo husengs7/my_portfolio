@@ -347,6 +347,17 @@ export default function HomePage() {
       imageAlt: "findystudentquiz preview",
       imagePosition: "object-center",
     },
+    {
+      title: "ねずみ幸福論PRサイト",
+      tags: ["Next.js", "AWS Amplify"],
+      awards: [],
+      description: "ねずみ幸福論音源公開と同時に制作した、ねずみ幸福論のPRサイトです。",
+      playHref: "https://main.d3vxhtv9nfi3zu.amplifyapp.com/",
+      githubHref: "https://github.com/husengs7/nezumi_PR",
+      imageSrc: "/social-preview.jpg",
+      imageAlt: "Social Preview",
+      imagePosition: "object-center",
+    },
   ];
   const subProductItems: SubProductItem[] = [
     {
@@ -869,7 +880,7 @@ export default function HomePage() {
               <iframe
                 width="100%"
                 height="202"
-                src="https://www.bandlab.com/embed/?id=36250eed-8eb8-f011-8196-0022484a3197"
+                src="https://www.bandlab.com/embed/?id=4f1f6044-cbea-4fe4-a054-97c57f22b1bb"
                 allowFullScreen
                 className="mt-6 rounded-2xl"
                 title="BandLab player 2"
@@ -877,10 +888,18 @@ export default function HomePage() {
               <iframe
                 width="100%"
                 height="202"
-                src="https://www.bandlab.com/embed/?id=b11f0432-7e55-4c44-bf52-3d188f30e505"
+                src="https://www.bandlab.com/embed/?id=36250eed-8eb8-f011-8196-0022484a3197"
                 allowFullScreen
                 className="mt-6 rounded-2xl"
                 title="BandLab player 3"
+              />
+              <iframe
+                width="100%"
+                height="202"
+                src="https://www.bandlab.com/embed/?id=b11f0432-7e55-4c44-bf52-3d188f30e505"
+                allowFullScreen
+                className="mt-6 rounded-2xl"
+                title="BandLab player 4"
               />
             </motion.div>
           </div>
