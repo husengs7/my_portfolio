@@ -17,7 +17,7 @@ const config: Config = {
         glow: "0 0 60px rgba(245, 197, 108, 0.18)",
       },
       fontFamily: {
-        serifStory: ["Georgia", "Times New Roman", "serif"],
+        serifStory: ["Georgia", "Times New Roman", "Zen Maru Gothic", "serif"],
       },
       backgroundImage: {
         paperGlow:
