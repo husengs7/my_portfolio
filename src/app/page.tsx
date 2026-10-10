@@ -335,6 +335,15 @@ export default function HomePage() {
       imageAlt: "TrainGuessr preview",
       imagePosition: "object-center md:object-[center_48%]",
     },
+    {
+      title: "テック文化祭おたのしみコンテンツ",
+      tags: [],
+      awards: [],
+      description: "",
+      imageSrc: "/findystudentquiz.png",
+      imageAlt: "findystudentquiz preview",
+      imagePosition: "object-center",
+    },
   ];
   const subProductItems: SubProductItem[] = [
     {
