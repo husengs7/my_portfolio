@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, BookOpenText, Github, Mail, Music2, Presentation, Twitter } from "lucide-react";
+import { ArrowUpRight, BookOpenText, ChevronDown, ChevronUp, Github, Mail, Music2, Presentation, Twitter } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Picture } from "@/components/blog/picture";
@@ -119,7 +119,7 @@ function ShowcaseSection({ title, items }: { title: string; items: ShowcaseItem[
   );
 }
 
-function SubProductCard({ product }: { product: SubProductItem }) {
+function SubProductCard({ product, preview = false }: { product: SubProductItem; preview?: boolean }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const hasPrimaryLinks = Boolean(product.viewHref || product.playHref);
   const hasLinks = Boolean(product.viewHref || product.playHref || product.githubHref);
@@ -127,7 +127,9 @@ function SubProductCard({ product }: { product: SubProductItem }) {
 
   return (
     <motion.article
-      layout
+      aria-hidden={preview}
+      inert={preview ? true : undefined}
+      style={preview ? { maxHeight: "8rem", overflow: "hidden" } : undefined}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: false, margin: "-8% 0px -12% 0px" }}
@@ -135,7 +137,9 @@ function SubProductCard({ product }: { product: SubProductItem }) {
       onHoverStart={() => setIsExpanded(true)}
       onHoverEnd={() => setIsExpanded(false)}
       onClick={() => setIsExpanded((current) => !current)}
-      className={`relative w-full overflow-visible self-start rounded-[1.25rem] border border-parchment/10 bg-[linear-gradient(180deg,rgba(245,197,108,0.08),rgba(255,255,255,0.02))] shadow-[0_0_20px_rgba(245,197,108,0.06)] backdrop-blur-[1px] transition-shadow duration-300 md:basis-[calc((100%-3rem)/3)] md:max-w-[calc((100%-3rem)/3)] md:rounded-[1.5rem] ${
+      className={`relative w-full overflow-visible self-start rounded-[1.25rem] border border-parchment/10 bg-[linear-gradient(180deg,rgba(245,197,108,0.08),rgba(255,255,255,0.02))] shadow-[0_0_20px_rgba(245,197,108,0.06)] backdrop-blur-[1px] transition-[filter,box-shadow] duration-300 md:basis-[calc((100%-3rem)/3)] md:max-w-[calc((100%-3rem)/3)] md:rounded-[1.5rem] ${
+                            preview ? "pointer-events-none select-none blur-[2px] brightness-[0.55]" : ""
+      } ${
         isExpanded ? "z-20 shadow-[0_0_28px_rgba(245,197,108,0.14)]" : "z-0"
       }`}
     >
@@ -253,6 +257,7 @@ function SubProductCard({ product }: { product: SubProductItem }) {
 
 export default function HomePage() {
   const [timelineFilter, setTimelineFilter] = useState<"all" | TimelineTag>("all");
+  const [subProductsExpanded, setSubProductsExpanded] = useState(false);
   const { hasStarted, ignite, isLit, leftLampLit, rightLampLit } = useOpeningLight();
   const profileLinks = [
     {
@@ -932,11 +937,25 @@ export default function HomePage() {
               })}
             </div>
 
-            <div className="mt-20 grid grid-cols-2 gap-3 md:flex md:flex-row md:flex-wrap md:items-start md:gap-6">
-              {subProductItems.map((product) => (
-                <SubProductCard key={product.id} product={product} />
+            <div id="sub-products" className="mt-20 grid grid-cols-2 gap-3 md:flex md:flex-row md:flex-wrap md:items-start md:gap-6">
+              {subProductItems.map((product, index) => (
+                <SubProductCard key={product.id} product={product} preview={!subProductsExpanded && index >= 3} />
               ))}
             </div>
+            {subProductItems.length > 3 ? (
+              <div className="mt-4 flex justify-center">
+                <button
+                  type="button"
+                  aria-expanded={subProductsExpanded}
+                  aria-controls="sub-products"
+                  onClick={() => setSubProductsExpanded((current) => !current)}
+                  className="inline-flex min-h-11 items-center gap-2 border-b border-amber-100/30 px-4 py-2 text-sm text-amber-100/80 transition-colors hover:border-amber-100/70 hover:text-amber-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-100"
+                >
+                  {subProductsExpanded ? "Show less" : `Show more (${subProductItems.length - 3} remaining)`}
+                  {subProductsExpanded ? <ChevronUp size={16} aria-hidden="true" /> : <ChevronDown size={16} aria-hidden="true" />}
+                </button>
+              </div>
+            ) : null}
           </div>
         </section>
 
