@@ -337,9 +337,9 @@ export default function HomePage() {
     },
     {
       title: "テック文化祭おたのしみコンテンツ",
-      tags: [],
+      tags: ["React", "Hono", "Cloudflare Workers", "SQLite", "k6"],
       awards: [],
-      description: "",
+      description: "テック文化祭2026の「おたのしみコンテンツ」セッションで使用した、最大100人の同時参加を想定したエンジニア向け雑学クイズアプリです。",
       playHref: "https://student-live-quiz.findystudent.workers.dev/quiz",
       imageSrc: "/findystudentquiz.png",
       imageAlt: "findystudentquiz preview",
@@ -705,7 +705,13 @@ export default function HomePage() {
 
                     <div className={`${isEven ? "md:order-1" : ""} flex flex-col justify-center px-6 py-7 md:px-8 md:py-9`}>
                       <div className="flex flex-wrap items-center gap-3">
-                        <h3 className="mb-2 mt-2 text-2xl font-bold tracking-tight text-amber-100/90 md:text-[1.9rem]">
+                        <h3
+                          className={`mb-2 mt-2 whitespace-nowrap font-bold tracking-tight text-amber-100/90 ${
+                            product.title === "テック文化祭おたのしみコンテンツ"
+                              ? "text-[0.84rem] sm:text-lg md:text-2xl"
+                              : "text-2xl md:text-[1.9rem]"
+                          }`}
+                        >
                           {product.title}
                         </h3>
                         {product.awards.length > 0 ? (
