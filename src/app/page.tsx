@@ -328,6 +328,23 @@ export default function HomePage() {
       imageSrc: "/qiita-a1356bf12c11fcb0288f.jpg",
     },
   ];
+  const speakingItems: ShowcaseItem[] = [
+    {
+      title: "Fラン学生が考える、AI時代のデザインに執着した突破口",
+      href: "https://speakerdeck.com/husengs7/franxue-sheng-gakao-eru-aishi-dai-nodezainnizhi-zhao-sitatu-po-kou",
+      imageSrc: "/speaking-ai-design.jpg",
+    },
+    {
+      title: "おそらく日本で唯一のDevRelインターン生として",
+      href: "https://speakerdeck.com/husengs7/osoraku-nippon-de-yuiitsu-no-devrel-intansei-toshite",
+      imageSrc: "/speaking-devrel-intern.jpg",
+    },
+    {
+      title: "説明はノイズである。ICOから学ぶゲームデザイン",
+      href: "https://speakerdeck.com/husengs7/setsumei-ha-noizudearu-ico-kara-manabu-gemu-dezain",
+      imageSrc: "/speaking-ico-game-design.jpg",
+    },
+  ];
   const timelineItems: TimelineItem[] = [
     {
       date: "2025.07",
@@ -924,6 +941,7 @@ export default function HomePage() {
         </section>
 
         <ShowcaseSection title="Writing" items={writingItems} />
+        <ShowcaseSection title="Speaking" items={speakingItems} />
 
         <section className="relative z-10 mt-28 w-full px-6" aria-labelledby="work-heading">
           <div className="mx-auto max-w-5xl">
