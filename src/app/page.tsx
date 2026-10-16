@@ -260,6 +260,7 @@ function SubProductCard({ product, preview = false }: { product: SubProductItem;
 export default function HomePage() {
   const [timelineFilter, setTimelineFilter] = useState<"all" | TimelineTag>("all");
   const [subProductsExpanded, setSubProductsExpanded] = useState(false);
+  const [workExpanded, setWorkExpanded] = useState(false);
   const { hasStarted, ignite, isLit, leftLampLit, rightLampLit } = useOpeningLight();
   const profileLinks = [
     {
@@ -974,8 +975,9 @@ export default function HomePage() {
             <div className="mb-12 text-center">
               <h2 id="work-heading" className="font-serifStory text-2xl tracking-[0.3em] text-amber-100/80">Work</h2>
             </div>
-            <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-3">
-              {workItems.map((work) => {
+            <div id="work-items" className="grid grid-cols-1 items-start gap-6 md:grid-cols-3">
+              {workItems.map((work, index) => {
+                const preview = !workExpanded && index >= 6;
                 const banner = (
                   <Picture className="aspect-video">
                     <Image
@@ -989,17 +991,50 @@ export default function HomePage() {
                 );
 
                 return work.href ? (
-                  <a key={work.imageSrc} href={work.href} target="_blank" rel="noreferrer" className="block rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-100">
+                  <a
+                    key={work.imageSrc}
+                    href={work.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-hidden={preview}
+                    inert={preview ? true : undefined}
+                    style={preview ? { maxHeight: "8rem", overflow: "hidden" } : undefined}
+                    className={`block rounded-md transition-[filter] duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-100 ${
+                      preview ? "pointer-events-none select-none blur-[2px] brightness-[0.55]" : ""
+                    }`}
+                  >
                     {banner}
                   </a>
                 ) : (
-                  <div key={work.imageSrc}>{banner}</div>
+                  <div
+                    key={work.imageSrc}
+                    aria-hidden={preview}
+                    inert={preview ? true : undefined}
+                    style={preview ? { maxHeight: "8rem", overflow: "hidden" } : undefined}
+                    className={preview ? "pointer-events-none select-none blur-[2px] brightness-[0.55]" : ""}
+                  >
+                    {banner}
+                  </div>
                 );
               })}
               {workItems.length === 0 && [0, 1, 2].map((slot) => (
                 <div key={slot} aria-hidden="true" className="aspect-video rounded-lg border border-parchment/10 bg-white/5" />
               ))}
             </div>
+            {workItems.length > 6 ? (
+              <div className="mt-4 flex justify-center">
+                <button
+                  type="button"
+                  aria-expanded={workExpanded}
+                  aria-controls="work-items"
+                  onClick={() => setWorkExpanded((current) => !current)}
+                  className="inline-flex min-h-11 items-center gap-2 border-b border-amber-100/30 px-4 py-2 text-sm text-amber-100/80 transition-colors hover:border-amber-100/70 hover:text-amber-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-100"
+                >
+                  {workExpanded ? "Show less" : `Show more (${workItems.length - 6} remaining)`}
+                  {workExpanded ? <ChevronUp size={16} aria-hidden="true" /> : <ChevronDown size={16} aria-hidden="true" />}
+                </button>
+              </div>
+            ) : null}
           </div>
         </section>
 
