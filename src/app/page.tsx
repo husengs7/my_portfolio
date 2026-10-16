@@ -29,6 +29,8 @@ const workItems: { imageSrc: string; title: string; href?: string }[] = [
   { imageSrc: "/learning-share-lt.png", title: "学びシェアLT", href: "https://student.findy-code.io/events/bJglxz3USJmeqvfJr7qn0Q" },
   { imageSrc: "/tech-festival.jpg", title: "テック文化祭", href: "https://student.findy-code.io/events/b0u9w8WfRTmI4OFWEm188Q" },
   { imageSrc: "/favorite-cloud.png", title: "推しクラウド", href: "https://student.findy-code.io/events/_0FNJsGVTa2d0-e_cYNb0Q" },
+  { imageSrc: "/github-readme-deco-night.jpg", title: "GitHub READMEデコナイト", href: "https://student.findy-code.io/events/_kDrMTZaSwKV6OqeCtZt7g" },
+  { imageSrc: "/aws-hands-on.jpg", title: "学生向けハンズオン～AWSを攻略しよう～", href: "https://student.findy-code.io/events/8jEH9zsITfGVrN_0X9h29Q" },
 ];
 
 type SubProductItem = {
@@ -331,6 +333,11 @@ export default function HomePage() {
       title: "Fire TV StickをPCのスピーカーにしてリビングを乗っ取る方法。",
       href: "https://qiita.com/husensan/items/a1356bf12c11fcb0288f",
       imageSrc: "/qiita-a1356bf12c11fcb0288f.jpg",
+    },
+    {
+      title: ".HEICを見ても焦るな。Windowsでも一瞬で解決する「CopyTrans Studio」導入のススメ",
+      href: "https://qiita.com/husensan/items/d36b5cf84e0a1f7ec7a7",
+      imageSrc: "/qiita-d36b5cf84e0a1f7ec7a7.jpg",
     },
   ];
   const speakingItems: ShowcaseItem[] = [
