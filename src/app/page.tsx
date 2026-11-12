@@ -31,6 +31,8 @@ const workItems: { imageSrc: string; title: string; href?: string }[] = [
   { imageSrc: "/favorite-cloud.png", title: "推しクラウド", href: "https://student.findy-code.io/events/_0FNJsGVTa2d0-e_cYNb0Q" },
   { imageSrc: "/github-readme-deco-night.jpg", title: "GitHub READMEデコナイト", href: "https://student.findy-code.io/events/_kDrMTZaSwKV6OqeCtZt7g" },
   { imageSrc: "/aws-hands-on.jpg", title: "学生向けハンズオン～AWSを攻略しよう～", href: "https://student.findy-code.io/events/8jEH9zsITfGVrN_0X9h29Q" },
+  { imageSrc: "/bounenkai-2026.jpg", title: "学生エンジニア忘年会2026", href: "https://student.findy-code.io/events/jBGjU8RxRR-6CxDDLZGobw" },
+  { imageSrc: "/houkago-lt-night.jpg", title: "放課後LTナイト", href: "https://student.findy-code.io/events/tLo1GALpQxm44G5xY7kj7A" },
 ];
 
 type SubProductItem = {
